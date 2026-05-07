@@ -1,0 +1,104 @@
+---
+title: "Graphs, Degrees, and Neighborhoods"
+description: "Definitions for graphs, vertices, edges, neighborhoods, incidence sets, degree, order, and size."
+order: 1
+noteType: "main"
+status: "draft"
+---
+
+Graph theory studies **connectivity structure**.
+
+A graph can model cities connected by roads, computers connected by links, or people connected by friendship. Once the only thing that matters is which objects are connected to which others, that situation can be modeled by a graph.
+
+## The Definition of a Graph
+
+A graph $G$ consists of:
+
+- a **finite** set of vertices $V(G)$
+- a set of edges $E(G)$
+
+where each edge is a two-element subset of $V(G)$. Formally,
+
+$$
+E(G) \subseteq \{\, e \subseteq V(G) \mid |e| = 2 \,\}.
+$$
+
+So an edge is a set of the form $\{v,w\}$, where $v$ and $w$ are distinct vertices in $V(G)$.
+
+From this definition, three facts follow immediately:
+
+- there are no self-edges, since an edge must contain two distinct vertices
+- there are no multiple edges, since $E(G)$ is a set of subsets, so the same edge cannot appear twice
+- there is no direction, since $\{v,w\} = \{w,v\}$
+
+This is the definition of a **simple graph**, which is the kind of graph considered in this unit.
+
+![Examples of graph features excluded from simple graphs](/graph-types-not-in-this-unit.svg)
+
+## Vertices and Edges
+
+The vertices are the objects being connected.
+
+The edges record which pairs of vertices are adjacent.
+
+If $\{v,w\} \in E(G)$, then $v$ and $w$ are joined by an edge.
+
+Two basic cardinalities appear constantly:
+
+- the **order** of $G$ is $|V(G)|$
+- the **size** of $G$ is $|E(G)|$
+
+## Neighborhoods
+
+For a vertex $v \in V(G)$, the neighborhood of $v$ is
+
+$$
+N_G(v) \coloneqq \{\, w \in V(G) \mid \{v,w\} \in E(G) \,\}.
+$$
+
+This is the set of all vertices adjacent to $v$.
+
+So if a proof says $w \in N_G(v)$, it is saying exactly that $\{v,w\} \in E(G)$.
+
+## Incidence Sets
+
+For a vertex $v \in V(G)$, the incidence set of $v$ is
+
+$$
+I_G(v) \coloneqq \{\, e \in E(G) \mid v \in e \,\}.
+$$
+
+This is the set of all edges incident on $v$.
+
+The neighborhood and the incidence set are related, but they are not the same object:
+
+- $N_G(v)$ is a set of vertices
+- $I_G(v)$ is a set of edges
+
+In a simple graph, they have the same cardinality. Each neighbor $w \in N_G(v)$ corresponds to exactly one incident edge $\{v,w\} \in I_G(v)$, and each incident edge $\{v,w\} \in I_G(v)$ corresponds to exactly one neighbor $w \in N_G(v)$.
+
+## Degree
+
+The degree function is
+
+$$
+\deg_G : V(G) \to \mathbb{N}.
+$$
+
+For each vertex $v \in V(G)$,
+
+$$
+\deg_G(v) \coloneqq |I_G(v)|.
+$$
+
+Since $|N_G(v)| = |I_G(v)|$ in a simple graph, it also follows that
+
+$$
+\deg_G(v) = |N_G(v)|.
+$$
+
+## Common Mistakes
+
+- treating an edge like an ordered pair instead of a two-element set
+- confusing the neighborhood $N_G(v)$ with the incidence set $I_G(v)$
+- forgetting that degree is defined by cardinality

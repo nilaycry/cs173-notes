@@ -1,0 +1,338 @@
+---
+title: "The Degree-Sum Theorem"
+description: "A full induction proof that the sum of all vertex degrees is twice the size of the edge set."
+order: 2
+noteType: "main"
+status: "draft"
+---
+
+## Statement
+
+For every graph $G$,
+
+$$
+\sum_{v \in V(G)} \deg_G(v) = 2|E(G)|.
+$$
+
+This is the first major counting theorem in the graph theory section. It connects the local data of degrees to the global data of the edge set.
+
+## Proof Strategy
+
+A short intuitive proof exists: every edge contributes $1$ to the degree of each of its two endpoints, so every edge is counted twice in the total degree sum.
+
+For this course, though, it is useful to see a fully formal proof.
+
+A natural first thought is to try induction. There are two obvious quantities one might induct on:
+
+- $|V(G)|$, the order of the graph
+- $|E(G)|$, the size of the graph
+
+Here, induction on $|V(G)|$ works best, because deleting one vertex gives a smaller graph whose degrees can be compared directly to those of the original graph.
+
+## Proof by Induction on $|V(G)|$
+
+We will prove
+
+$$
+(\forall n \in \mathbb{N})(\forall G)\Bigl((G \text{ is a graph} \wedge |V(G)| = n)\Rightarrow 2|E(G)| = \sum_{v \in V(G)} \deg_G(v)\Bigr).
+$$
+
+### Base Case
+
+Assume $|V(G)| = 0$. Then $V(G) = \varnothing$.
+
+Every edge of a graph must be a two-element subset of $V(G)$. Since $\varnothing$ has no two-element subsets, it follows that $E(G) = \varnothing$.
+
+Therefore,
+
+$$
+2|E(G)| = 2\cdot 0 = 0
+$$
+
+and
+
+$$
+\sum_{v \in V(G)} \deg_G(v)
+=
+\sum_{v \in \varnothing} \deg_G(v)
+= 0.
+$$
+
+So the statement holds when $|V(G)| = 0$.
+
+### Inductive Hypothesis
+
+Fix $k \in \mathbb{N}$ and assume that for every graph $H$ with $|V(H)| = k$,
+
+$$
+\sum_{v \in V(H)} \deg_H(v) = 2|E(H)|.
+$$
+
+### Inductive Step
+
+Let $G$ be a graph with $|V(G)| = k+1$.
+
+Since $k+1 > 0$, the vertex set is nonempty. So we may choose a vertex $x \in V(G)$.
+
+Define a smaller graph $H$ by
+
+$$
+V(H) \coloneqq V(G)\setminus \{x\}
+$$
+
+and
+
+$$
+E(H) \coloneqq E(G)\setminus I_G(x)
+=
+\{e \in E(G) \mid x \notin e\}.
+$$
+
+So $H$ is obtained by deleting the vertex $x$ and every edge incident to $x$.
+
+## Comparing Degrees in $G$ and $H$
+
+### Vertices Not Adjacent to $x$
+
+Let
+
+$$
+v \in V(G)\setminus (N_G(x)\cup \{x\}).
+$$
+
+Then
+
+$$
+\deg_G(v)
+=
+|I_G(v)|
+=
+\bigl|\{e \in E(G) \mid v \in e\}\bigr|.
+$$
+
+Since $v \notin N_G(x)$, there is no edge containing both $v$ and $x$. So every edge in the set above automatically satisfies $x \notin e$. Hence
+
+$$
+\deg_G(v)
+=
+\bigl|\{e \in E(G) \mid v \in e \wedge x \notin e\}\bigr|.
+$$
+
+By the definition of $E(H)$, this is
+
+$$
+\deg_G(v)
+=
+\bigl|\{e \in E(H) \mid v \in e\}\bigr|
+=
+|I_H(v)|
+=
+\deg_H(v).
+$$
+
+### Vertices Adjacent to $x$
+
+Let $v \in N_G(x)$.
+
+Then
+
+$$
+\deg_G(v)
+=
+|I_G(v)|
+=
+\bigl|\{e \in E(G) \mid v \in e\}\bigr|.
+$$
+
+Split this set into two disjoint pieces:
+
+$$
+\{e \in E(G) \mid v \in e \wedge x \in e\}
+\quad\text{and}\quad
+\{e \in E(G) \mid v \in e \wedge x \notin e\}.
+$$
+
+So
+
+$$
+\deg_G(v)
+=
+\bigl|\{e \in E(G) \mid v \in e \wedge x \in e\}\bigr|
++
+\bigl|\{e \in E(G) \mid v \in e \wedge x \notin e\}\bigr|.
+$$
+
+Because the graph is simple and $v$ is adjacent to $x$, there is exactly one edge containing both $v$ and $x$, namely $\{v,x\}$. Therefore
+
+$$
+\bigl|\{e \in E(G) \mid v \in e \wedge x \in e\}\bigr| = 1.
+$$
+
+Also, by the definition of $E(H)$,
+
+$$
+\bigl|\{e \in E(G) \mid v \in e \wedge x \notin e\}\bigr|
+=
+\bigl|\{e \in E(H) \mid v \in e\}\bigr|
+=
+|I_H(v)|
+=
+\deg_H(v).
+$$
+
+Hence
+
+$$
+\deg_G(v) = 1 + \deg_H(v).
+$$
+
+## Splitting the Total Degree Sum
+
+The vertex set $V(G)$ is the disjoint union
+
+$$
+V(G)
+=
+N_G(x)
+\cup
+\bigl(V(G)\setminus (N_G(x)\cup \{x\})\bigr)
+\cup
+\{x\}.
+$$
+
+Therefore,
+
+$$
+\sum_{v \in V(G)} \deg_G(v)
+=
+\sum_{v \in N_G(x)} \deg_G(v)
++
+\sum_{v \in V(G)\setminus (N_G(x)\cup \{x\})} \deg_G(v)
++
+\deg_G(x).
+$$
+
+Now substitute the two degree comparisons:
+
+$$
+\sum_{v \in V(G)} \deg_G(v)
+=
+\sum_{v \in N_G(x)} \bigl(1+\deg_H(v)\bigr)
++
+\sum_{v \in V(G)\setminus (N_G(x)\cup \{x\})} \deg_H(v)
++
+\deg_G(x).
+$$
+
+Expand the first sum:
+
+$$
+\sum_{v \in V(G)} \deg_G(v)
+=
+\sum_{v \in N_G(x)} 1
++
+\sum_{v \in N_G(x)} \deg_H(v)
++
+\sum_{v \in V(G)\setminus (N_G(x)\cup \{x\})} \deg_H(v)
++
+\deg_G(x).
+$$
+
+Since there is exactly one term $1$ for each vertex in $N_G(x)$,
+
+$$
+\sum_{v \in N_G(x)} 1 = |N_G(x)|.
+$$
+
+Also, because
+
+$$
+V(H)=V(G)\setminus \{x\}
+=
+N_G(x)\cup \bigl(V(G)\setminus (N_G(x)\cup \{x\})\bigr),
+$$
+
+the two sums involving $\deg_H$ combine to
+
+$$
+\sum_{v \in V(H)} \deg_H(v).
+$$
+
+So we obtain
+
+$$
+\sum_{v \in V(G)} \deg_G(v)
+=
+|N_G(x)|
++
+\sum_{v \in V(H)} \deg_H(v)
++
+\deg_G(x).
+$$
+
+In a simple graph, each neighbor of $x$ corresponds to exactly one edge incident to $x$. Therefore
+
+$$
+|N_G(x)| = |I_G(x)| = \deg_G(x).
+$$
+
+Hence
+
+$$
+\sum_{v \in V(G)} \deg_G(v)
+=
+\deg_G(x)
++
+\sum_{v \in V(H)} \deg_H(v)
++
+\deg_G(x)
+=
+2\deg_G(x) + \sum_{v \in V(H)} \deg_H(v).
+$$
+
+By the inductive hypothesis,
+
+$$
+\sum_{v \in V(H)} \deg_H(v) = 2|E(H)|.
+$$
+
+Therefore,
+
+$$
+\sum_{v \in V(G)} \deg_G(v)
+=
+2\deg_G(x) + 2|E(H)|.
+$$
+
+## Recovering $|E(G)|$
+
+The edges of $G$ split into two disjoint parts:
+
+- the edges incident to $x$, namely $I_G(x)$
+- the edges not incident to $x$, namely $E(H)$
+
+So
+
+$$
+|E(G)| = |I_G(x)| + |E(H)|.
+$$
+
+Since $|I_G(x)| = \deg_G(x)$,
+
+$$
+|E(G)| = \deg_G(x) + |E(H)|.
+$$
+
+Multiplying by $2$ gives
+
+$$
+2|E(G)| = 2\deg_G(x) + 2|E(H)|.
+$$
+
+Hence
+
+$$
+\sum_{v \in V(G)} \deg_G(v) = 2|E(G)|.
+$$
+
+This completes the inductive step, and therefore the proof.

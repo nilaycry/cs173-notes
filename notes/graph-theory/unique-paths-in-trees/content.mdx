@@ -1,0 +1,278 @@
+---
+title: "Unique Paths in Trees"
+description: "A formal proof that every tree has a unique path between any two vertices."
+order: 5
+noteType: "main"
+status: "draft"
+---
+
+## Statement
+
+For every tree $T$ and every pair of vertices $u,v \in V(T)$, there exists a unique path in $T$ from $u$ to $v$.
+
+## Notation
+
+Let
+
+$$
+w : \{0,1,\dots,k\} \to V(T)
+$$
+
+be a walk.
+
+If $0 \leq a \leq b \leq k$, define the subwalk
+
+$$
+w[a,b] : \{0,1,\dots,b-a\} \to V(T)
+$$
+
+by
+
+$$
+w[a,b](t) \coloneqq w(a+t).
+$$
+
+If
+
+$$
+\alpha : \{0,1,\dots,m\} \to V(T)
+$$
+
+is a walk, define its reverse walk
+
+$$
+\alpha^{\mathrm{rev}} : \{0,1,\dots,m\} \to V(T)
+$$
+
+by
+
+$$
+\alpha^{\mathrm{rev}}(t) \coloneqq \alpha(m-t).
+$$
+
+If
+
+$$
+\alpha : \{0,1,\dots,m\} \to V(T)
+\quad\text{and}\quad
+\beta : \{0,1,\dots,n\} \to V(T)
+$$
+
+satisfy $\alpha(m)=\beta(0)$, define the concatenation
+
+$$
+\alpha * \beta : \{0,1,\dots,m+n\} \to V(T)
+$$
+
+by
+
+$$
+(\alpha * \beta)(t) \coloneqq
+\begin{cases}
+\alpha(t), & 0 \leq t \leq m, \\
+\beta(t-m), & m \leq t \leq m+n.
+\end{cases}
+$$
+
+This is well-defined because both formulas give the same value when $t=m$.
+
+## Proof
+
+Let $T$ be a tree, and let $u,v \in V(T)$.
+
+We prove the statement by cases.
+
+### Case 1: $u=v$
+
+Define
+
+$$
+p : \{0\} \to V(T)
+$$
+
+by
+
+$$
+p(0) \coloneqq u.
+$$
+
+This is a path of length $0$ from $u$ to $u$.
+
+Now let
+
+$$
+q : \{0,1,\dots,n\} \to V(T)
+$$
+
+be any path from $u$ to $u$. Then
+
+$$
+q(0)=u=q(n).
+$$
+
+Since $q$ is injective, it follows that $n=0$.
+
+Hence $q$ is also the length-$0$ path at $u$, so $q=p$.
+
+Therefore there exists a unique path from $u$ to $u$.
+
+### Case 2: $u \neq v$
+
+Since $T$ is connected, there exists a path in $T$ from $u$ to $v$.
+
+So only uniqueness remains to be proved.
+
+Assume, for contradiction, that there are two distinct paths from $u$ to $v$.
+
+Let
+
+$$
+p : \{0,1,\dots,m\} \to V(T)
+$$
+
+and
+
+$$
+q : \{0,1,\dots,n\} \to V(T)
+$$
+
+be paths such that
+
+$$
+p(0)=u,\qquad p(m)=v,\qquad q(0)=u,\qquad q(n)=v.
+$$
+
+Since $p$ and $q$ are distinct, there exists a smallest index $i$ with
+
+$$
+i \leq \min\{m,n\}
+\quad\text{and}\quad
+p(i) \neq q(i).
+$$
+
+Because $p(0)=q(0)=u$, we have $i \geq 1$.
+
+Set
+
+$$
+r \coloneqq i-1.
+$$
+
+Then
+
+$$
+p(r)=q(r),
+$$
+
+and this is the last index before the two paths diverge.
+
+Now define
+
+$$
+S \coloneqq \{t \in \{i,i+1,\dots,m\} \mid (\exists s \in \{i,i+1,\dots,n\})(p(t)=q(s))\}.
+$$
+
+The set $S$ is nonempty because
+
+$$
+p(m)=v=q(n).
+$$
+
+Let
+
+$$
+j \coloneqq \min S.
+$$
+
+Then there exists some $\ell \in \{i,i+1,\dots,n\}$ such that
+
+$$
+p(j)=q(\ell).
+$$
+
+Since $q$ is injective, this $\ell$ is unique.
+
+Define
+
+$$
+\alpha \coloneqq p[r,j]
+\quad\text{and}\quad
+\beta \coloneqq q[r,\ell].
+$$
+
+Then:
+
+- $\alpha(0)=p(r)$
+- $\alpha(j-r)=p(j)$
+- $\beta(0)=q(r)=p(r)$
+- $\beta(\ell-r)=q(\ell)=p(j)$
+
+So $\alpha$ and $\beta$ have the same start and end vertices.
+
+Now consider the walk
+
+$$
+c \coloneqq \alpha * \beta^{\mathrm{rev}}.
+$$
+
+We claim that $c$ is a cycle.
+
+First, $c$ is a circuit, because
+
+$$
+c(0)=\alpha(0)=p(r)=q(r)=\beta(0)=\beta^{\mathrm{rev}}(\ell-r)=c\bigl((j-r)+(\ell-r)\bigr).
+$$
+
+It remains to show that $c$ has no repeated vertices other than its first and last ones.
+
+The walk $\alpha$ has no repeated vertices because it is a subwalk of the path $p$.
+
+The walk $\beta$ has no repeated vertices because it is a subwalk of the path $q$.
+
+So it is enough to show that $\alpha$ and $\beta$ have no common internal vertex.
+
+Suppose there exist indices $a,b$ such that
+
+$$
+1 \leq a \leq j-r-1,
+\qquad
+1 \leq b \leq \ell-r-1,
+\qquad
+\alpha(a)=\beta(b).
+$$
+
+By the definition of $\alpha$ and $\beta$, this means
+
+$$
+p(r+a)=q(r+b).
+$$
+
+Since $1 \leq a$, we have $r+a \geq i$. Since $a \leq j-r-1$, we have $r+a < j$.
+
+Similarly, $1 \leq b$ implies $r+b \geq i$.
+
+So
+
+$$
+r+a \in \{i,i+1,\dots,j-1\}
+$$
+
+and
+
+$$
+r+b \in \{i,i+1,\dots,n\}.
+$$
+
+This means $r+a \in S$ and $r+a < j$, contradicting the minimality of $j$.
+
+Therefore $\alpha$ and $\beta$ have no common internal vertex.
+
+So $c$ is a cycle in $T$.
+
+But a tree is acyclic, so $T$ contains no cycles. This is a contradiction.
+
+Hence there cannot be two distinct paths from $u$ to $v$.
+
+Therefore there exists a unique path from $u$ to $v$.
+
+Since both cases have been proved, the theorem follows.

@@ -1,0 +1,126 @@
+---
+title: "Walks, Paths, Circuits, and Cycles"
+description: "How movement through a graph is formalized, and why these four words should not be treated as interchangeable."
+order: 3
+noteType: "main"
+status: "draft"
+---
+
+This note introduces the basic objects used to talk about movement through a graph.
+
+## Walks
+
+A walk of length $k$ on a graph $G$ is a function
+
+$$
+f : \{0,1,\dots,k\} \to V(G)
+$$
+
+such that for every $i < k$,
+
+$$
+\{f(i), f(i+1)\} \in E(G).
+$$
+
+Because the domain contains both $0$ and $k$, every walk comes with a first vertex $f(0)$ and a last vertex $f(k)$.
+
+So a walk is a sequence of vertices where each consecutive pair is joined by an edge.
+
+The important point is that a walk may repeat vertices.
+
+![A walk that repeats a vertex](/walk-repeats-vertex.svg)
+
+For example, the walk
+
+$$
+a,b,c,b,d
+$$
+
+starts at $a$, ends at $d$, and repeats the vertex $b$.
+
+## Paths
+
+A path of length $k$ on a graph $G$ is a walk
+
+$$
+p : \{0,1,\dots,k\} \to V(G)
+$$
+
+that is **injective**. In other words,
+
+$$
+(\forall i,j \in \{0,1,\dots,k\})\bigl(p(i)=p(j)\Rightarrow i=j\bigr).
+$$
+
+So a path is a walk that does not repeat vertices.
+
+## Length
+
+If
+
+$$
+w : \{0,1,\dots,k\} \to V(G)
+$$
+
+is a walk, then the length of $w$ is defined to be $k$.
+
+So the length is the number of edges used, not the number of vertices written down.
+
+Equivalently, a walk
+
+$$
+v_0,v_1,\dots,v_k
+$$
+
+has length $k$ because it contains exactly the $k$ consecutive edge-steps
+
+$$
+\{v_0,v_1\},\{v_1,v_2\},\dots,\{v_{k-1},v_k\}.
+$$
+
+## Circuits
+
+A circuit of length $k$ on a graph $G$ is a walk
+
+$$
+w : \{0,1,\dots,k\} \to V(G)
+$$
+
+such that
+
+$$
+w(0)=w(k).
+$$
+
+So a circuit is a walk whose first and last vertices are the same.
+
+The definition does not require the intermediate vertices to be distinct.
+
+## Cycles
+
+A cycle of length $k$ on a graph $G$ is a circuit
+
+$$
+c : \{0,1,\dots,k\} \to V(G)
+$$
+
+such that the only repeated vertices are the first and last ones. A precise way to say this is:
+
+$$
+(\forall i,j \in \{0,1,\dots,k\})\bigl(c(i)=c(j)\Rightarrow (i=j \text{ or } \{i,j\}=\{0,k\})\bigr).
+$$
+
+So a cycle is a closed walk with no repeated intermediate vertices.
+
+## Summary
+
+- a walk may repeat vertices
+- a path is an injective walk
+- a circuit is a walk with $w(0)=w(k)$
+- a cycle is a circuit with no repeated intermediate vertices
+
+## Why These Distinctions Matter
+
+A proof about connectedness usually asks for a path, not merely a walk.
+
+A tree is defined by the absence of cycles, not by the absence of arbitrary closed walks with repetition.

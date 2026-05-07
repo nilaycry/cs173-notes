@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="180" viewBox="0 0 760 180" role="img" aria-labelledby="title desc">
+  <title id="title">A walk that repeats a vertex</title>
+  <desc id="desc">A minimal graph showing the walk a to b to c to b to d, where b is repeated.</desc>
+  <rect width="760" height="180" fill="#f7f4ef"/>
+
+  <g stroke="#cfc7bc" stroke-width="2.2" fill="none" stroke-linecap="round">
+    <path d="M120 98 H250" />
+    <path d="M250 98 H380" />
+    <path d="M250 98 H510" />
+    <path d="M510 98 H640" />
+  </g>
+
+  <g stroke="#2f6b6f" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M120 98 H250 H380" />
+    <path d="M380 98 H250" />
+    <path d="M250 98 H510" />
+  </g>
+
+  <g fill="#f7f4ef" stroke="#1c1917" stroke-width="2.1">
+    <circle cx="120" cy="98" r="9" />
+    <circle cx="250" cy="98" r="9" />
+    <circle cx="380" cy="98" r="9" />
+    <circle cx="510" cy="98" r="9" />
+    <circle cx="640" cy="98" r="9" />
+  </g>
+
+  <g font-family="STIX Two Text, Georgia, serif" fill="#1c1917" font-size="22" text-anchor="middle">
+    <text x="120" y="135">a</text>
+    <text x="250" y="135">b</text>
+    <text x="380" y="135">c</text>
+    <text x="510" y="135">d</text>
+    <text x="640" y="135">e</text>
+  </g>
+
+  <g font-family="STIX Two Text, Georgia, serif" fill="#2f6b6f" font-size="20">
+    <text x="110" y="38">walk: a, b, c, b, d</text>
+    <text x="470" y="38">b is repeated</text>
+  </g>
+</svg>

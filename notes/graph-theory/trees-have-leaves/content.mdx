@@ -1,0 +1,196 @@
+---
+title: "Trees Have Leaves"
+description: "A formal proof that every tree with at least two vertices contains a leaf."
+order: 6
+noteType: "main"
+status: "draft"
+---
+
+## Statement
+
+For every tree $T$,
+
+$$
+|V(T)| \geq 2 \Rightarrow (\exists v \in V(T))(\deg_T(v)=1).
+$$
+
+## Proof
+
+Let $T$ be a tree, and assume
+
+$$
+|V(T)| \geq 2.
+$$
+
+Since $T$ is connected and contains at least two vertices, there exists a path in $T$ of positive length.
+
+Now define
+
+$$
+L \coloneqq \{k \in \mathbb{N} \mid \text{there exists a path of length } k \text{ in } T\}.
+$$
+
+The set $L$ is nonempty. Also, since $T$ is finite, there are only finitely many paths in $T$, so $L$ is finite.
+
+Therefore $L$ has a maximum element. Choose a path
+
+$$
+p : \{0,1,\dots,k\} \to V(T)
+$$
+
+such that $k = \max L$.
+
+We claim that $p(0)$ is a leaf.
+
+Since $k \geq 1$, we have
+
+$$
+\{p(0),p(1)\} \in E(T),
+$$
+
+so
+
+$$
+\deg_T(p(0)) \geq 1.
+$$
+
+It remains to show that
+
+$$
+\deg_T(p(0)) \not\geq 2.
+$$
+
+Assume, for contradiction, that
+
+$$
+\deg_T(p(0)) \geq 2.
+$$
+
+Then there exists
+
+$$
+w \in N_T(p(0))
+$$
+
+with
+
+$$
+w \neq p(1).
+$$
+
+Because $p$ is a path, it is injective, so the vertices
+
+$$
+p(0),p(1),\dots,p(k)
+$$
+
+are all distinct.
+
+We now consider two cases.
+
+### Case 1: $w \notin \{p(0),p(1),\dots,p(k)\}$
+
+Define
+
+$$
+q : \{0,1,\dots,k+1\} \to V(T)
+$$
+
+by
+
+$$
+q(0) \coloneqq w
+\quad\text{and}\quad
+q(i+1) \coloneqq p(i)
+\text{ for every } i \in \{0,1,\dots,k\}.
+$$
+
+Then $q$ is a walk, because
+
+- $\{q(0),q(1)\} = \{w,p(0)\} \in E(T)$ since $w \in N_T(p(0))$
+- for every $i < k$, we have
+  $$
+  \{q(i+1),q(i+2)\} = \{p(i),p(i+1)\} \in E(T)
+  $$
+  since $p$ is a path
+
+Also, $q$ is injective:
+
+- $q(1),q(2),\dots,q(k+1)$ are distinct because $p(0),p(1),\dots,p(k)$ are distinct
+- $q(0)=w$ is different from all of $q(1),q(2),\dots,q(k+1)$ by the assumption of this case
+
+So $q$ is a path of length $k+1$ in $T$.
+
+This contradicts the maximality of $k$.
+
+### Case 2: $w \in \{p(0),p(1),\dots,p(k)\}$
+
+Since $w \in N_T(p(0))$, we have
+
+$$
+\{p(0),w\} \in E(T).
+$$
+
+Also, $w \neq p(0)$ because no vertex is adjacent to itself in a simple graph, and $w \neq p(1)$ by construction.
+
+Therefore there exists some integer $i$ with
+
+$$
+2 \leq i \leq k
+\quad\text{and}\quad
+w = p(i).
+$$
+
+Now consider the subpath of $p$ from $p(0)$ to $p(i)$.
+
+Because $p$ is a path, the vertices
+
+$$
+p(0),p(1),\dots,p(i)
+$$
+
+are distinct.
+
+So the walk
+
+$$
+c : \{0,1,\dots,i\} \to V(T)
+$$
+
+defined by
+
+$$
+c(j) \coloneqq p(j)
+\text{ for } 0 \leq j < i,
+\quad\text{and}\quad
+c(i) \coloneqq p(0)
+$$
+
+is a cycle:
+
+- consecutive vertices are joined by edges, because
+  - $\{p(j),p(j+1)\} \in E(T)$ for $0 \leq j < i-1$
+  - $\{p(i-1),p(i)\} \in E(T)$ since $p$ is a path
+  - $\{p(i),p(0)\} = \{w,p(0)\} \in E(T)$
+- the first and last vertices are both $p(0)$
+- no other repetition occurs, because $p(0),p(1),\dots,p(i)$ are distinct
+
+Thus $T$ contains a cycle.
+
+But a tree is acyclic, so this is impossible.
+
+Both cases lead to contradictions. Therefore
+
+$$
+\deg_T(p(0)) \not\geq 2.
+$$
+
+Since we already know $\deg_T(p(0)) \geq 1$, it follows that
+
+$$
+\deg_T(p(0)) = 1.
+$$
+
+Hence $p(0)$ is a leaf of $T$.
+
+Therefore every tree with at least two vertices contains a leaf.

@@ -1,0 +1,68 @@
+---
+title: "Truth Tables"
+description: "A first semantic tool for recording how compound sentences behave, and an early method the course will lean on before moving to more structural proof techniques."
+order: 3
+noteType: "main"
+status: "draft"
+---
+
+Once truth values are treated as abstract objects, the next question is how they behave under logical operations.
+
+Truth tables are the first systematic answer.
+
+## What a Truth Table Records
+
+A truth table records the output of an expression for every possible assignment of truth values to its input sentences.
+
+If an expression depends on one sentence, the table lists the two possible input values.
+
+If it depends on two sentences, the table lists the four possible input pairs.
+
+The point is not to make the notation look mechanical. The point is to record, in one place, every possible semantic case.
+
+## Why the Course Uses Them Early
+
+At the start of the unit, truth tables do two jobs well.
+
+First, they make the meaning of the logical connectives explicit.
+
+Second, they give a direct way to test whether two expressions always behave the same way, or whether an expression is always true.
+
+That makes them a strong early tool for learning the semantics of logic.
+
+## A Simple Example
+
+For negation, the table is:
+
+$$
+\begin{array}{c|c}
+p & \neg p \\
+\hline
+\top & \bot \\
+\bot & \top
+\end{array}
+$$
+
+This table says exactly what negation does. It reverses the truth value.
+
+## What a Full Table Is Doing
+
+A larger table follows the same idea. If an expression uses two sentences, then the table must account for all four possible assignments:
+
+$$
+(\top,\top), \quad (\top,\bot), \quad (\bot,\top), \quad (\bot,\bot)
+$$
+
+Each row is one possible semantic case. The final column records how the whole expression behaves in that case.
+
+## Why Truth Tables Matter Less Later
+
+Truth tables are important here, but they will not stay central for the whole course.
+
+Later parts of CS 173 rely much more on definitions, proof structure, arbitrary objects, and statement form than on full truth-table computations.
+
+So this note should be read as an early-unit tool, not as the main method for the course as a whole.
+
+## Transition
+
+Now that the table method is in place, the logical connectives can be introduced one by one as operations on truth values.

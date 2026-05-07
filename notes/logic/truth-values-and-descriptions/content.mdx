@@ -1,0 +1,78 @@
+---
+title: "Truth Values"
+description: "Truth and falsity as logical abstractions, together with the notation the course will use for them."
+order: 2
+noteType: "main"
+status: "draft"
+---
+
+Once an expression has been identified as a sentence, the next question is whether the sentence describes things correctly.
+
+That is the basic role of truth value in this unit.
+
+## Truth Value
+
+Take the sentence "Ahab is a captain."
+
+Inside the world of *Moby-Dick*, that sentence is true because it describes Ahab accurately.
+
+Now take "Ahab is a whale."
+
+That sentence is false because it gives the wrong description of the same object.
+
+This is the pattern to keep in view. A declarative sentence presents a state of affairs. Truth and falsity record whether the presentation succeeds.
+
+Truth values are also abstractions.
+
+Once the course has identified the verdicts true and false, it stops treating them as tied only to individual English sentences and starts treating them as abstract logical values. That abstraction is what later makes it possible to study compound expressions, truth tables, and equivalence at the level of form rather than content.
+
+## The Symbols $\top$ and $\bot$
+
+The course will usually write the abstract truth values with symbols.
+
+$$
+\top \quad \text{for true}
+$$
+
+$$
+\bot \quad \text{for false}
+$$
+
+These symbols are useful because they let the notes speak about truth values directly, without constantly switching back to English words. Once the notation is in place, expressions can be compared, transformed, and classified more compactly.
+
+## The Truth Value Belongs to the Sentence
+
+The sentence, not the object, carries the truth value.
+
+$7$ is a number.
+
+"$7$ is prime" is a sentence.
+
+The number is not true. The sentence is true.
+
+This distinction matters because later expressions such as $p \land q$ and $\neg p$ are built from sentences. Connectives combine or transform truth-valued expressions. They do not combine or transform objects directly.
+
+## Stable Cases
+
+Many early examples fit a straightforward pattern.
+
+The sentence makes a claim. The claim is checked against the intended setting. The sentence receives the verdict true or false.
+
+If the sentence is about integers, then the evaluation happens in that setting. If it is about a fictional story, then the evaluation happens in that setting. In either case, the logic is the same: the sentence describes things well or badly.
+
+## Limits of the Naive Picture
+
+At first, it is natural to expect every declarative sentence to fit the same simple model:
+
+- the sentence has exactly one truth value
+- the only task is to determine which one
+
+The first problem set is designed to make that expectation less automatic.
+
+Some examples behave ordinarily. Some are false for routine mathematical reasons. Some involve self-reference strongly enough that the ordinary true-or-false picture stops behaving cleanly.
+
+This is one reason the unit begins with sentencehood and truth value before moving into formal manipulation.
+
+## Transition
+
+The next stage of the unit is truth tables. They provide the first systematic way to record how truth values behave when sentences are combined.

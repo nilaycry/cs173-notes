@@ -1,0 +1,70 @@
+---
+title: "How Proofs Are Written in Zeroth-Order Logic"
+description: "A proof-writing note for the first unit: what a complete logical justification looks like, and why this unit sounds more formal than the ones that come later."
+order: 7
+noteType: "writing-companion"
+status: "draft"
+---
+
+Zeroth-order logic is one of the first places in the course where the justification itself must be visibly structured.
+
+Students often recognize that a statement is correct before they can write the proof the course is asking for. This note records the proof style that belongs to the unit.
+
+## The Role of Formal Justification
+
+In early logic, the objects are sentences and the tools are logical rules.
+
+As a result, many proofs in this section look like controlled rewrites rather than ordinary mathematical paragraphs. A line changes because a named logical law permits the change.
+
+This is why early proof writeups in the unit cite rules such as conditional disintegration, complement, commutativity, and De Morgan's laws.
+
+The citation is not ornamental. It is part of the proof.
+
+## Common Proof Tasks
+
+Three proof tasks appear repeatedly in the unit.
+
+### Showing that a Sentence Is a Tautology
+
+Here the goal is not to show that the sentence can be true on some occasion.
+
+The goal is to show that it is always true, either by proving it equivalent to $\top$ or by showing every row of the truth table evaluates to true.
+
+### Showing that Two Sentences Are Logically Equivalent
+
+Here the target is equality of logical behavior.
+
+A standard proof begins with one sentence, rewrites it by named laws, and ends with the other sentence. Each rewrite must be justified.
+
+### Showing a Derivation
+
+When the problem is written with turnstile notation such as $\phi, \psi \vdash \xi$, the task is to prove that the conclusion follows from the assumptions by accepted inference.
+
+This is no longer only a matter of simplification. The proof must show how the conclusion is obtained from the premises.
+
+## Expectations for a Complete Writeup
+
+A complete early-logic writeup usually does the following:
+
+1. names the propositions under discussion
+2. states the claim being proved
+3. shows each rewrite or inference with a cited reason
+4. connects the final line back to the original claim
+
+The fourth step matters. If a proof has shown $p \to p \equiv \top$, the writeup should say explicitly that this proves $p \to p$ is a tautology.
+
+## Frequent Errors
+
+Two errors appear often in this unit.
+
+The first is proving only that a statement is sometimes true when the task is to prove it is a tautology.
+
+The second is presenting symbolic work without explanation of why each step is permitted.
+
+In this unit, the reader should never have to guess why a line changed.
+
+## Transition to Later Units
+
+This proof style is specific to the unit.
+
+Later sections, especially set theory, shift the burden of the proof. There the hard part is often choosing the right arbitrary object and expanding the right definition. Here the burden is justified logical transformation.

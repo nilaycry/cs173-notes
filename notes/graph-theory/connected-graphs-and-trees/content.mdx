@@ -1,0 +1,66 @@
+---
+title: "Connected Graphs and Trees"
+description: "Definitions for connected graphs, disconnected graphs, components, trees, and leaves."
+order: 4
+noteType: "main"
+status: "draft"
+---
+
+## Connected Graphs
+
+A graph $G$ is connected if
+
+$$
+(\forall v,w \in V(G))(v \neq w \Rightarrow \text{there exists a path in } G \text{ from } v \text{ to } w).
+$$
+
+So connectedness is a statement about every pair of distinct vertices.
+
+## Disconnected Graphs
+
+A graph $G$ is disconnected if it is not connected. Equivalently,
+
+$$
+(\exists v,w \in V(G))(v \neq w \wedge \text{there is no path in } G \text{ from } v \text{ to } w).
+$$
+
+## Components
+
+A component of $G$ is a maximal connected subgraph of $G$.
+
+When a graph is disconnected, its components are the connected pieces it breaks into.
+
+## Trees
+
+A tree is a graph that is both:
+
+- connected
+- acyclic
+
+Here acyclic means that the graph contains no cycle.
+
+So $G$ is a tree if and only if
+
+$$
+G \text{ is connected } \wedge G \text{ has no cycles}.
+$$
+
+## Leaves
+
+A leaf of a graph is a vertex of degree $1$.
+
+Formally, $v$ is a leaf if
+
+$$
+v \in V(G) \quad\text{and}\quad \deg_G(v)=1.
+$$
+
+## Standard Tree Facts
+
+The following statements appear repeatedly:
+
+- every tree with at least two vertices has a leaf
+- if $G$ is a tree and $|V(G)| = n$, then $|E(G)| = n-1$
+- removing a leaf from a tree produces a smaller tree
+
+These are the facts most often used in induction proofs about trees.

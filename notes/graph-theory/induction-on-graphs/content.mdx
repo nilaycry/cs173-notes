@@ -1,0 +1,74 @@
+---
+title: "Induction on Graphs"
+description: "How graph proofs use induction on a numerical parameter such as the order or size of a graph."
+order: 8
+noteType: "main"
+status: "draft"
+---
+
+## Choosing an Induction Parameter
+
+When the object under study is a graph, induction is usually done on a numerical quantity attached to the graph.
+
+The most common choices are:
+
+- $|V(G)|$, the order of the graph
+- $|E(G)|$, the size of the graph
+
+The choice depends on the theorem.
+
+## Standard Form
+
+If the parameter is $|V(G)|$, the statement is usually written in the form
+
+$$
+(\forall n \in \mathbb{N})(\forall G)\bigl((G \text{ is in the class under discussion} \wedge |V(G)| = n)\Rightarrow P(G)\bigr).
+$$
+
+If the parameter is $|E(G)|$, the same idea becomes
+
+$$
+(\forall n \in \mathbb{N})(\forall G)\bigl((G \text{ is in the class under discussion} \wedge |E(G)| = n)\Rightarrow P(G)\bigr).
+$$
+
+## Standard Pattern
+
+1. choose the parameter
+2. write the theorem in quantified form
+3. prove the smallest relevant case
+4. assume the statement holds for parameter value $k$
+5. let $G$ have parameter value $k+1$
+6. construct a smaller graph $H$
+7. prove that $H$ still satisfies the hypotheses
+8. apply the inductive hypothesis to $H$
+9. recover the desired conclusion for $G$
+
+## The Important Step
+
+The key difficulty is usually not the induction itself. The key difficulty is choosing the smaller graph correctly.
+
+Removing an arbitrary vertex or edge can destroy the hypotheses of the theorem.
+
+## Example: Trees
+
+For tree proofs, induction is often done on $|V(G)|$.
+
+A typical example is:
+
+if $G$ is a tree and $|V(G)| = n$, then $|E(G)| = n-1$.
+
+In that proof, the right smaller graph is obtained by removing a leaf.
+
+That works because:
+
+- the graph becomes smaller
+- the result is still a tree
+- exactly one edge is removed
+
+## Practical Rule
+
+Before starting an induction proof on graphs, identify:
+
+- what quantity you are inducting on
+- what smaller graph you will build
+- why that smaller graph stays in the same class

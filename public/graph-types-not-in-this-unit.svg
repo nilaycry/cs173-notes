@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="220" viewBox="0 0 900 220" role="img" aria-labelledby="title desc">
+  <title id="title">Graph features not included in this unit</title>
+  <desc id="desc">Three minimal diagrams showing a loop, multiple edges, and a directed edge.</desc>
+  <rect width="900" height="220" fill="#f7f4ef"/>
+
+  <g font-family="STIX Two Text, Georgia, serif" fill="#1c1917">
+    <text x="450" y="34" font-size="25" text-anchor="middle">Not included in this unit</text>
+    <text x="160" y="78" font-size="21" text-anchor="middle">loop</text>
+    <text x="450" y="78" font-size="21" text-anchor="middle">multiple edges</text>
+    <text x="740" y="78" font-size="21" text-anchor="middle">direction</text>
+  </g>
+
+  <g stroke="#2f6b6f" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="160" cy="145" r="9" fill="#f7f4ef"/>
+    <path d="M160 131 C141 117 141 173 160 159 C179 173 179 117 160 131" />
+
+    <circle cx="405" cy="145" r="9" fill="#f7f4ef"/>
+    <circle cx="495" cy="145" r="9" fill="#f7f4ef"/>
+    <path d="M414 139 C438 123 462 123 486 139" />
+    <path d="M414 151 C438 167 462 167 486 151" />
+
+    <circle cx="695" cy="145" r="9" fill="#f7f4ef"/>
+    <circle cx="785" cy="145" r="9" fill="#f7f4ef"/>
+    <path d="M704 145 H768" />
+    <path d="M768 145 l-11 -7" />
+    <path d="M768 145 l-11 7" />
+  </g>
+</svg>

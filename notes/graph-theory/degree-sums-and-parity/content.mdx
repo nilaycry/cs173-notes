@@ -1,0 +1,73 @@
+---
+title: "Odd-Degree Vertices"
+description: "A formal parity consequence of the degree-sum theorem."
+order: 7
+noteType: "main"
+status: "draft"
+---
+
+## Statement
+
+Every graph has an even number of odd-degree vertices.
+
+## Proof
+
+Let
+
+$$
+O \coloneqq \{v \in V(G) \mid \deg_G(v) \text{ is odd}\}
+$$
+
+and
+
+$$
+E \coloneqq \{v \in V(G) \mid \deg_G(v) \text{ is even}\}.
+$$
+
+Then
+
+$$
+V(G) = O \cup E
+$$
+
+and the union is disjoint. Therefore,
+
+$$
+\sum_{v \in V(G)} \deg_G(v)
+=
+\sum_{v \in O} \deg_G(v)
++
+\sum_{v \in E} \deg_G(v).
+$$
+
+By the degree-sum theorem,
+
+$$
+\sum_{v \in V(G)} \deg_G(v) = 2|E(G)|,
+$$
+
+so the left-hand side is even.
+
+Also,
+
+$$
+\sum_{v \in E} \deg_G(v)
+$$
+
+is even, because it is a sum of even integers.
+
+Therefore,
+
+$$
+\sum_{v \in O} \deg_G(v)
+$$
+
+must also be even.
+
+But each term in that sum is odd. A sum of odd integers is even only when there are an even number of terms. Hence $|O|$ is even.
+
+Therefore the graph has an even number of odd-degree vertices.
+
+## Use
+
+This theorem is often used to rule out the existence of a graph with a proposed degree pattern.

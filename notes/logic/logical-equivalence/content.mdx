@@ -1,0 +1,61 @@
+---
+title: "Logical Equivalence"
+description: "How to tell when two sentences have the same logical behavior, and how that leads to tautologies, contradictions, and early rewrite proofs."
+order: 5
+noteType: "main"
+status: "draft"
+---
+
+Two expressions can look different while behaving identically in every semantic case.
+
+That is the idea behind logical equivalence.
+
+## Equivalence
+
+Two sentences are logically equivalent when they receive the same truth value under every possible assignment of truth values to their component sentences.
+
+The usual notation is:
+
+$$
+p \equiv q
+$$
+
+This is stronger than saying that two sentences happen to agree in one example. It says their behavior matches in every case.
+
+## Truth Tables and Equivalence
+
+Truth tables give an early method for checking equivalence.
+
+If the final columns of two expressions match row by row, then the expressions are logically equivalent.
+
+This is one reason the course introduces tables before the first formal rewrite proofs. The tables reveal the semantic target.
+
+## Tautology and Contradiction
+
+An expression is a tautology when it is always true.
+
+An expression is a contradiction when it is always false.
+
+In the notation of this unit:
+
+$$
+p \text{ is a tautology } \iff p \equiv \top
+$$
+
+$$
+p \text{ is a contradiction } \iff p \equiv \bot
+$$
+
+These classifications will show up repeatedly in early logic problems.
+
+## Why Equivalence Matters
+
+Logical equivalence is not only a semantic classification. It is also the basis of a proof method.
+
+Once the course starts proving that one expression can be rewritten into another by named laws, the hidden target is often equivalence.
+
+That is why this note sits between truth tables and proof-writing.
+
+## Transition
+
+Before the unit turns fully to formal proof style, it is worth separating the stable cases from the unusual ones. The next note looks at examples where the naive true-or-false picture starts to break.
