@@ -1937,4 +1937,3 @@
 [00:50:06 - 00:50:08] But really kick yourself in the ass and reach out.
 
 [00:50:47 - 00:50:49] I don't know how to say...
-
