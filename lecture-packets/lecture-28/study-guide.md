@@ -1,4 +1,4 @@
-# Lecture 37: The Pigeonhole Principle
+# Lecture 28: The Pigeonhole Principle
 
 ## Big Picture
 

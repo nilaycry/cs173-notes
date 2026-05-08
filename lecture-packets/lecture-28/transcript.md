@@ -1,6 +1,6 @@
-# Lecture 37 Transcript
+# Lecture 28 Transcript
 
-Source: lecture-37.mp4
+Source: lecture-28.mp4
 
 [00:00:01 - 00:00:06] Okay, I was already answering questions, but are there any other questions, comments, concerns?
 
