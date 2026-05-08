@@ -95,7 +95,7 @@ export default function LectureReviewPage() {
               letterSpacing: "-0.01em",
             }}
           >
-            lecture recordings converted into study guides, flashcards, and drills
+            standalone lecture guides for review, recall, and practice
           </h1>
 
           <p
@@ -108,9 +108,9 @@ export default function LectureReviewPage() {
               maxWidth: 720,
             }}
           >
-            Each packet starts from a lecture recording, then turns the raw transcript
-            into a cleaner review artifact. Use these when you want the content of a
-            lecture without rewatching the whole video.
+            Each packet is written as a replacement for rewatching the lecture:
+            definitions first, then examples, proof patterns, flashcards, and
+            practice checks.
           </p>
         </section>
 
@@ -134,7 +134,7 @@ export default function LectureReviewPage() {
                 letterSpacing: "0.14em",
               }}
             >
-              processed lectures
+              available lectures
             </span>
           </div>
 

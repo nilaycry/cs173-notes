@@ -484,7 +484,7 @@ export default function HomePage() {
                   lecture review
                 </span>
                 <span style={{ fontSize: 13, color: FAINT, lineHeight: 1.5 }}>
-                  processed recordings with cleaned study guides, flashcards,
+                  standalone lecture guides with exact definitions, flashcards,
                   multiple-choice checks, and practice prompts
                 </span>
               </div>
