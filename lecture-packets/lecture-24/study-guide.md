@@ -1,12 +1,8 @@
-# CS 173 Lecture Study Guide: Modular Congruence
-
-Source video: `lecture-24.mp4`
-
-Generated from a local transcript and checked against frame samples. The transcript has normal ASR errors, but the main content is clear: this lecture introduces modular congruence through Euclidean division and uses it as the first major example of an equivalence-like relation.
+# Lecture 24: Modular Congruence
 
 ## Big Picture
 
-This lecture is about what it means for two integers to be "the same" from the perspective of divisibility by a fixed positive integer.
+Modular congruence is a way to say that two integers are the same from the perspective of divisibility by a fixed positive integer.
 
 The core definition is:
 
@@ -20,11 +16,9 @@ Read this as:
 
 > x is congruent to y modulo n if and only if x and y differ by a multiple of n.
 
-Equivalently, x and y leave the same remainder when divided by n.
+Equivalently, $x$ and $y$ leave the same remainder when divided by $n$.
 
-## Source-Aligned Definition Sheet
-
-Use this wording when you want to match the course's exact style.
+## Formal Definitions
 
 ### Divisibility
 
@@ -70,7 +64,7 @@ $$
 kx \equiv ky \pmod n.
 $$
 
-When writing a proof, start by naming the domains: "Let $n \in \mathbb{N}^+$ and let $x,y \in \mathbb{Z}$."
+In proofs about congruence, the domains matter. A typical proof begins by fixing $n \in \mathbb{N}^+$ and taking the relevant variables, such as $x,y,k$, to be integers.
 
 ## Euclidean Division Reminder
 

@@ -1,20 +1,14 @@
-# CS 173 Lecture Study Guide: Connectivity, Trees, and Spanning Trees
-
-Source video: `lecture-36.mp4`
-
-Generated from a local transcript. The transcript has some ASR errors, especially around words like "walk," "path," and "spanning tree," but the main mathematical content is clear.
+# Lecture 36: Connectivity, Trees, and Spanning Trees
 
 ## Big Picture
 
-This lecture explains how graph connectivity works and why trees are the "minimal" connected graphs. The main target theorem is:
+Graph connectivity describes which vertices can reach which other vertices by following edges. Trees are the connected graphs with no redundant cyclic structure. The main target theorem is:
 
 > Every connected graph contains a spanning tree.
 
 That means if a graph is connected but has extra redundant edges, you can delete enough redundant edges to keep all vertices connected while removing every cycle. What remains is a tree touching every original vertex.
 
-## Source-Aligned Definition Sheet
-
-Use this wording when you want to match the course's exact graph definitions.
+## Formal Definitions
 
 ### Walk
 
@@ -64,7 +58,7 @@ $$
 
 A graph is a tree iff it is connected and contains no cycles.
 
-When writing proofs, start by naming the object and domains: "Let $G$ be a graph" or "Let $x,y \in V(G)$ with $x \ne y$."
+In proofs about connectedness, the domains matter. A typical proof starts by fixing a graph $G$ and taking $x,y \in V(G)$ with $x \ne y$.
 
 ## Core Vocabulary
 
