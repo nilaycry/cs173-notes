@@ -15,37 +15,15 @@ The main theme is:
 
 The goal is to translate every cardinality statement back into a precise function statement.
 
-## Definition: Function as a Set of Ordered Pairs
+## Functions as Sets of Ordered Pairs
 
-Let $A$ and $B$ be sets. A function
-
-$$
-f:A\to B
-$$
-
-is a special kind of subset of the Cartesian product $A\times B$.
-
-Formally, a function $f:A\to B$ must satisfy:
-
-$$
-f\subseteq A\times B
-$$
-
-and for every $a\in A$, there exists a unique $b\in B$ such that
-
-$$
-(a,b)\in f.
-$$
+> **Definition.** Let $A$ and $B$ be sets. A function $f:A\to B$ is a subset $f\subseteq A\times B$ such that, for every $a\in A$, there exists a unique $b\in B$ with $(a,b)\in f$.
 
 This matters because when the domain is empty, many universal statements become true vacuously.
 
-## Proposition: The Empty Function
+## The Empty Function
 
-For any set $B$, there is a function
-
-$$
-\emptyset \to B.
-$$
+> **Proposition.** For any set $B$, there is a function $\emptyset\to B$.
 
 It is the empty set of ordered pairs:
 
@@ -95,21 +73,9 @@ because an element $b\in B$ would need an output in $\emptyset$, and no such out
 
 This is the important lesson: do not flip cardinality statements by visual intuition alone. Translate them back into functions.
 
-## Theorem: Cantor-Schroeder-Bernstein
+## Cantor-Schroeder-Bernstein
 
-If $A$ and $B$ are sets and
-
-$$
-|A|\le |B|
-\quad\text{and}\quad
-|B|\le |A|,
-$$
-
-then
-
-$$
-|A|=|B|.
-$$
+> **Theorem.** If $A$ and $B$ are sets with $|A|\le |B|$ and $|B|\le |A|$, then $|A|=|B|$.
 
 Equivalently:
 
@@ -117,7 +83,7 @@ If there is an injection $A\to B$ and an injection $B\to A$, then there exists a
 
 This is useful because direct bijections can be difficult to invent. Proving two injections is often easier than proving one function is both injective and surjective.
 
-## Definition: Finite Set
+## Finite Sets
 
 Natural numbers are represented as sets:
 
@@ -125,11 +91,7 @@ $$
 n=\{0,1,2,\dots,n-1\}.
 $$
 
-A set $S$ is finite if there exists some $n\in\mathbb{N}$ such that
-
-$$
-|S|=|n|.
-$$
+> **Definition.** A set $S$ is **finite** if there exists some $n\in\mathbb{N}$ such that $|S|=|n|$.
 
 In function language, this means there exists a bijection
 
@@ -139,15 +101,9 @@ $$
 
 When $S$ is finite, its cardinality can be represented by the natural number $n$. In that case it becomes reasonable to write arithmetic expressions involving $|S|$, such as $2^{|S|}$, because $|S|$ is being represented by a natural number.
 
-## Proposition: Power Sets of Finite Sets
+## Power Sets of Finite Sets
 
-For a finite set $X$,
-
-$$
-|\mathcal{P}(X)|=2^{|X|}
-$$
-
-for finite $X$.
+> **Proposition.** If $X$ is finite, then $|\mathcal{P}(X)|=2^{|X|}$.
 
 If $|X|=n$, then the statement means:
 
@@ -162,29 +118,9 @@ So if $X$ has $n$ elements, a subset of $X$ behaves like a length-$n$ binary str
 
 A formal proof still needs a function and a proof that the function is bijective. The phrase "each element has two choices" is useful intuition, but the formal argument must turn that intuition into an actual bijection or induction step.
 
-## Definition: Function Composition
+## Function Composition
 
-Let
-
-$$
-f:A\to B
-\quad\text{and}\quad
-g:B\to C.
-$$
-
-The composition
-
-$$
-g\circ f:A\to C
-$$
-
-is defined by
-
-$$
-(g\circ f)(a)=g(f(a))
-$$
-
-for every $a\in A$.
+> **Definition.** If $f:A\to B$ and $g:B\to C$, then the composition $g\circ f:A\to C$ is defined by $(g\circ f)(a)=g(f(a))$ for every $a\in A$.
 
 The order matters: $g\circ f$ means first apply $f$, then apply $g$.
 
@@ -214,21 +150,9 @@ These are not the same function.
 
 This is why left inverses and right inverses must be distinguished.
 
-## Definition: Identity Function
+## Identity Functions
 
-For any set $A$, the identity function on $A$ is
-
-$$
-\operatorname{id}_A:A\to A
-$$
-
-defined by
-
-$$
-\operatorname{id}_A(a)=a
-$$
-
-for every $a\in A$.
+> **Definition.** For any set $A$, the identity function on $A$ is $\operatorname{id}_A:A\to A$, defined by $\operatorname{id}_A(a)=a$ for every $a\in A$.
 
 It behaves like an identity for composition:
 
@@ -244,73 +168,25 @@ $$
 
 when $f:A\to B$.
 
-## Definition: Left Inverse
+## Left Inverses
 
-Let
-
-$$
-f:A\to B.
-$$
-
-A function
-
-$$
-g:B\to A
-$$
-
-is a left inverse for $f$ if
-
-$$
-g\circ f=\operatorname{id}_A.
-$$
+> **Definition.** Let $f:A\to B$. A function $g:B\to A$ is a **left inverse** for $f$ if $g\circ f=\operatorname{id}_A$.
 
 This means: start with $a\in A$, apply $f$, then apply $g$, and you get back the original $a$.
 
 So $g$ undoes $f$ on the left side of the composition.
 
-## Definition: Right Inverse
+## Right Inverses
 
-Let
-
-$$
-f:A\to B.
-$$
-
-A function
-
-$$
-g:B\to A
-$$
-
-is a right inverse for $f$ if
-
-$$
-f\circ g=\operatorname{id}_B.
-$$
+> **Definition.** Let $f:A\to B$. A function $g:B\to A$ is a **right inverse** for $f$ if $f\circ g=\operatorname{id}_B$.
 
 This means: start with $b\in B$, apply $g$, then apply $f$, and you get back the original $b$.
 
 Left inverse and right inverse are different conditions because composition is not commutative.
 
-## Theorem: Injections Have Left Inverses
+## Injections Have Left Inverses
 
-Let $A$ and $B$ be sets, and let
-
-$$
-f:A\to B.
-$$
-
-If $f$ is injective, then $f$ has a left inverse. That is, there exists a function
-
-$$
-g:B\to A
-$$
-
-such that
-
-$$
-g\circ f=\operatorname{id}_A.
-$$
+> **Theorem.** Let $A$ and $B$ be sets. If $f:A\to B$ is injective, then there exists a function $g:B\to A$ such that $g\circ f=\operatorname{id}_A$.
 
 The intuition is that an injection loses no information: if $f(a)$ is known, then the original input $a$ is recoverable.
 
@@ -332,9 +208,9 @@ $$
 
 The left side means there is an injection $A\to B$. The right side means there is a surjection $B\to A$.
 
-## Definition: Monomorphism
+## Monomorphisms
 
-A monomorphism is a function with a left inverse.
+> **Definition.** A monomorphism is a function with a left inverse.
 
 For functions between sets:
 
@@ -346,17 +222,11 @@ $$
 
 For functions between sets, monic means left-invertible, and this is equivalent to injective.
 
-## Theorem: Surjections and Right Inverses
+## Surjections and Right Inverses
 
-The matching statement for surjections is:
+> **Theorem.** If $f:A\to B$ is surjective and the needed choice principle is available, then $f$ has a right inverse.
 
-If
-
-$$
-f:A\to B
-$$
-
-is surjective, then one would like to choose, for each $b\in B$, some $a\in A$ such that $f(a)=b$. This would define a function
+The idea is to choose, for each $b\in B$, some $a\in A$ such that $f(a)=b$. This would define a function
 
 $$
 g:B\to A
@@ -388,9 +258,9 @@ $$
 |B|\le |A|.
 $$
 
-## Definition: Epimorphism
+## Epimorphisms
 
-An epimorphism is a function with a right inverse.
+> **Definition.** An epimorphism is a function with a right inverse.
 
 For functions between sets, after accepting the needed choice principle:
 
@@ -402,9 +272,9 @@ $$
 
 For functions between sets, epic means right-invertible, and this matches surjectivity once the choice/trichotomy principle is available.
 
-## Definition: Isomorphism
+## Isomorphisms
 
-A function is an isomorphism if it is both monic and epic.
+> **Definition.** A function is an isomorphism if it is both monic and epic.
 
 For sets, this corresponds to being bijective.
 
@@ -414,19 +284,11 @@ So in the category of sets:
 - epic corresponds to surjective
 - isomorphism corresponds to bijective
 
-## Axiom: Trichotomy of Cardinality
+## Trichotomy of Cardinality
 
 For ordinary finite numbers, any two numbers can be compared. Cardinality needs a set-theoretic version of that idea.
 
-The axiom of trichotomy of cardinality says that for any sets $A$ and $B$, exactly one of the three size relationships should hold:
-
-$$
-|A|<|B|,
-\quad
-|A|=|B|,
-\quad\text{or}\quad
-|A|>|B|.
-$$
+> **Axiom.** For any sets $A$ and $B$, exactly one of the following holds: $|A|<|B|$, $|A|=|B|$, or $|A|>|B|$.
 
 Equivalently, one can state the comparison form:
 

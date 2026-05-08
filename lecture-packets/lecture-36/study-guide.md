@@ -10,25 +10,15 @@ That means if a graph is connected but has extra redundant edges, you can delete
 
 ## Formal Definitions
 
-### Definition: Walk
+### Walk
 
-Let $G$ be a graph and let $k \in \mathbb{N}$. A walk of length $k$ on $G$ is a function
-
-$$
-w : k+1 \to V(G)
-$$
-
-such that, for every $i < k$,
-
-$$
-\{w(i),w(i+1)\} \in E(G).
-$$
+> **Definition.** Let $G$ be a graph and let $k \in \mathbb{N}$. A walk of length $k$ on $G$ is a function $w:k+1\to V(G)$ such that, for every $i<k$, $\{w(i),w(i+1)\}\in E(G)$.
 
 The length is the number of edges traveled, not the number of vertices listed.
 
-### Definition: Path
+### Path
 
-A path of length $k$ on $G$ is an injective walk of length $k$ on $G$.
+> **Definition.** A path of length $k$ on $G$ is an injective walk of length $k$ on $G$.
 
 So if $p : k+1 \to V(G)$ is a path, then
 
@@ -36,9 +26,9 @@ $$
 p(i)=p(j) \Rightarrow i=j.
 $$
 
-### Definition: Connected Graph
+### Connected Graph
 
-A graph $G$ is connected iff every distinct pair of vertices is joined by a path.
+> **Definition.** A graph $G$ is connected if every distinct pair of vertices is joined by a path.
 
 Formally, for all $x,y \in V(G)$ with $x \ne y$, there exists some $m \in \mathbb{N}$ and a path
 
@@ -54,9 +44,9 @@ p(0)=x
 p(m)=y.
 $$
 
-### Definition: Tree
+### Tree
 
-A graph is a tree iff it is connected and contains no cycles.
+> **Definition.** A graph is a tree if it is connected and contains no cycles.
 
 In proofs about connectedness, the domains matter. A typical proof starts by fixing a graph $G$ and taking $x,y \in V(G)$ with $x \ne y$.
 
@@ -179,7 +169,7 @@ So a spanning tree touches every vertex of the original graph, but may use fewer
 
 ## Key Theorems and Ideas
 
-### Proposition: Walks Can Repeat; Paths Cannot
+### Walks Can Repeat; Paths Cannot
 
 In a graph, there can be infinitely many walks between two vertices because you can loop around before eventually arriving.
 
@@ -187,25 +177,25 @@ But there are only finitely many paths in a finite graph, because a path cannot 
 
 This is why connectivity is usually defined using paths. Paths capture real reachability without irrelevant wandering.
 
-### Theorem: Walk Connectivity Implies Path Connectivity
+### Walk Connectivity Implies Path Connectivity
 
-If there is a walk from `x` to `y`, then there is also a path from `x` to `y`.
+> **Theorem.** If there is a walk from `x` to `y`, then there is also a path from `x` to `y`.
 
 Proof idea:
 
 If the walk repeats a vertex, the portion between the two repeats is a loop. Delete that loop. Keep doing this until no vertex repeats. The result is a path.
 
-### Theorem: Edges on Cycles Are Redundant for Connectivity
+### Edges on Cycles Are Redundant for Connectivity
 
-Suppose an edge `e` lies on a cycle. If you delete `e`, the two endpoints of `e` are still connected by the rest of the cycle.
+> **Theorem.** Suppose an edge `e` lies on a cycle. If `e` is deleted, the two endpoints of `e` are still connected by the rest of the cycle.
 
 So deleting `e` does not destroy connectivity inside a connected graph.
 
 This is the intuition behind stripping a connected graph down to a tree: every time you see a cycle, delete one edge from it.
 
-### Theorem: Trees Are Minimally Connected
+### Trees Are Minimally Connected
 
-A tree has no cycles. Therefore, none of its edges are redundant.
+> **Theorem.** If an edge is removed from a tree, the graph becomes disconnected.
 
 If you remove any edge from a tree, the graph becomes disconnected.
 
@@ -213,11 +203,9 @@ Intuition:
 
 If removing an edge did not disconnect the graph, then there would still be another path between that edge's endpoints. That alternate path plus the removed edge would form a cycle. But a tree has no cycles.
 
-### Theorem: Connected Graphs Contain Spanning Trees
+### Connected Graphs Contain Spanning Trees
 
-```text
-Every connected graph has a spanning tree.
-```
+> **Theorem.** Every connected graph has a spanning tree.
 
 Intuition:
 

@@ -20,65 +20,27 @@ Equivalently, $x$ and $y$ leave the same remainder when divided by $n$.
 
 ## Formal Definitions
 
-### Definition: Divisibility
+### Divisibility
 
-For $a,b \in \mathbb{Z}$,
-
-$$
-a \mid b
-\quad\Longleftrightarrow\quad
-(\exists k \in \mathbb{Z})(ak=b).
-$$
+> **Definition.** For $a,b \in \mathbb{Z}$, write $a \mid b$ if and only if there exists $k \in \mathbb{Z}$ such that $ak=b$.
 
 Read this as "$a$ divides $b$." The expression $a \mid b$ is a sentence, not a number.
 
-### Definition: Modular Congruence
+### Modular Congruence
 
-Let $n \in \mathbb{N}^+$ and let $a,b \in \mathbb{Z}$.
-
-$$
-a \equiv b \pmod n
-\quad\Longleftrightarrow\quad
-n \mid (a-b).
-$$
+> **Definition.** Let $n \in \mathbb{N}^+$ and let $a,b \in \mathbb{Z}$. Write $a \equiv b \pmod n$ if and only if $n \mid (a-b)$.
 
 Here $n$ is the modulus. The whole expression "$a \equiv b \pmod n$" is a sentence.
 
-### Theorem: Add and Multiply Both Sides
+### Add and Multiply Both Sides
 
-Let $n \in \mathbb{N}^+$ and $x,y,k \in \mathbb{Z}$. If
-
-$$
-x \equiv y \pmod n,
-$$
-
-then
-
-$$
-x+k \equiv y+k \pmod n
-$$
-
-and
-
-$$
-kx \equiv ky \pmod n.
-$$
+> **Theorem.** Let $n \in \mathbb{N}^+$ and $x,y,k \in \mathbb{Z}$. If $x \equiv y \pmod n$, then $x+k \equiv y+k \pmod n$ and $kx \equiv ky \pmod n$.
 
 In proofs about congruence, the domains matter. A typical proof begins by fixing $n \in \mathbb{N}^+$ and taking the relevant variables, such as $x,y,k$, to be integers.
 
-## Theorem: Euclidean Division
+## Euclidean Division
 
-The Euclidean division lemma says that if $y$ is a positive integer and $x$ is an integer, then there are unique integers $q$ and $r$ such that
-
-$$
-x = yq + r
-$$
-
-and
-
-$$
-0 \le r < y.
-$$
+> **Theorem.** If $y \in \mathbb{N}^+$ and $x \in \mathbb{Z}$, then there are unique integers $q,r \in \mathbb{Z}$ such that $x=yq+r$ and $0\le r<y$.
 
 Here:
 
@@ -107,11 +69,9 @@ So 5 has remainder 1 after division by 2.
 
 This is why 5 is odd: from the perspective of divisibility by 2, it sits one step after a multiple of 2.
 
-## Theorem: Same Remainder Implies Congruence
+## Same Remainder Implies Congruence
 
-Fix a positive integer $n$.
-
-If two integers have the same remainder after division by $n$, then they are congruent modulo $n$.
+> **Proposition.** Fix $n \in \mathbb{N}^+$. If two integers have the same remainder after division by $n$, then they are congruent modulo $n$.
 
 Example:
 
@@ -238,11 +198,11 @@ $$
 
 The shared remainder cancels out.
 
-## Theorem: Modular Congruence Is an Equivalence Relation
+## Modular Congruence Is an Equivalence Relation
 
-For a fixed positive integer $n$, congruence modulo $n$ has three important properties.
+> **Theorem.** For fixed $n \in \mathbb{N}^+$, congruence modulo $n$ is an equivalence relation on $\mathbb{Z}$.
 
-### Proof: Reflexivity
+### Reflexivity
 
 For every integer $x$,
 
@@ -258,7 +218,7 @@ $$
 
 and every positive integer divides 0.
 
-### Proof: Symmetry
+### Symmetry
 
 If
 
@@ -278,7 +238,7 @@ $$
 -(x-y)=y-x.
 $$
 
-### Proof: Transitivity
+### Transitivity
 
 If
 
@@ -304,27 +264,9 @@ $$
 (x-y)+(y-z)=x-z.
 $$
 
-## Theorem: Algebra With Congruences
+## Algebra With Congruences
 
-Congruences behave a lot like equations in some ways.
-
-If
-
-$$
-x \equiv y \pmod n,
-$$
-
-then for any integer $z$,
-
-$$
-x+z \equiv y+z \pmod n.
-$$
-
-Also,
-
-$$
-xz \equiv yz \pmod n.
-$$
+> **Theorem.** Let $n \in \mathbb{N}^+$ and $x,y,z \in \mathbb{Z}$. If $x \equiv y \pmod n$, then $x+z \equiv y+z \pmod n$ and $xz \equiv yz \pmod n$.
 
 The proofs use the divisibility definition.
 

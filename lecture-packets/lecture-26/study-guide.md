@@ -44,7 +44,7 @@ The key question is not just whether the formula is familiar. The key question i
 
 Changing the codomain can change the answer. If the codomain is $\mathbb{N}^+$, then the input $(0,0)$ causes trouble, because $\gcd(0,0)=0$ and $0 \notin \mathbb{N}^+$.
 
-## Theorem: Linear Combinations from Bezout's Identity
+## Linear Combinations from Bezout's Identity
 
 For integers $m,n \in \mathbb{Z}$, the set of integer linear combinations of $m$ and $n$ is
 
@@ -52,11 +52,9 @@ $$
 \{ma+nb \mid a,b \in \mathbb{Z}\}.
 $$
 
-If $\gcd(m,n)=1$, then Bezout's identity says there exist $a,b \in \mathbb{Z}$ such that
+> **Theorem.** If $m,n\in\mathbb{Z}$ and $\gcd(m,n)=1$, then every integer is an integer linear combination of $m$ and $n$.
 
-$$
-ma+nb=1.
-$$
+Bezout's identity gives $a,b \in \mathbb{Z}$ such that $ma+nb=1$.
 
 Multiplying by any integer $z$ gives
 
@@ -74,23 +72,9 @@ $$
 
 is even. In that case, the set of linear combinations cannot be all of $\mathbb{Z}$.
 
-## Definition: Injective Function
+## Injective Functions
 
-Let $A$ and $B$ be sets, and let
-
-$$
-f : A \to B
-$$
-
-be a function.
-
-The function $f$ is injective if distinct inputs always have distinct outputs.
-
-Formally:
-
-$$
-(\forall a_1,a_2 \in A)(f(a_1)=f(a_2) \Rightarrow a_1=a_2).
-$$
+> **Definition.** Let $A$ and $B$ be sets, and let $f:A\to B$ be a function. The function $f$ is **injective** if $(\forall a_1,a_2 \in A)(f(a_1)=f(a_2) \Rightarrow a_1=a_2)$.
 
 Equivalently:
 
@@ -104,23 +88,9 @@ An injection lets the elements of $A$ fit into $B$ without collisions.
 
 If there is an injection from $A$ to $B$, then $A$ is no larger than $B$.
 
-## Definition: Surjective Function
+## Surjective Functions
 
-Let $A$ and $B$ be sets, and let
-
-$$
-f : A \to B
-$$
-
-be a function.
-
-The function $f$ is surjective if every element of the codomain is hit by some input.
-
-Formally:
-
-$$
-(\forall b \in B)(\exists a \in A)(f(a)=b).
-$$
+> **Definition.** Let $A$ and $B$ be sets, and let $f:A\to B$ be a function. The function $f$ is **surjective** if $(\forall b \in B)(\exists a \in A)(f(a)=b)$.
 
 Intuition:
 
@@ -128,15 +98,9 @@ A surjection from $A$ to $B$ means $A$ has enough elements to cover all of $B$.
 
 Several elements of $A$ may map to the same element of $B$. Surjectivity does not require uniqueness of preimages.
 
-## Definition: Bijective Function
+## Bijective Functions
 
-A function
-
-$$
-f : A \to B
-$$
-
-is bijective if it is both injective and surjective.
+> **Definition.** A function $f:A\to B$ is **bijective** if it is both injective and surjective.
 
 So every element of $B$ is hit, and no two different elements of $A$ collide.
 
@@ -144,49 +108,17 @@ Intuition:
 
 A bijection pairs the elements of $A$ and $B$ perfectly. This is why bijections are used to define equal cardinality.
 
-## Definitions: Cardinality Comparison
+## Cardinality Comparison
 
-Let $A$ and $B$ be sets.
-
-We define
-
-$$
-|A| \le |B|
-$$
-
-if and only if there exists an injective function
-
-$$
-f : A \to B.
-$$
+> **Definition.** Let $A$ and $B$ be sets. Write $|A|\le |B|$ if and only if there exists an injective function $f:A\to B$.
 
 This means $A$ can be injected into $B$, so $A$ is no larger than $B$.
 
-We define
-
-$$
-|A| \ge |B|
-$$
-
-if and only if there exists a surjective function
-
-$$
-g : A \to B.
-$$
+> **Definition.** Write $|A|\ge |B|$ if and only if there exists a surjective function $g:A\to B$.
 
 This means $A$ can cover all of $B$, so $A$ is no smaller than $B$.
 
-We define
-
-$$
-|A| = |B|
-$$
-
-if and only if there exists a bijective function
-
-$$
-h : A \to B.
-$$
+> **Definition.** Write $|A|=|B|$ if and only if there exists a bijective function $h:A\to B$.
 
 This means $A$ and $B$ have the same cardinality.
 
@@ -294,25 +226,9 @@ By definition, this gives a single bijection from $A$ to $B$.
 
 These are not syntactically the same statement. A single bijection is immediately both an injection and a surjection, but building one bijection from separate comparison data is a theorem-level task.
 
-## Theorem: Cantor-Schroeder-Bernstein
+## Cantor-Schroeder-Bernstein
 
-If
-
-$$
-|A| \le |B|
-$$
-
-and
-
-$$
-|B| \le |A|,
-$$
-
-then
-
-$$
-|A|=|B|.
-$$
+> **Theorem.** If $A$ and $B$ are sets with $|A|\le |B|$ and $|B|\le |A|$, then $|A|=|B|$.
 
 In function language:
 
