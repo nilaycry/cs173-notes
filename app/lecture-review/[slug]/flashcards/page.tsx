@@ -13,13 +13,12 @@ import {
 const BG = "#f7f4ef";
 const FG = "#1c1917";
 const MUTED = "#78716c";
-const FAINT = "#a8a29e";
 const BORDER = "#e8e5df";
 const ACCENT = "#2f6b6f";
 
 export function generateStaticParams() {
   return getAllLecturePackets()
-    .filter((lecture) => lecture.practicePath)
+    .filter((lecture) => lecture.flashcardsPath)
     .map((lecture) => ({ slug: lecture.slug }));
 }
 
@@ -27,21 +26,14 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   const lecture = getLecturePacket(params.slug);
   if (!lecture) return { title: "Not Found" };
   return {
-    title: `Lecture ${lecture.number} Practice - CS 173`,
-    description: `Practice problems for ${lecture.title}`,
+    title: `Lecture ${lecture.number} Flashcards - CS 173`,
+    description: `Flashcards and MCQs for ${lecture.title}`,
   };
 }
 
-function addProblemAnchors(markdown: string) {
-  return markdown.replace(/^### Problem\s+(\d+)(?::\s*(.+))?$/gm, (_match, number, title) => {
-    const label = title ? `Problem ${number}: ${title}` : `Problem ${number}`;
-    return `<h3 id="problem-${number}">${label}</h3>`;
-  });
-}
-
-async function renderPractice(source: string) {
+async function renderMarkdown(source: string) {
   const { content } = await compileMDX({
-    source: addProblemAnchors(source),
+    source,
     options: {
       mdxOptions: {
         remarkPlugins: [remarkMath],
@@ -52,18 +44,18 @@ async function renderPractice(source: string) {
   return content;
 }
 
-export default async function PracticeLecturePage({
+export default async function LectureFlashcardsPage({
   params,
 }: {
   params: { slug: string };
 }) {
   const lecture = getLecturePacket(params.slug);
-  if (!lecture || !lecture.practicePath) notFound();
+  if (!lecture || !lecture.flashcardsPath) notFound();
 
-  const source = getLectureMarkdown(lecture.practicePath);
+  const source = getLectureMarkdown(lecture.flashcardsPath);
   if (!source) notFound();
 
-  const content = await renderPractice(source);
+  const content = await renderMarkdown(source);
 
   return (
     <div
@@ -85,12 +77,18 @@ export default async function PracticeLecturePage({
           margin: "0 auto",
         }}
       >
-        <Link href="/practice" className="co-note-button">
-          {"<-"} practice
-        </Link>
         <Link href={`/lecture-review/${lecture.slug}`} className="co-note-button">
-          study guide
+          {"<-"} study guide
         </Link>
+        {lecture.practicePath ? (
+          <Link href={`/practice/${lecture.slug}`} className="co-note-button">
+            practice
+          </Link>
+        ) : (
+          <span className="co-note-button" style={{ cursor: "default" }}>
+            flashcards
+          </span>
+        )}
       </nav>
 
       <header
@@ -111,7 +109,7 @@ export default async function PracticeLecturePage({
               letterSpacing: "0.14em",
             }}
           >
-            CS 173 - Practice
+            CS 173 - Flashcards
           </span>
         </div>
         <h1
@@ -124,7 +122,7 @@ export default async function PracticeLecturePage({
             letterSpacing: "-0.01em",
           }}
         >
-          Lecture {lecture.number} Practice
+          Lecture {lecture.number} Flashcards
         </h1>
         <p style={{ fontSize: 16, color: MUTED, lineHeight: 1.6, margin: "0 0 20px 0" }}>
           {lecture.title}
