@@ -152,8 +152,9 @@ export default function GraphTheoryPage() {
               }}
             >
               The order matters. Graph data comes first, then the degree-sum
-              theorem, then movement through a graph, then trees, then the parity
-              consequence, and finally induction on graphs.
+              theorem, then movement through a graph, then trees, then the first
+              two structural tree proofs, then the parity consequence, and finally
+              induction on graphs.
             </p>
           </div>
         </section>

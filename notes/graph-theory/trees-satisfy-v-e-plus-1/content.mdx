@@ -1,0 +1,207 @@
+---
+title: "Trees Satisfy |V| = |E| + 1"
+description: "A formal induction proof that every nonempty tree has exactly one more vertex than edge."
+order: 7
+noteType: "main"
+status: "draft"
+---
+
+## Statement
+
+For every tree $T$,
+
+$$
+V(T) \neq \varnothing \Rightarrow |V(T)| = |E(T)| + 1.
+$$
+
+## Proof Strategy
+
+We prove the statement by induction on the order of the tree, that is, on $|V(T)|$.
+
+The key structural move is to remove a leaf. That decreases the vertex set by one and the edge set by one, and the remaining graph is still a tree.
+
+## Proof
+
+We prove
+
+$$
+(\forall n \in \mathbb{N})(\forall T)\bigl((T \text{ is a tree} \wedge |V(T)| = n+1) \Rightarrow |V(T)| = |E(T)| + 1\bigr)
+$$
+
+by induction on $n$.
+
+### Base Case
+
+Let $T$ be a tree with
+
+$$
+|V(T)| = 1.
+$$
+
+Since every edge of a graph is a two-element subset of the vertex set, a graph with only one vertex cannot have any edges. Hence
+
+$$
+|E(T)| = 0.
+$$
+
+Therefore
+
+$$
+|V(T)| = 1 = 0 + 1 = |E(T)| + 1.
+$$
+
+So the statement holds when $n=0$.
+
+### Inductive Hypothesis
+
+Fix $k \in \mathbb{N}$ and assume that for every tree $H$,
+
+$$
+|V(H)| = k+1 \Rightarrow |V(H)| = |E(H)| + 1.
+$$
+
+### Inductive Step
+
+Let $T$ be a tree with
+
+$$
+|V(T)| = k+2.
+$$
+
+Then
+
+$$
+|V(T)| \geq 2,
+$$
+
+so the previous theorem implies that $T$ contains a leaf. Choose a leaf
+
+$$
+v \in V(T).
+$$
+
+Since $v$ is a leaf,
+
+$$
+\deg_T(v)=1.
+$$
+
+Let $e$ be the unique edge incident to $v$, and define a graph $H$ by
+
+$$
+V(H) \coloneqq V(T) \setminus \{v\}
+$$
+
+and
+
+$$
+E(H) \coloneqq E(T) \setminus \{e\}.
+$$
+
+We claim that $H$ is a tree.
+
+First, $H$ is acyclic, because removing a vertex and an edge cannot create a cycle.
+
+It remains to show that $H$ is connected.
+
+Let $x,y \in V(H)$ with $x \neq y$. Since $T$ is connected, there exists a path
+
+$$
+p : m+1 \to V(T)
+$$
+
+from $x$ to $y$ in $T$.
+
+We claim that $v \notin \operatorname{Im}(p)$.
+
+Suppose, for contradiction, that $v \in \operatorname{Im}(p)$. Then there exists $i < m+1$ with
+
+$$
+p(i)=v.
+$$
+
+Since $x,y \in V(H)$, we have $x \neq v$ and $y \neq v$, so
+
+$$
+i \neq 0
+\quad\text{and}\quad
+i \neq m.
+$$
+
+Therefore
+
+$$
+0 < i < m.
+$$
+
+Because $p$ is a path, both
+
+$$
+\{p(i-1),p(i)\} \in E(T)
+\quad\text{and}\quad
+\{p(i),p(i+1)\} \in E(T).
+$$
+
+Since $p(i)=v$, this means both of those edges are incident to $v$.
+
+Also, because $p$ is injective,
+
+$$
+p(i-1) \neq p(i+1),
+$$
+
+so these are two distinct edges incident to $v$. That contradicts
+
+$$
+\deg_T(v)=1.
+$$
+
+So indeed
+
+$$
+v \notin \operatorname{Im}(p).
+$$
+
+Hence every vertex used by $p$ lies in $V(H)$, and every edge used by $p$ lies in $E(H)$ because the only removed edge was the unique edge incident to $v$.
+
+Therefore $p$ is also a path in $H$ from $x$ to $y$.
+
+So $H$ is connected. Thus $H$ is a tree.
+
+Now
+
+$$
+|V(H)| = |V(T)| - 1 = (k+2)-1 = k+1.
+$$
+
+So the inductive hypothesis applies to $H$, and we obtain
+
+$$
+|V(H)| = |E(H)| + 1.
+$$
+
+Since one vertex and one edge were removed,
+
+$$
+|V(T)| = |V(H)| + 1
+$$
+
+and
+
+$$
+|E(T)| = |E(H)| + 1.
+$$
+
+Therefore
+
+$$
+|V(T)| = (|E(H)| + 1) + 1 = |E(H)| + 2 = (|E(T)| - 1) + 2 = |E(T)| + 1.
+$$
+
+This completes the inductive step.
+
+Hence every nonempty tree $T$ satisfies
+
+$$
+|V(T)| = |E(T)| + 1.
+$$
