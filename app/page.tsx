@@ -503,6 +503,50 @@ export default function HomePage() {
             </div>
           </Link>
 
+          <Link href="/practice" style={{ textDecoration: "none", color: "inherit" }}>
+            <div
+              className="cs-note-row"
+              style={{
+                display: "flex",
+                alignItems: "baseline",
+                justifyContent: "space-between",
+                padding: "16px 0",
+                borderBottom: `1px solid ${BORDER}`,
+                cursor: "pointer",
+              }}
+            >
+              <div>
+                <span
+                  style={{
+                    fontSize: 15,
+                    fontWeight: 400,
+                    color: FG,
+                    display: "block",
+                    marginBottom: 4,
+                }}
+              >
+                  practice problems
+                </span>
+                <span style={{ fontSize: 13, color: FAINT, lineHeight: 1.5 }}>
+                  a direct index of lecture practice sets and individual review
+                  drills
+                </span>
+              </div>
+              <span
+                style={{
+                  fontSize: 11,
+                  color: FAINT,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.08em",
+                  flexShrink: 0,
+                  marginLeft: 24,
+                }}
+              >
+                drill
+              </span>
+            </div>
+          </Link>
+
           <Link href="/graph-theory" style={{ textDecoration: "none", color: "inherit" }}>
             <div
               className="cs-note-row"

@@ -56,9 +56,14 @@ export default function LectureReviewPage() {
             <Link href="/" className="nav-pill" style={navPillStyle}>
               {"<-"} home
             </Link>
-            <span className="nav-pill" style={navPillStyle}>
-              lecture review
-            </span>
+            <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+              <Link href="/practice" className="nav-pill" style={navPillStyle}>
+                practice
+              </Link>
+              <span className="nav-pill" style={navPillStyle}>
+                lecture review
+              </span>
+            </div>
           </nav>
         </div>
 

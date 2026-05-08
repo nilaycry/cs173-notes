@@ -126,6 +126,28 @@ export default async function LecturePacketPage({
         <p style={{ fontSize: 16, color: MUTED, lineHeight: 1.6, margin: "0 0 20px 0" }}>
           {lecture.title.replace(/^CS 173 Lecture Study Guide:\s*/, "")}
         </p>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 24 }}>
+          {studyGuide ? (
+            <a href="#study-guide" className="co-note-button">
+              study guide
+            </a>
+          ) : null}
+          {flashcards ? (
+            <a href="#flashcards" className="co-note-button">
+              flashcards
+            </a>
+          ) : null}
+          {practice ? (
+            <>
+              <a href="#practice" className="co-note-button">
+                practice
+              </a>
+              <Link href={`/practice/${lecture.slug}`} className="co-note-button">
+                practice only
+              </Link>
+            </>
+          ) : null}
+        </div>
         <hr style={{ border: "none", borderTop: `1px solid ${BORDER}`, marginTop: 0 }} />
       </header>
 
@@ -137,14 +159,14 @@ export default async function LecturePacketPage({
           padding: "0 48px 48px",
         }}
       >
-        <section style={{ marginBottom: 42 }}>
+        <section id="study-guide" style={{ marginBottom: 42 }}>
           <span style={sectionLabelStyle}>study guide</span>
           <article className="notes-prose" style={{ maxWidth: "none" }}>
             {studyGuide ?? <p>No study guide has been generated for this lecture yet.</p>}
           </article>
         </section>
 
-        <section style={{ marginBottom: 42 }}>
+        <section id="flashcards" style={{ marginBottom: 42 }}>
           <span style={sectionLabelStyle}>flashcards and mcqs</span>
           <article className="notes-prose" style={{ maxWidth: "none" }}>
             {flashcards ?? <p>No flashcards have been generated for this lecture yet.</p>}
@@ -152,7 +174,7 @@ export default async function LecturePacketPage({
         </section>
 
         {practice ? (
-          <section style={{ marginBottom: 42 }}>
+          <section id="practice" style={{ marginBottom: 42 }}>
             <span style={sectionLabelStyle}>practice</span>
             <article className="notes-prose" style={{ maxWidth: "none" }}>
               {practice}

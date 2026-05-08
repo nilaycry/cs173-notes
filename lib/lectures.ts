@@ -14,6 +14,15 @@ export interface LecturePacket {
   contactSheetPath?: string;
 }
 
+export interface PracticeProblem {
+  lectureSlug: string;
+  lectureNumber: number;
+  lectureTitle: string;
+  problemNumber: number;
+  title: string;
+  anchor: string;
+}
+
 const lectureRoot = path.resolve(process.cwd(), "lecture-packets");
 
 function existingFile(...parts: string[]) {
@@ -81,4 +90,30 @@ export function getLectureSlugs() {
 export function getLectureMarkdown(filePath: string | undefined) {
   if (!filePath || !fs.existsSync(filePath)) return null;
   return fs.readFileSync(filePath, "utf-8");
+}
+
+export function getPracticeProblems(): PracticeProblem[] {
+  return getAllLecturePackets().flatMap((lecture) => {
+    const markdown = getLectureMarkdown(lecture.practicePath);
+    if (!markdown) return [];
+
+    return markdown
+      .split(/\r?\n/)
+      .map((line) => line.trim())
+      .filter((line) => line.startsWith("### Problem "))
+      .map((line) => {
+        const match = line.match(/^### Problem\s+(\d+)(?::\s*(.+))?$/);
+        if (!match) return null;
+        const problemNumber = Number(match[1]);
+        return {
+          lectureSlug: lecture.slug,
+          lectureNumber: lecture.number,
+          lectureTitle: lecture.title,
+          problemNumber,
+          title: match[2]?.trim() || `Problem ${problemNumber}`,
+          anchor: `problem-${problemNumber}`,
+        };
+      })
+      .filter((problem): problem is PracticeProblem => problem !== null);
+  });
 }
