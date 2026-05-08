@@ -13,7 +13,7 @@ This note introduces the basic objects used to talk about movement through a gra
 A walk of length $k$ on a graph $G$ is a function
 
 $$
-f : \{0,1,\dots,k\} \to V(G)
+f : k+1 \to V(G)
 $$
 
 such that for every $i < k$,
@@ -43,13 +43,13 @@ starts at $a$, ends at $d$, and repeats the vertex $b$.
 A path of length $k$ on a graph $G$ is a walk
 
 $$
-p : \{0,1,\dots,k\} \to V(G)
+p : k+1 \to V(G)
 $$
 
 that is **injective**. In other words,
 
 $$
-(\forall i,j \in \{0,1,\dots,k\})\bigl(p(i)=p(j)\Rightarrow i=j\bigr).
+(\forall i,j \in k+1)\bigl(p(i)=p(j)\Rightarrow i=j\bigr).
 $$
 
 So a path is a walk that does not repeat vertices.
@@ -59,31 +59,33 @@ So a path is a walk that does not repeat vertices.
 If
 
 $$
-w : \{0,1,\dots,k\} \to V(G)
+w : k+1 \to V(G)
 $$
 
 is a walk, then the length of $w$ is defined to be $k$.
 
-So the length is the number of edges used, not the number of vertices written down.
+So the length is the number of edge-conditions in the definition, not the number of vertices in the codomain image.
 
-Equivalently, a walk
-
-$$
-v_0,v_1,\dots,v_k
-$$
-
-has length $k$ because it contains exactly the $k$ consecutive edge-steps
+More concretely, the definition checks adjacency exactly for the indices
 
 $$
-\{v_0,v_1\},\{v_1,v_2\},\dots,\{v_{k-1},v_k\}.
+i \in k.
 $$
+
+For each such $i$, the pair
+
+$$
+\{w(i),w(i+1)\}
+$$
+
+must be an edge of $G$. There are exactly $k$ such indices, so the walk has length $k$.
 
 ## Circuits
 
 A circuit of length $k$ on a graph $G$ is a walk
 
 $$
-w : \{0,1,\dots,k\} \to V(G)
+w : k+1 \to V(G)
 $$
 
 such that
@@ -101,13 +103,13 @@ The definition does not require the intermediate vertices to be distinct.
 A cycle of length $k$ on a graph $G$ is a circuit
 
 $$
-c : \{0,1,\dots,k\} \to V(G)
+c : k+1 \to V(G)
 $$
 
 such that the only repeated vertices are the first and last ones. A precise way to say this is:
 
 $$
-(\forall i,j \in \{0,1,\dots,k\})\bigl(c(i)=c(j)\Rightarrow (i=j \text{ or } \{i,j\}=\{0,k\})\bigr).
+(\forall i,j \in k+1)\bigl(c(i)=c(j)\Rightarrow (i=j \text{ or } \{i,j\}=\{0,k\})\bigr).
 $$
 
 So a cycle is a closed walk with no repeated intermediate vertices.
