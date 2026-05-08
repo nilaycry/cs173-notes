@@ -85,7 +85,7 @@ export default function HomePage() {
                 transition: "all 0.2s",
               }}
             >
-              first unit
+              start with logic
             </Link>
           </nav>
         </div>
@@ -123,7 +123,7 @@ export default function HomePage() {
               letterSpacing: "-0.01em",
             }}
           >
-            a full course resource built around mathematical writing
+            a course resource for learning, reviewing, and writing CS 173 correctly
           </h1>
 
           <div style={{ maxWidth: 700 }}>
@@ -136,11 +136,11 @@ export default function HomePage() {
                 margin: "0 0 18px 0",
               }}
             >
-              This site is being built as a structured reference for CS 173. The
-              aim is not only to collect topics, but to explain what each part of
-              the course is asking students to do, how proofs are written in that
-              part of the course, and how the standards shift from logic to sets,
-              induction, counting, and graph theory.
+              This site is organized as a full course resource for CS 173. The
+              goal is not just to list definitions and theorems, but to teach the
+              mathematics, make the expected proof style explicit, and give
+              students something they can actually study from when lecture notes
+              are not enough.
             </p>
             <p
               style={{
@@ -151,9 +151,10 @@ export default function HomePage() {
                 margin: 0,
               }}
             >
-              The current draft starts with zeroth-order logic. The long-term goal
-              is a resource students can use to learn, review, and write at the
-              level the course expects.
+              The course changes its standards as the objects change. Logic,
+              trees, degree arguments, and induction do not ask to be written in
+              the same way. These notes are meant to make those shifts visible
+              instead of leaving students to infer them on their own.
             </p>
           </div>
         </section>
@@ -178,7 +179,7 @@ export default function HomePage() {
                 letterSpacing: "0.14em",
               }}
             >
-              current direction
+              what this site provides
             </span>
           </div>
 
@@ -191,9 +192,9 @@ export default function HomePage() {
                 padding: "18px 20px",
                 flex: "1 1 260px",
                 maxWidth: 360,
-              }}
-            >
-              <span
+                }}
+              >
+                <span
                 style={{
                   fontSize: 14,
                   fontWeight: 400,
@@ -205,8 +206,8 @@ export default function HomePage() {
                 concept notes
               </span>
               <span style={{ fontSize: 12, color: FAINT, lineHeight: 1.6 }}>
-                pages that teach the mathematics directly and define the local
-                objects of study
+                formal notes that teach the mathematics directly, define the local
+                objects, and make the main distinctions explicit
               </span>
             </div>
             <div
@@ -217,9 +218,9 @@ export default function HomePage() {
                 padding: "18px 20px",
                 flex: "1 1 260px",
                 maxWidth: 360,
-              }}
-            >
-              <span
+                }}
+              >
+                <span
                 style={{
                   fontSize: 14,
                   fontWeight: 400,
@@ -231,7 +232,8 @@ export default function HomePage() {
                 proof-writing notes
               </span>
               <span style={{ fontSize: 12, color: FAINT, lineHeight: 1.6 }}>
-                pages that make the expected style of justification explicit
+                pages that spell out what a complete justification looks like in
+                that part of the course
               </span>
             </div>
             <div
@@ -242,9 +244,9 @@ export default function HomePage() {
                 padding: "18px 20px",
                 flex: "1 1 260px",
                 maxWidth: 360,
-              }}
-            >
-              <span
+                }}
+              >
+                <span
                 style={{
                   fontSize: 14,
                   fontWeight: 400,
@@ -256,7 +258,115 @@ export default function HomePage() {
                 problem guides
               </span>
               <span style={{ fontSize: 12, color: FAINT, lineHeight: 1.6 }}>
-                pages that explain what assignments and review sets are testing
+                pages that explain what assignments are testing and which proof
+                moves they are trying to train
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div
+          className="cs-content"
+          style={{ maxWidth: 1200, margin: "0 auto", padding: "0 48px 56px" }}
+        >
+          <div
+            style={{
+              borderTop: `1px solid ${BORDER}`,
+              paddingTop: 48,
+              marginBottom: 12,
+            }}
+          >
+            <span
+              style={{
+                fontSize: 11,
+                fontWeight: 400,
+                color: FAINT,
+                textTransform: "uppercase",
+                letterSpacing: "0.14em",
+              }}
+            >
+              how to use it
+            </span>
+          </div>
+
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
+            <div
+              className="cs-summary-card"
+              style={{
+                border: `1px solid ${BORDER}`,
+                borderRadius: 8,
+                padding: "18px 20px",
+                flex: "1 1 320px",
+                maxWidth: 380,
+              }}
+            >
+              <span
+                style={{
+                  fontSize: 14,
+                  fontWeight: 400,
+                  color: FG,
+                  display: "block",
+                  marginBottom: 6,
+                }}
+              >
+                learn a topic
+              </span>
+              <span style={{ fontSize: 12, color: FAINT, lineHeight: 1.6 }}>
+                start with the concept note, then read the proof-writing note if
+                the unit has one, and only then move to the problem guide
+              </span>
+            </div>
+            <div
+              className="cs-summary-card"
+              style={{
+                border: `1px solid ${BORDER}`,
+                borderRadius: 8,
+                padding: "18px 20px",
+                flex: "1 1 320px",
+                maxWidth: 380,
+              }}
+            >
+              <span
+                style={{
+                  fontSize: 14,
+                  fontWeight: 400,
+                  color: FG,
+                  display: "block",
+                  marginBottom: 6,
+                }}
+              >
+                study for an exam
+              </span>
+              <span style={{ fontSize: 12, color: FAINT, lineHeight: 1.6 }}>
+                use the unit pages to review definitions, theorem statements, and
+                the standard proof patterns that keep repeating
+              </span>
+            </div>
+            <div
+              className="cs-summary-card"
+              style={{
+                border: `1px solid ${BORDER}`,
+                borderRadius: 8,
+                padding: "18px 20px",
+                flex: "1 1 320px",
+                maxWidth: 380,
+              }}
+            >
+              <span
+                style={{
+                  fontSize: 14,
+                  fontWeight: 400,
+                  color: FG,
+                  display: "block",
+                  marginBottom: 6,
+                }}
+              >
+                write a proof
+              </span>
+              <span style={{ fontSize: 12, color: FAINT, lineHeight: 1.6 }}>
+                check what definitions need to be expanded, what earlier results
+                are available, and what kind of proof move the statement is asking
+                for
               </span>
             </div>
           </div>
@@ -282,7 +392,7 @@ export default function HomePage() {
                 letterSpacing: "0.14em",
               }}
             >
-              current unit
+              current coverage
             </span>
           </div>
 
@@ -306,13 +416,13 @@ export default function HomePage() {
                     color: FG,
                     display: "block",
                     marginBottom: 4,
-                  }}
-                >
+                }}
+              >
                   zeroth-order logic
                 </span>
                 <span style={{ fontSize: 13, color: FAINT, lineHeight: 1.5 }}>
-                  sentencehood, truth value, proof-writing expectations, and the
-                  first problem set
+                  sentencehood, truth value, formal logical vocabulary, and the
+                  first proof-writing expectations of the course
                 </span>
               </div>
               <span
@@ -350,12 +460,13 @@ export default function HomePage() {
                     color: FG,
                     display: "block",
                     marginBottom: 4,
-                  }}
-                >
+                }}
+              >
                   graph theory
                 </span>
                 <span style={{ fontSize: 13, color: FAINT, lineHeight: 1.5 }}>
-                  graph data, walks and cycles, trees, degree sums, and induction on graphs
+                  graph definitions, trees, degree arguments, induction, and the
+                  main proof patterns from the first graph theory problems
                 </span>
               </div>
               <span
