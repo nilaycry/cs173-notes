@@ -20,7 +20,7 @@ Equivalently, $x$ and $y$ leave the same remainder when divided by $n$.
 
 ## Formal Definitions
 
-### Divisibility
+### Definition: Divisibility
 
 For $a,b \in \mathbb{Z}$,
 
@@ -32,7 +32,7 @@ $$
 
 Read this as "$a$ divides $b$." The expression $a \mid b$ is a sentence, not a number.
 
-### Modular Congruence
+### Definition: Modular Congruence
 
 Let $n \in \mathbb{N}^+$ and let $a,b \in \mathbb{Z}$.
 
@@ -44,7 +44,7 @@ $$
 
 Here $n$ is the modulus. The whole expression "$a \equiv b \pmod n$" is a sentence.
 
-### Add and Multiply Both Sides
+### Theorem: Add and Multiply Both Sides
 
 Let $n \in \mathbb{N}^+$ and $x,y,k \in \mathbb{Z}$. If
 
@@ -66,7 +66,7 @@ $$
 
 In proofs about congruence, the domains matter. A typical proof begins by fixing $n \in \mathbb{N}^+$ and taking the relevant variables, such as $x,y,k$, to be integers.
 
-## Euclidean Division Reminder
+## Theorem: Euclidean Division
 
 The Euclidean division lemma says that if $y$ is a positive integer and $x$ is an integer, then there are unique integers $q$ and $r$ such that
 
@@ -107,7 +107,7 @@ So 5 has remainder 1 after division by 2.
 
 This is why 5 is odd: from the perspective of divisibility by 2, it sits one step after a multiple of 2.
 
-## Same Remainder Means Same Modulo n
+## Theorem: Same Remainder Implies Congruence
 
 Fix a positive integer $n$.
 
@@ -139,27 +139,9 @@ $$
 
 and $6 \mid 6$, so $11 \equiv 5 \pmod 6$.
 
-## Definition of Modular Congruence
+## Syntax: Congruence Is a Statement
 
-Let $n \in \mathbb{N}^+$ and let $x,y \in \mathbb{Z}$.
-
-We say
-
-$$
-x \equiv y \pmod n
-$$
-
-if and only if
-
-$$
-n \mid (x-y).
-$$
-
-This is a complete sentence. The "mod n" part is not optional. You should not write only "$x \equiv y$" when the modulus matters.
-
-## Important Syntax Warning
-
-In this course, the expression
+The expression
 
 $$
 x \equiv y \pmod n
@@ -169,7 +151,7 @@ is a statement, not a number.
 
 It says something true or false about $x$, $y$, and $n$.
 
-The lecture emphasized that "mod" is not being introduced here as a binary operation that takes two numbers and returns a number. The definition in this lecture is about a relation between integers.
+Here, "$\pmod n$" is part of the relation notation. It is not being used as a binary operation that takes two integers and returns a number.
 
 ## Modulo 2: Even and Odd
 
@@ -256,11 +238,11 @@ $$
 
 The shared remainder cancels out.
 
-## Modular Congruence Is an Equivalence Relation
+## Theorem: Modular Congruence Is an Equivalence Relation
 
 For a fixed positive integer $n$, congruence modulo $n$ has three important properties.
 
-### Reflexive
+### Proof: Reflexivity
 
 For every integer $x$,
 
@@ -276,7 +258,7 @@ $$
 
 and every positive integer divides 0.
 
-### Symmetric
+### Proof: Symmetry
 
 If
 
@@ -296,7 +278,7 @@ $$
 -(x-y)=y-x.
 $$
 
-### Transitive
+### Proof: Transitivity
 
 If
 
@@ -322,7 +304,7 @@ $$
 (x-y)+(y-z)=x-z.
 $$
 
-## Algebra With Congruences
+## Theorem: Algebra With Congruences
 
 Congruences behave a lot like equations in some ways.
 
@@ -478,8 +460,6 @@ $$
 26 = 6\cdot 4 + 2.
 $$
 
-## What You Should Be Able To Say Out Loud
-
-By the end of this lecture, you should be able to say:
+## Core Summary
 
 > Congruence modulo n means two integers differ by a multiple of n. Equivalently, they have the same remainder after division by n. This relation is reflexive, symmetric, and transitive. We can add or multiply both sides of a congruence by the same integer, but cancellation is not automatically valid, because multiplication modulo n can destroy information.

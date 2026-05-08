@@ -40,13 +40,13 @@ A: There exists $n\in\mathbb{N}$ such that $|S|=|n|$, meaning $S$ is in bijectio
 
 ---
 
-Q: What is a monomorphism in this lecture's set-based language?
+Q: What is a monomorphism for functions between sets?
 
 A: A function with a left inverse. For sets, this is equivalent to being injective.
 
 ---
 
-Q: What is an epimorphism in this lecture's set-based language?
+Q: What is an epimorphism for functions between sets?
 
 A: A function with a right inverse. For sets, after the relevant choice principle is accepted, this is equivalent to being surjective.
 

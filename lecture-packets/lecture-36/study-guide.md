@@ -10,7 +10,7 @@ That means if a graph is connected but has extra redundant edges, you can delete
 
 ## Formal Definitions
 
-### Walk
+### Definition: Walk
 
 Let $G$ be a graph and let $k \in \mathbb{N}$. A walk of length $k$ on $G$ is a function
 
@@ -26,7 +26,7 @@ $$
 
 The length is the number of edges traveled, not the number of vertices listed.
 
-### Path
+### Definition: Path
 
 A path of length $k$ on $G$ is an injective walk of length $k$ on $G$.
 
@@ -36,7 +36,7 @@ $$
 p(i)=p(j) \Rightarrow i=j.
 $$
 
-### Connected
+### Definition: Connected Graph
 
 A graph $G$ is connected iff every distinct pair of vertices is joined by a path.
 
@@ -54,7 +54,7 @@ p(0)=x
 p(m)=y.
 $$
 
-### Tree
+### Definition: Tree
 
 A graph is a tree iff it is connected and contains no cycles.
 
@@ -69,7 +69,7 @@ A graph is a way of modeling objects and connections.
 - Vertices, also called nodes, are the objects.
 - Edges are the connections between vertices.
 
-In this lecture, graphs are simple undirected graphs.
+Unless stated otherwise, graphs are simple and undirected.
 
 ### Walk
 
@@ -97,11 +97,7 @@ such that for every `i < k`, the pair `{w(i), w(i + 1)}` is an edge.
 
 A path is a walk with no repeated vertices.
 
-The lecture phrases this as:
-
-> A path is an injective walk.
-
-That means different positions in the sequence produce different vertices. You do not visit the same vertex twice.
+A path is an injective walk. That means different positions in the sequence produce different vertices. You do not visit the same vertex twice.
 
 Walks are loose. Paths are clean.
 
@@ -181,9 +177,9 @@ A subgraph `T` of a graph `G` is a spanning tree if:
 
 So a spanning tree touches every vertex of the original graph, but may use fewer edges.
 
-## Key Ideas From The Lecture
+## Key Theorems and Ideas
 
-### 1. Walks Can Repeat; Paths Cannot
+### Proposition: Walks Can Repeat; Paths Cannot
 
 In a graph, there can be infinitely many walks between two vertices because you can loop around before eventually arriving.
 
@@ -191,15 +187,15 @@ But there are only finitely many paths in a finite graph, because a path cannot 
 
 This is why connectivity is usually defined using paths. Paths capture real reachability without irrelevant wandering.
 
-### 2. Walk Connectivity Implies Path Connectivity
+### Theorem: Walk Connectivity Implies Path Connectivity
 
 If there is a walk from `x` to `y`, then there is also a path from `x` to `y`.
 
-Reason:
+Proof idea:
 
 If the walk repeats a vertex, the portion between the two repeats is a loop. Delete that loop. Keep doing this until no vertex repeats. The result is a path.
 
-### 3. Edges on Cycles Are Redundant for Connectivity
+### Theorem: Edges on Cycles Are Redundant for Connectivity
 
 Suppose an edge `e` lies on a cycle. If you delete `e`, the two endpoints of `e` are still connected by the rest of the cycle.
 
@@ -207,7 +203,7 @@ So deleting `e` does not destroy connectivity inside a connected graph.
 
 This is the intuition behind stripping a connected graph down to a tree: every time you see a cycle, delete one edge from it.
 
-### 4. Trees Are Minimally Connected
+### Theorem: Trees Are Minimally Connected
 
 A tree has no cycles. Therefore, none of its edges are redundant.
 
@@ -217,9 +213,7 @@ Intuition:
 
 If removing an edge did not disconnect the graph, then there would still be another path between that edge's endpoints. That alternate path plus the removed edge would form a cycle. But a tree has no cycles.
 
-### 5. Connected Graphs Always Contain Spanning Trees
-
-Main theorem:
+### Theorem: Connected Graphs Contain Spanning Trees
 
 ```text
 Every connected graph has a spanning tree.
@@ -235,15 +229,11 @@ Start with a connected graph `G`.
 
 The final graph is connected, has all the original vertices, and has no cycles. Therefore, it is a spanning tree.
 
-## Proof Sketch: Every Connected Graph Has a Spanning Tree
+## Proof: Every Connected Graph Has a Spanning Tree
 
-The lecture frames this as an induction proof, naturally using the number of edges.
+Use induction on the number of edges.
 
-Claim:
-
-For every connected graph `G`, there is a spanning tree of `G`.
-
-Induct on the number of edges.
+Claim: for every connected graph `G`, there is a spanning tree of `G`.
 
 Base case:
 
@@ -315,66 +305,6 @@ When you see a graph problem, ask:
 6. If an edge is on a cycle, removing it should preserve connectivity.
 7. If an edge is the only route between two regions, it is a cut edge.
 
-## Practice Problems
-
-### Problem 1
-
-In a graph, suppose there is a walk from `u` to `v`. Explain why there must be a path from `u` to `v`.
-
-Answer:
-
-If the walk repeats a vertex, remove the closed loop between the first and later occurrence of that vertex. This keeps the same start and end. Repeat until no vertices repeat. The resulting walk is a path from `u` to `v`.
-
-### Problem 2
-
-True or false: every acyclic graph is a tree.
-
-Answer:
-
-False. It also needs to be connected. A disconnected acyclic graph is a forest.
-
-### Problem 3
-
-True or false: every connected graph is a tree.
-
-Answer:
-
-False. A connected graph can contain cycles. A tree must be connected and acyclic.
-
-### Problem 4
-
-Why does removing an edge from a cycle preserve connectivity?
-
-Answer:
-
-The endpoints of the removed edge are still connected by the rest of the cycle. Any route that used the removed edge can be rerouted around the remaining part of the cycle.
-
-### Problem 5
-
-Let `G` be connected and contain a cycle. How can you create a smaller connected graph with the same vertices?
-
-Answer:
-
-Choose an edge on the cycle and remove it. The graph remains connected and has the same vertex set but one fewer edge.
-
-### Problem 6
-
-What is a spanning tree of `G`?
-
-Answer:
-
-A subgraph of `G` that contains every vertex of `G` and is a tree.
-
-### Problem 7
-
-Explain the proof strategy for showing every connected graph has a spanning tree.
-
-Answer:
-
-Use induction on the number of edges. If the graph has no cycle, it is already a tree. If it has a cycle, remove one edge from the cycle, preserving connectivity. Apply the inductive hypothesis to the smaller connected graph. Its spanning tree is also a spanning tree of the original graph.
-
-## What You Should Be Able To Say Out Loud
-
-By the end of this lecture, you should be able to say:
+## Core Summary
 
 > A tree is a connected graph with no cycles. A spanning tree of a graph is a tree subgraph that includes all the vertices. Every connected graph has a spanning tree because whenever the graph has a cycle, we can delete an edge from that cycle without disconnecting the graph. Repeating this process leaves a connected acyclic graph on the same vertices, which is a spanning tree.

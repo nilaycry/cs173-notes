@@ -120,7 +120,7 @@ A: Multiply by $z$ to get $m(za)+n(zb)=z$.
 
 ### MCQ 1
 
-What does $|A|\le |B|$ mean in this course?
+What does $|A|\le |B|$ mean?
 
 A. There exists an injection $A\to B$.
 
@@ -136,7 +136,7 @@ Answer: A
 
 ### MCQ 2
 
-What does $|A|\ge |B|$ mean in this course?
+What does $|A|\ge |B|$ mean?
 
 A. There exists an injection $A\to B$.
 

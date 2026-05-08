@@ -302,4 +302,4 @@ Explain why $x \equiv y \pmod n$ should be treated as a sentence, not a number.
 
 Answer:
 
-It asserts that $n$ divides $x-y$. That assertion is either true or false. In this lecture, "mod n" is part of the relation notation, not a standalone operation that returns a number.
+It asserts that $n$ divides $x-y$. That assertion is either true or false. The phrase "$\pmod n$" is part of the relation notation, not a standalone operation that returns a number.

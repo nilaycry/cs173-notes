@@ -2,7 +2,7 @@
 
 ## Big Picture
 
-Lecture 26 introduced cardinality comparisons as statements about functions. Lecture 27 tightens that language.
+Cardinality comparisons are statements about the existence of functions. The next layer is to understand how these function statements interact with finite sets, composition, inverses, and comparability.
 
 The main theme is:
 
@@ -11,11 +11,11 @@ The main theme is:
 - composition is not commutative, so left inverses and right inverses are different ideas
 - injections are controlled by left inverses
 - surjections are controlled by right inverses
-- to compare arbitrary sets cleanly, the course accepts a final cardinality axiom: trichotomy
+- to compare arbitrary sets cleanly, trichotomy of cardinality is accepted as an axiom
 
-This lecture is less about memorizing new formulas and more about learning how to translate every cardinality statement back into a function statement.
+The goal is to translate every cardinality statement back into a precise function statement.
 
-## A Function Is a Set of Ordered Pairs
+## Definition: Function as a Set of Ordered Pairs
 
 Let $A$ and $B$ be sets. A function
 
@@ -37,9 +37,9 @@ $$
 (a,b)\in f.
 $$
 
-This matters because when the domain is empty, many statements become true vacuously. The lecture used this to discuss functions involving $\emptyset$.
+This matters because when the domain is empty, many universal statements become true vacuously.
 
-## The Empty Function Trap
+## Proposition: The Empty Function
 
 For any set $B$, there is a function
 
@@ -53,7 +53,7 @@ $$
 f=\emptyset.
 $$
 
-Why is this a function?
+Proof:
 
 First,
 
@@ -71,7 +71,7 @@ $$
 
 is vacuously true, because there is no $x\in\emptyset$ to check.
 
-This same function is also injective. To prove injectivity, we would need to show
+The same function is injective. To prove injectivity, it is enough to show
 
 $$
 (\forall x_1,x_2\in \emptyset)(f(x_1)=f(x_2)\Rightarrow x_1=x_2).
@@ -95,9 +95,7 @@ because an element $b\in B$ would need an output in $\emptyset$, and no such out
 
 This is the important lesson: do not flip cardinality statements by visual intuition alone. Translate them back into functions.
 
-## Cantor-Schroeder-Bernstein Review
-
-The lecture revisits the Cantor-Schroeder-Bernstein theorem.
+## Theorem: Cantor-Schroeder-Bernstein
 
 If $A$ and $B$ are sets and
 
@@ -119,9 +117,9 @@ If there is an injection $A\to B$ and an injection $B\to A$, then there exists a
 
 This is useful because direct bijections can be difficult to invent. Proving two injections is often easier than proving one function is both injective and surjective.
 
-## Finite Sets
+## Definition: Finite Set
 
-The course treats natural numbers as sets:
+Natural numbers are represented as sets:
 
 $$
 n=\{0,1,2,\dots,n-1\}.
@@ -141,9 +139,9 @@ $$
 
 When $S$ is finite, its cardinality can be represented by the natural number $n$. In that case it becomes reasonable to write arithmetic expressions involving $|S|$, such as $2^{|S|}$, because $|S|$ is being represented by a natural number.
 
-## What the Power Set Problem Is Really Asking
+## Proposition: Power Sets of Finite Sets
 
-The lecture mentions the problem of proving
+For a finite set $X$,
 
 $$
 |\mathcal{P}(X)|=2^{|X|}
@@ -151,7 +149,7 @@ $$
 
 for finite $X$.
 
-Do not read this as a slogan. If $|X|=n$, then the statement means:
+If $|X|=n$, then the statement means:
 
 There exists a bijection between $\mathcal{P}(X)$ and a set with $2^n$ elements.
 
@@ -162,9 +160,9 @@ One clean mental model is to encode each subset of $X$ by a binary choice for ea
 
 So if $X$ has $n$ elements, a subset of $X$ behaves like a length-$n$ binary string. There are $2^n$ such strings.
 
-The lecture's warning is that a polished proof still needs a function and a proof that the function is bijective. For a formal induction proof, you do not just say "each element has two choices" and stop; you turn that intuition into an actual bijection or induction step.
+A formal proof still needs a function and a proof that the function is bijective. The phrase "each element has two choices" is useful intuition, but the formal argument must turn that intuition into an actual bijection or induction step.
 
-## Function Composition
+## Definition: Function Composition
 
 Let
 
@@ -216,7 +214,7 @@ These are not the same function.
 
 This is why left inverses and right inverses must be distinguished.
 
-## Identity Functions
+## Definition: Identity Function
 
 For any set $A$, the identity function on $A$ is
 
@@ -246,7 +244,7 @@ $$
 
 when $f:A\to B$.
 
-## Left Inverses
+## Definition: Left Inverse
 
 Let
 
@@ -270,7 +268,7 @@ This means: start with $a\in A$, apply $f$, then apply $g$, and you get back the
 
 So $g$ undoes $f$ on the left side of the composition.
 
-## Right Inverses
+## Definition: Right Inverse
 
 Let
 
@@ -294,7 +292,7 @@ This means: start with $b\in B$, apply $g$, then apply $f$, and you get back the
 
 Left inverse and right inverse are different conditions because composition is not commutative.
 
-## Injections and Left Inverses
+## Theorem: Injections Have Left Inverses
 
 Let $A$ and $B$ be sets, and let
 
@@ -334,9 +332,9 @@ $$
 
 The left side means there is an injection $A\to B$. The right side means there is a surjection $B\to A$.
 
-## Monomorphisms
+## Definition: Monomorphism
 
-In this lecture's set-based language, a monomorphism is a function with a left inverse.
+A monomorphism is a function with a left inverse.
 
 For functions between sets:
 
@@ -346,9 +344,9 @@ f \text{ is monic}
 f \text{ is injective}.
 $$
 
-The word is useful mostly because it appears in later math and theoretical computer science contexts. For this course, remember the concrete meaning: monic means left-invertible, and for sets that is the same as injective.
+For functions between sets, monic means left-invertible, and this is equivalent to injective.
 
-## Surjections and Right Inverses
+## Theorem: Surjections and Right Inverses
 
 The matching statement for surjections is:
 
@@ -378,7 +376,7 @@ $$
 f^{-1}(\{b\})=\{a\in A\mid f(a)=b\}.
 $$
 
-For finite sets this is harmless. For arbitrary sets, this choice principle is not provable from the earlier set-theory axioms in the course.
+For finite sets this is harmless. For arbitrary sets, this choice principle is not provable from the earlier set-theory axioms.
 
 Once the needed choice principle is accepted, surjections are right-invertible and the right inverse is injective.
 
@@ -390,9 +388,9 @@ $$
 |B|\le |A|.
 $$
 
-## Epimorphisms
+## Definition: Epimorphism
 
-In this lecture's set-based language, an epimorphism is a function with a right inverse.
+An epimorphism is a function with a right inverse.
 
 For functions between sets, after accepting the needed choice principle:
 
@@ -402,9 +400,9 @@ f \text{ is epic}
 f \text{ is surjective}.
 $$
 
-Again, the course's practical meaning is the important part: epic means right-invertible, and for sets this matches surjectivity once the choice/trichotomy principle is available.
+For functions between sets, epic means right-invertible, and this matches surjectivity once the choice/trichotomy principle is available.
 
-## Isomorphisms
+## Definition: Isomorphism
 
 A function is an isomorphism if it is both monic and epic.
 
@@ -416,7 +414,7 @@ So in the category of sets:
 - epic corresponds to surjective
 - isomorphism corresponds to bijective
 
-## Trichotomy of Cardinality
+## Axiom: Trichotomy of Cardinality
 
 For ordinary finite numbers, any two numbers can be compared. Cardinality needs a set-theoretic version of that idea.
 
@@ -438,9 +436,9 @@ $$
 |B|\le |A|.
 $$
 
-The lecture emphasizes that this feels obvious if cardinality is supposed to measure size. But for arbitrary sets, this comparability is not something the earlier axioms can prove by themselves. It is accepted as a final axiom in the course and is closely related to the axiom of choice.
+This comparability principle is intuitive if cardinality is meant to measure size. For arbitrary sets, however, it is not provable from the earlier axioms by itself. It is closely related to the axiom of choice.
 
-## What To Do On Problems
+## Proof Templates
 
 When a problem asks for a cardinality statement, first translate it.
 
@@ -506,8 +504,6 @@ The order matters.
 
 For every $b\in B$, surjectivity says at least one preimage exists. To define a right inverse, you must pick one such preimage for every $b$. For finite sets this is routine. For arbitrary sets, this kind of simultaneous choice is a serious set-theoretic principle.
 
-## What You Should Be Able To Say Out Loud
+## Core Summary
 
-By the end of this lecture, you should be able to say:
-
-> Cardinality comparisons are function-existence statements. Finite sets are sets that can be bijected with some natural number $n=\{0,\dots,n-1\}$. Composition is order-sensitive, so left and right inverses are different. Injections have left inverses, and surjections have right inverses once the needed choice principle is available. The trichotomy axiom says arbitrary sets can be compared by cardinality, which lets the course treat cardinality as a genuine size ordering.
+> Cardinality comparisons are function-existence statements. Finite sets are sets that can be bijected with some natural number $n=\{0,\dots,n-1\}$. Composition is order-sensitive, so left and right inverses are different. Injections have left inverses, and surjections have right inverses once the needed choice principle is available. The trichotomy axiom says arbitrary sets can be compared by cardinality, making cardinality a genuine size ordering.

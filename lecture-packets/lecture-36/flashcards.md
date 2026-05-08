@@ -100,7 +100,7 @@ A: The graph might contain cycles.
 
 ---
 
-Q: State the main theorem from the lecture.
+Q: State the spanning tree theorem.
 
 A: Every connected graph contains a spanning tree.
 

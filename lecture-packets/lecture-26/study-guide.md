@@ -2,7 +2,7 @@
 
 ## Big Picture
 
-Cardinality is the formal language of "how large a set is." For finite sets this often agrees with ordinary counting, but the course defines cardinal comparison using functions rather than intuition.
+Cardinality is the formal language of "how large a set is." For finite sets this often agrees with ordinary counting, but cardinal comparison is defined using functions rather than intuition.
 
 The main idea is:
 
@@ -12,9 +12,7 @@ The main idea is:
 
 This makes size comparison meaningful even before every set has been assigned a numerical size.
 
-## Review Warm-Up: Functions and GCD
-
-Before defining cardinality, the lecture revisits what it means for something to be a function.
+## Function Check: GCD
 
 If $A$ and $B$ are sets, a function
 
@@ -46,9 +44,7 @@ The key question is not just whether the formula is familiar. The key question i
 
 Changing the codomain can change the answer. If the codomain is $\mathbb{N}^+$, then the input $(0,0)$ causes trouble, because $\gcd(0,0)=0$ and $0 \notin \mathbb{N}^+$.
 
-## Review Warm-Up: Linear Combinations
-
-The lecture also reviews a Bezout-style idea.
+## Theorem: Linear Combinations from Bezout's Identity
 
 For integers $m,n \in \mathbb{Z}$, the set of integer linear combinations of $m$ and $n$ is
 
@@ -78,7 +74,7 @@ $$
 
 is even. In that case, the set of linear combinations cannot be all of $\mathbb{Z}$.
 
-## Injective Functions
+## Definition: Injective Function
 
 Let $A$ and $B$ be sets, and let
 
@@ -108,7 +104,7 @@ An injection lets the elements of $A$ fit into $B$ without collisions.
 
 If there is an injection from $A$ to $B$, then $A$ is no larger than $B$.
 
-## Surjective Functions
+## Definition: Surjective Function
 
 Let $A$ and $B$ be sets, and let
 
@@ -132,7 +128,7 @@ A surjection from $A$ to $B$ means $A$ has enough elements to cover all of $B$.
 
 Several elements of $A$ may map to the same element of $B$. Surjectivity does not require uniqueness of preimages.
 
-## Bijective Functions
+## Definition: Bijective Function
 
 A function
 
@@ -148,7 +144,7 @@ Intuition:
 
 A bijection pairs the elements of $A$ and $B$ perfectly. This is why bijections are used to define equal cardinality.
 
-## Cardinality Comparison
+## Definitions: Cardinality Comparison
 
 Let $A$ and $B$ be sets.
 
@@ -298,11 +294,7 @@ By definition, this gives a single bijection from $A$ to $B$.
 
 These are not syntactically the same statement. A single bijection is immediately both an injection and a surjection, but building one bijection from separate comparison data is a theorem-level task.
 
-## Cantor-Schroeder-Bernstein
-
-The lecture ends with the Cantor-Schroeder-Bernstein theorem.
-
-The theorem says:
+## Theorem: Cantor-Schroeder-Bernstein
 
 If
 
@@ -356,8 +348,6 @@ Injective means no collisions. It does not require covering the whole codomain.
 
 No. If the notation asserts injectivity, then using it before proving injectivity is claiming something not yet established.
 
-## What You Should Be Able To Say Out Loud
+## Core Summary
 
-By the end of this lecture, you should be able to say:
-
-> We compare the sizes of sets using functions. To show $|A|\le |B|$, we build an injection from $A$ to $B$. To show $|A|\ge |B|$, we build a surjection from $A$ to $B$. To show $|A|=|B|$, we build a bijection. These symbols look like ordinary inequalities, but in this course they are definitions about the existence of functions.
+> Set sizes are compared using functions. To show $|A|\le |B|$, build an injection from $A$ to $B$. To show $|A|\ge |B|$, build a surjection from $A$ to $B$. To show $|A|=|B|$, build a bijection. These symbols look like ordinary inequalities, but they are definitions about the existence of functions.
