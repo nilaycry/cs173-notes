@@ -22,6 +22,12 @@ $$
 |V(T)| \geq 2.
 $$
 
+For each $n \in \mathbb{N}$, write
+
+$$
+I_n \coloneqq \{i \in \mathbb{N} \mid i \leq n\}.
+$$
+
 Since $T$ is connected and contains at least two vertices, there exists a path in $T$ of positive length.
 
 Now define
@@ -35,7 +41,7 @@ The set $L$ is nonempty. Also, since $T$ is finite, there are only finitely many
 Therefore $L$ has a maximum element. Choose a path
 
 $$
-p : \{0,1,\dots,k\} \to V(T)
+p : I_k \to V(T)
 $$
 
 such that $k = \max L$.
@@ -81,19 +87,23 @@ $$
 Because $p$ is a path, it is injective, so the vertices
 
 $$
-p(0),p(1),\dots,p(k)
+\{p(i) \mid i \in I_k\}
 $$
 
-are all distinct.
+are pairwise distinct. Equivalently,
+
+$$
+(\forall r,s \in I_k)(r \neq s \Rightarrow p(r) \neq p(s)).
+$$
 
 We now consider two cases.
 
-### Case 1: $w \notin \{p(0),p(1),\dots,p(k)\}$
+### Case 1: $(\forall i \in I_k)(w \neq p(i))$
 
 Define
 
 $$
-q : \{0,1,\dots,k+1\} \to V(T)
+q : I_{k+1} \to V(T)
 $$
 
 by
@@ -102,7 +112,7 @@ $$
 q(0) \coloneqq w
 \quad\text{and}\quad
 q(i+1) \coloneqq p(i)
-\text{ for every } i \in \{0,1,\dots,k\}.
+\text{ for every } i \in I_k.
 $$
 
 Then $q$ is a walk, because
@@ -116,14 +126,27 @@ Then $q$ is a walk, because
 
 Also, $q$ is injective:
 
-- $q(1),q(2),\dots,q(k+1)$ are distinct because $p(0),p(1),\dots,p(k)$ are distinct
-- $q(0)=w$ is different from all of $q(1),q(2),\dots,q(k+1)$ by the assumption of this case
+- if $r,s \in I_{k+1} \setminus \{0\}$ and $r \neq s$, then
+  $$
+  q(r)=p(r-1)
+  \quad\text{and}\quad
+  q(s)=p(s-1),
+  $$
+  and since $r-1 \neq s-1$, injectivity of $p$ gives
+  $$
+  q(r) \neq q(s)
+  $$
+- if $r \in I_{k+1} \setminus \{0\}$, then
+  $$
+  q(0)=w \neq p(r-1)=q(r)
+  $$
+  by the assumption of this case
 
 So $q$ is a path of length $k+1$ in $T$.
 
 This contradicts the maximality of $k$.
 
-### Case 2: $w \in \{p(0),p(1),\dots,p(k)\}$
+### Case 2: $(\exists i \in I_k)(w = p(i))$
 
 Since $w \in N_T(p(0))$, we have
 
@@ -146,15 +169,15 @@ Now consider the subpath of $p$ from $p(0)$ to $p(i)$.
 Because $p$ is a path, the vertices
 
 $$
-p(0),p(1),\dots,p(i)
+\{p(j) \mid j \in I_i\}
 $$
 
-are distinct.
+are pairwise distinct.
 
 So the walk
 
 $$
-c : \{0,1,\dots,i\} \to V(T)
+c : I_i \to V(T)
 $$
 
 defined by
@@ -173,7 +196,7 @@ is a cycle:
   - $\{p(i-1),p(i)\} \in E(T)$ since $p$ is a path
   - $\{p(i),p(0)\} = \{w,p(0)\} \in E(T)$
 - the first and last vertices are both $p(0)$
-- no other repetition occurs, because $p(0),p(1),\dots,p(i)$ are distinct
+- no other repetition occurs, because $(\forall r,s \in I_i)(r \neq s \Rightarrow p(r) \neq p(s))$
 
 Thus $T$ contains a cycle.
 
