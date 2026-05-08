@@ -9,6 +9,7 @@ import {
   getLectureMarkdown,
   getLecturePacket,
 } from "@/lib/lectures";
+import { AnswerReveal } from "./AnswerReveal";
 
 const BG = "#f7f4ef";
 const FG = "#1c1917";
@@ -32,16 +33,49 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   };
 }
 
-function addProblemAnchors(markdown: string) {
-  return markdown.replace(/^### Problem\s+(\d+)(?::\s*(.+))?$/gm, (_match, number, title) => {
+function preparePracticeMarkdown(markdown: string) {
+  const withAnchors = markdown.replace(/^### Problem\s+(\d+)(?::\s*(.+))?$/gm, (_match, number, title) => {
     const label = title ? `Problem ${number}: ${title}` : `Problem ${number}`;
     return `<h3 id="problem-${number}">${label}</h3>`;
   });
+
+  const lines = withAnchors.split(/\r?\n/);
+  const prepared: string[] = [];
+  let inAnswer = false;
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+    const startsNextSection =
+      trimmed.startsWith('<h3 id="problem-') || /^##\s+/.test(trimmed);
+
+    if (inAnswer && startsNextSection) {
+      prepared.push("</AnswerReveal>", "");
+      inAnswer = false;
+    }
+
+    if (/^(Answer|Solution):\s*$/.test(trimmed)) {
+      if (inAnswer) {
+        prepared.push("</AnswerReveal>", "");
+      }
+      prepared.push("<AnswerReveal>", "");
+      inAnswer = true;
+      continue;
+    }
+
+    prepared.push(line);
+  }
+
+  if (inAnswer) {
+    prepared.push("</AnswerReveal>");
+  }
+
+  return prepared.join("\n");
 }
 
 async function renderPractice(source: string) {
   const { content } = await compileMDX({
-    source: addProblemAnchors(source),
+    source: preparePracticeMarkdown(source),
+    components: { AnswerReveal },
     options: {
       mdxOptions: {
         remarkPlugins: [remarkMath],
