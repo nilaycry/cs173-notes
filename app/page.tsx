@@ -70,23 +70,42 @@ export default function HomePage() {
             >
               CS 173
             </span>
-            <Link
-              href="/logic"
-              className="nav-pill"
-              style={{
-                color: FAINT,
-                textDecoration: "none",
-                fontSize: 12,
-                fontWeight: 500,
-                letterSpacing: "0.06em",
-                border: "1px solid rgba(0,0,0,0.06)",
-                borderRadius: 20,
-                padding: "5px 14px",
-                transition: "all 0.2s",
-              }}
-            >
-              start with logic
-            </Link>
+            <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+              <Link
+                href="/lecture-review"
+                className="nav-pill"
+                style={{
+                  color: FAINT,
+                  textDecoration: "none",
+                  fontSize: 12,
+                  fontWeight: 500,
+                  letterSpacing: "0.06em",
+                  border: "1px solid rgba(0,0,0,0.06)",
+                  borderRadius: 20,
+                  padding: "5px 14px",
+                  transition: "all 0.2s",
+                }}
+              >
+                lecture review
+              </Link>
+              <Link
+                href="/logic"
+                className="nav-pill"
+                style={{
+                  color: FAINT,
+                  textDecoration: "none",
+                  fontSize: 12,
+                  fontWeight: 500,
+                  letterSpacing: "0.06em",
+                  border: "1px solid rgba(0,0,0,0.06)",
+                  borderRadius: 20,
+                  padding: "5px 14px",
+                  transition: "all 0.2s",
+                }}
+              >
+                start with logic
+              </Link>
+            </div>
           </nav>
         </div>
 
@@ -436,6 +455,50 @@ export default function HomePage() {
                 }}
               >
                 {logicNotes.length} pages
+              </span>
+            </div>
+          </Link>
+
+          <Link href="/lecture-review" style={{ textDecoration: "none", color: "inherit" }}>
+            <div
+              className="cs-note-row"
+              style={{
+                display: "flex",
+                alignItems: "baseline",
+                justifyContent: "space-between",
+                padding: "16px 0",
+                borderBottom: `1px solid ${BORDER}`,
+                cursor: "pointer",
+              }}
+            >
+              <div>
+                <span
+                  style={{
+                    fontSize: 15,
+                    fontWeight: 400,
+                    color: FG,
+                    display: "block",
+                    marginBottom: 4,
+                }}
+              >
+                  lecture review
+                </span>
+                <span style={{ fontSize: 13, color: FAINT, lineHeight: 1.5 }}>
+                  processed recordings with cleaned study guides, flashcards,
+                  multiple-choice checks, and practice prompts
+                </span>
+              </div>
+              <span
+                style={{
+                  fontSize: 11,
+                  color: FAINT,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.08em",
+                  flexShrink: 0,
+                  marginLeft: 24,
+                }}
+              >
+                review
               </span>
             </div>
           </Link>

@@ -1,0 +1,157 @@
+---
+title: "Spanning Trees"
+description: "Why every connected graph contains a tree that reaches all of its vertices."
+order: 8
+noteType: "main"
+status: "draft"
+---
+
+## The Goal
+
+A connected graph may have more edges than it needs for connectedness.
+
+A spanning tree is what remains after removing the redundant edges while still keeping every vertex reachable.
+
+## Definition
+
+Let $G$ be a graph. A subgraph $T$ of $G$ is a spanning tree of $G$ if:
+
+- $V(T)=V(G)$
+- $T$ is a tree
+
+So a spanning tree contains all the vertices of $G$, but usually not all the edges.
+
+## Example Intuition
+
+Suppose $G$ is connected and contains a cycle.
+
+An edge on that cycle is redundant for connectedness. If we remove one edge from the cycle, the endpoints of that edge can still reach each other by going the other way around the cycle.
+
+So removing an edge from a cycle can destroy the cycle without disconnecting the graph.
+
+Repeating this process eventually leaves a connected graph with no cycles. That graph is a tree, and since no vertices were removed, it is a spanning tree of the original graph.
+
+## Cycle Edges Are Safe to Remove
+
+We will use the following fact.
+
+If $G$ is connected, $C$ is a cycle in $G$, and $e$ is an edge of $C$, then $G-e$ is connected.
+
+The reason is that the rest of the cycle gives an alternate path between the endpoints of $e$.
+
+More explicitly, any path that used $e$ can be rerouted through the remaining edges of $C$.
+
+## Theorem
+
+Every connected graph contains a spanning tree.
+
+## Proof Strategy
+
+We prove the theorem by induction on the number of edges.
+
+The useful smaller graph will be obtained by removing an edge from a cycle.
+
+This is better than removing a vertex, because removing an edge keeps the same vertex set. If the smaller graph has a spanning tree, that tree still spans the original graph.
+
+## Proof
+
+We prove
+
+$$
+(\forall n \in \mathbb{N})(\forall G)
+\bigl((G \text{ is connected} \wedge |E(G)|=n)
+\Rightarrow G \text{ has a spanning tree}\bigr)
+$$
+
+by induction on $n$.
+
+### Base Case
+
+Let $G$ be connected and suppose $|E(G)|=0$.
+
+Since $G$ is connected and has no edges, it can have at most one vertex.
+
+Thus $G$ has no cycles, so $G$ is a tree. Since $G$ has the same vertex set as itself, $G$ is a spanning tree of $G$.
+
+### Inductive Hypothesis
+
+Fix $k \in \mathbb{N}$ and assume that every connected graph with $k$ edges has a spanning tree.
+
+### Inductive Step
+
+Let $G$ be a connected graph with
+
+$$
+|E(G)|=k+1.
+$$
+
+There are two cases.
+
+### Case 1: $G$ has no cycles.
+
+Then $G$ is connected and acyclic, so $G$ is a tree.
+
+Therefore $G$ is a spanning tree of itself.
+
+### Case 2: $G$ has a cycle.
+
+Let $C$ be a cycle in $G$, and choose an edge
+
+$$
+e \in E(C).
+$$
+
+Let
+
+$$
+H \coloneqq G-e.
+$$
+
+By the cycle-removal fact, $H$ is connected.
+
+Also,
+
+$$
+|E(H)|=k.
+$$
+
+So the inductive hypothesis applies to $H$. Hence $H$ has a spanning tree; call it $T$.
+
+Since $H$ was formed from $G$ by removing only an edge, we have
+
+$$
+V(H)=V(G).
+$$
+
+Since $T$ spans $H$,
+
+$$
+V(T)=V(H)=V(G).
+$$
+
+Also, $T$ is a tree, and every edge of $T$ is an edge of $H$, hence also an edge of $G$.
+
+Therefore $T$ is a spanning tree of $G$.
+
+This completes the inductive step.
+
+Therefore every connected graph contains a spanning tree.
+
+## Why the Edge Choice Matters
+
+In the inductive step, we cannot remove an arbitrary edge.
+
+Some edges are cut edges. Removing a cut edge disconnects the graph, so the inductive hypothesis would no longer apply.
+
+The safe choice is an edge that lies on a cycle.
+
+## Quick Test
+
+If you are given a connected graph and asked to find a spanning tree:
+
+1. Look for a cycle.
+2. Remove one edge from that cycle.
+3. Repeat until no cycles remain.
+4. The remaining graph is connected, acyclic, and has all the original vertices.
+
+So the remaining graph is a spanning tree.
