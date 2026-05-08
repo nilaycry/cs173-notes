@@ -10,3 +10,5 @@ tmp
 .env.test.local
 .env.production.local
 desktop.ini
+
+.vercel
