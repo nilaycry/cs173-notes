@@ -26,6 +26,11 @@ For a new topic, the default deliverable is:
 
 Use interactive material only if a topic clearly benefits from it.
 
+For lecture-recording work, use the lecture-packet workflow instead of the
+normal `notes/` workflow. Raw videos live outside this repo in
+`C:\dev\notebook\lecture-ingest\173`; published packet markdown lives in
+`lecture-packets/lecture-N/`.
+
 ## Writing priorities
 
 - teach the mathematical content
@@ -35,6 +40,10 @@ Use interactive material only if a topic clearly benefits from it.
 - avoid both textbook filler and diary-like commentary
 - prefer formal statements and explicit definitions over motivational setup
 - write enough derivation for the note to be used directly for study and exam review
+- make lecture-derived packets feel like primary course notes, not transcript
+  summaries
+- judge in-class problem discussions by whether they teach reusable technique;
+  include them only when they improve the standalone resource
 
 ## Strong defaults
 
@@ -62,6 +71,14 @@ Use interactive material only if a topic clearly benefits from it.
 - Do not lean on conversational scaffolding when a direct statement will do.
 - Do not leave a proof at the level of summary if the course expects a derivation.
 - Do not use informal ellipsis-style sequence notation inside a formal proof when explicit notation can be defined instead.
+- Do not write visible notes as if they came from a recording. Avoid phrases
+  such as "the lecture states", "the professor says", "from the transcript",
+  "generated from a lecture", or "use this wording".
+- Do not make formal statements feel bureaucratic. Prefer topic headings like
+  `## Finite Sets`, then put the formal label inside the prose block:
+  `> **Definition.** ...`, `> **Theorem.** ...`, `> **Proposition.** ...`,
+  or `> **Axiom.** ...`.
+- Use `## Core Summary` instead of "What You Should Be Able To Say Out Loud".
 
 ## Course-specific priorities
 
@@ -73,6 +90,66 @@ This course changes character as it moves:
 - later units ask for more structural proof language
 
 Good notes in this project should make those shifts visible.
+
+## Lecture Packet Workflow
+
+When the user adds a lecture recording, process it as a polished replacement
+resource, not as a transcript cleanup.
+
+Raw-video workflow:
+
+1. Look in `C:\dev\notebook\lecture-ingest\173\incoming`.
+2. Move the video to `C:\dev\notebook\lecture-ingest\173\lecture-N\lecture-N.mp4`.
+3. Create work files under `C:\dev\notebook\lecture-ingest\173\lecture-N\work`.
+4. Sample frames/contact sheets and use them to correct transcript/math errors.
+5. Transcribe locally when possible, writing progressively so interruptions do
+   not lose all progress.
+6. Publish only markdown into `lecture-packets/lecture-N/`; keep raw videos out
+   of Git.
+
+Published packet files:
+
+- `study-guide.md`
+- `flashcards.md`
+- `practice.md`
+- `transcript.md` as archival source material
+
+Published study-guide shape:
+
+- `# Lecture N: Topic`
+- `## Big Picture`
+- topic sections in the order a student should learn them
+- formal statements as quote blocks, for example `> **Definition.** ...`
+- examples and proof sketches with explicit domains and definitions
+- `## Common Confusions` when useful
+- `## Core Summary`
+
+Published flashcards should include:
+
+- definition cards
+- theorem/proof-move cards
+- multiple-choice questions that test distinctions and traps, not only
+  vocabulary
+
+Published practice should include:
+
+- focused problems aligned with the packet
+- `Answer:` or `Solution:` blocks, because the site hides these by default with
+  a show-answer button
+
+Quality bar for lecture packets:
+
+- Do not treat transcript text as final prose.
+- Do not include process notes, transcript caveats, or pipeline commentary.
+- Cross-check exact math definitions against `sources/` when relevant.
+- Include domain statements where they matter, such as
+  `n \in \mathbb{N}^+`, `x,y \in \mathbb{Z}`, `x,y \in V(G)`, and
+  `f:A\to B`.
+- Correct obvious ASR errors in mathematical terms.
+- Prefer a smaller, high-signal packet over a giant summary.
+- After editing, run `npm run build`.
+- If publishing is requested or expected, commit intentionally and push to
+  `main`.
 
 ## Graph-unit specific defaults
 
