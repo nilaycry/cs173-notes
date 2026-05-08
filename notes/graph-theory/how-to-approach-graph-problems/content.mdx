@@ -1,0 +1,223 @@
+---
+title: "How to Approach Graph Problems"
+description: "A practical guide to the main proof patterns used in the first graph theory section."
+order: 10
+noteType: "writing-companion"
+status: "draft"
+---
+
+This note collects the main proof patterns that keep showing up in the first graph theory section.
+
+It is not a list of theorems. It is a guide to how to start a graph proof when the statement is still sitting there and nothing has happened yet.
+
+## Step 1: Identify the Objects
+
+Before trying to prove anything, ask what kind of object the statement is talking about.
+
+Common possibilities in this unit are:
+
+- a graph $G$
+- a tree $T$
+- a path $p : k+1 \to V(G)$
+- a vertex $v \in V(G)$
+- a set built from the graph, such as $N_G(v)$ or $I_G(v)$
+
+The proof usually depends on the exact object.
+
+For example:
+
+- if the statement is about a tree, then connectedness and acyclicity are both available
+- if the statement is about degree, then cardinality is probably involved
+- if the statement is about a path, then injectivity is available
+
+## Step 2: Expand the Key Definition
+
+Most early graph proofs begin by unpacking a definition.
+
+Examples:
+
+- $G$ is connected means
+  $$
+  (\forall v,w \in V(G))(v \neq w \Rightarrow (\exists k \in \mathbb{N})(\exists p : k+1 \to V(G))(p \text{ is a path from } v \text{ to } w))
+  $$
+- $T$ is a tree means
+  $$
+  T \text{ is connected and acyclic}
+  $$
+- $v$ is a leaf means
+  $$
+  \deg_T(v)=1
+  $$
+- $p$ is a path means
+  $$
+  p \text{ is a walk and } p \text{ is injective}
+  $$
+
+If the proof feels stuck, the next useful move is often: write the definition again and ask what it gives you directly.
+
+## Step 3: Match the Statement to a Standard Play
+
+The first graph theory problems in this course are not random. They tend to use the same few moves.
+
+### Play 1: Connectedness Suggests Contrapositive and Components
+
+If the conclusion says a graph is connected, a direct proof is often awkward.
+
+Try the contrapositive instead:
+
+- assume the graph is disconnected
+- break it into components
+- use the component structure to force a contradiction
+
+This is the right approach for statements like:
+
+- high minimum degree implies connectedness
+
+Why this works:
+
+- if a graph is disconnected, vertices in one component cannot send edges outside that component
+- that immediately gives an upper bound on degree
+
+So if the hypothesis gives a lower bound on every degree, those two facts are likely meant to collide.
+
+### Play 2: Two Different Paths in a Tree Usually Produce a Cycle
+
+If the statement says a path is unique in a tree, the usual strategy is:
+
+- existence comes from connectedness
+- uniqueness is proved by contradiction
+
+Assume there are two distinct paths between the same vertices. Then compare them until they split apart and later meet again. The pieces between those meeting points form a cycle, which contradicts the fact that a tree is acyclic.
+
+This is the standard strategy for:
+
+- uniqueness of paths in trees
+
+### Play 3: A Longest Path Often Reveals a Leaf
+
+If the statement says a tree has a leaf, the usual move is:
+
+- choose a path of maximum length
+- look at one endpoint
+- prove that endpoint must have degree $1$
+
+Why this works:
+
+- if the endpoint had another neighbor outside the path, the path could be extended
+- if it had another neighbor already on the path, that would create a cycle
+
+So longest-path arguments are usually endpoint arguments.
+
+### Play 4: Induction on Trees Usually Removes a Leaf
+
+If the statement counts vertices and edges in a tree, induction on $|V(T)|$ is often the right choice.
+
+But the key question is not just what to induct on.
+
+The key question is:
+
+- what smaller graph should be built?
+
+For trees, the answer is usually:
+
+- remove a leaf and its unique incident edge
+
+That works because:
+
+- the vertex count drops by $1$
+- the edge count drops by $1$
+- the result is still a tree
+
+This is the standard strategy for:
+
+- proving $|V(T)| = |E(T)| + 1$ for nonempty trees
+
+### Play 5: Degree Statements Usually Turn into Counting Statements
+
+When a statement involves degree, stop thinking only about pictures.
+
+Degree is defined by
+
+$$
+\deg_G(v) = |I_G(v)|.
+$$
+
+So degree is already a cardinality.
+
+That means many degree proofs become:
+
+- partition a set
+- compare cardinalities
+- sum over vertices
+- apply parity
+
+This is the right perspective for:
+
+- the degree-sum theorem
+- the even-number-of-odd-degree-vertices theorem
+
+## Step 4: Ask What Must Be Preserved
+
+When you modify a graph inside a proof, always ask:
+
+- what property do I still need afterwards?
+
+Examples:
+
+- if you remove a vertex from a tree proof, you must check that the remaining graph is still a tree
+- if you splice together parts of two paths, you must check that the result is really a walk, circuit, or cycle
+- if you move from disconnectedness to components, you must check exactly what edges are no longer allowed
+
+Many failed graph proofs come from performing the right-looking operation without proving that the new graph still satisfies the hypotheses.
+
+## Step 5: Use the Earlier Theorems
+
+Problem Set 9 is designed so the earlier problems become tools for the later ones.
+
+That means when starting a later proof, you should actively ask:
+
+- do I already know a theorem about paths in trees?
+- do I already know a theorem about leaves?
+- do I already know a theorem relating degree and edge count?
+
+For this section, the main reusable facts are:
+
+- every tree has a unique path between any two vertices
+- every tree with at least two vertices has a leaf
+- every nonempty tree satisfies $|V(T)| = |E(T)| + 1$
+- $\sum_{v \in V(G)} \deg_G(v) = 2|E(G)|$
+- every graph has an even number of odd-degree vertices
+
+## A Practical Checklist
+
+Before writing a proof, go through these questions.
+
+1. What is the main object: graph, tree, path, vertex, or set?
+2. What is the key definition I should expand first?
+3. Is this more natural by direct proof, contradiction, contrapositive, or induction?
+4. If I am modifying the graph, what property must be preserved?
+5. Is there an earlier theorem that already gives the structural move I need?
+
+## What to Avoid
+
+These are the most common weak starts in this unit:
+
+- arguing from the picture alone instead of from the definition
+- using an example when the statement is universal
+- removing an arbitrary vertex when the proof really needs a leaf
+- proving existence and forgetting uniqueness
+- saying a contradiction “forms a cycle” without defining the walk that is supposed to be the cycle
+
+## Writing the Proof
+
+Once the strategy is clear, the proof should still be written carefully.
+
+In this section that usually means:
+
+- state the theorem formally
+- choose the method explicitly
+- define any new graph or path you introduce
+- prove that the new object has the required properties
+- only then use the contradiction or the inductive hypothesis
+
+That is the level of explicitness that makes graph proofs readable and checkable.
