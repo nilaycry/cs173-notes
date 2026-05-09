@@ -87,14 +87,15 @@ Use this workflow:
 1. List all lecture packets that belong to the section.
 2. Read the packet study guides, flashcards, and practice problems for coverage and emphasis.
 3. Cross-check exact definitions and theorem statements against `sources/`, especially current problem sets, current course notes, and past lecture notes.
-4. Compare the lecture-derived material against the existing `notes/<unit>/` pages.
-5. Identify missing definitions, theorem statements, proof patterns, examples, and common confusions.
-6. Restructure the unit order so prerequisite definitions come before proof-heavy notes.
-7. Promote lecture-only material into durable notes when it belongs in the official section.
-8. Rewrite notes in formal course style, using blocks such as `> **Definition.**`, `> **Theorem.**`, `> **Lemma.**`, and `> **Proposition.**`.
-9. Add or revise problem-guide pages when problem sets reveal a proof pattern students must practice.
-10. Update unit landing-page copy and note-type labels if the public sequence changed.
-11. Run `npm run build`.
-12. Commit and push the completed synthesis once the build passes.
+4. Cross-check notation conventions against the source material. If the course writes walk domains as `k+1` and edge checks as `i<k`, preserve that style instead of switching to expanded-list notation for finite domains.
+5. Compare the lecture-derived material against the existing `notes/<unit>/` pages.
+6. Identify missing definitions, theorem statements, proof patterns, examples, and common confusions.
+7. Restructure the unit order so prerequisite definitions come before proof-heavy notes.
+8. Promote lecture-only material into durable notes when it belongs in the official section.
+9. Rewrite notes in formal course style, using blocks such as `> **Definition.**`, `> **Theorem.**`, `> **Lemma.**`, and `> **Proposition.**`.
+10. Add or revise problem-guide pages when problem sets reveal a proof pattern students must practice.
+11. Update unit landing-page copy and note-type labels if the public sequence changed.
+12. Run `npm run build`.
+13. Commit and push the completed synthesis once the build passes.
 
 The goal is a section resource that can stand on its own after the packet work is done: lecture coverage, source definitions, problem-set expectations, and proof-writing guidance should all agree.

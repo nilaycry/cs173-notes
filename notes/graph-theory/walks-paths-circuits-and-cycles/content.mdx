@@ -22,12 +22,13 @@ Movement through a graph is represented by functions whose domains are finite in
 > \{w(i),w(i+1)\}\in E(G).
 > $$
 
-The domain $k+1$ is the set $\{0,1,\dots,k\}$. The walk starts at $w(0)$ and ends at $w(k)$.
+The notation $k+1$ denotes the initial segment of natural numbers with $k+1$ elements. The walk starts at $w(0)$ and ends at $w(k)$.
 
 The length is $k$, not $k+1$, because there are $k$ consecutive pairs:
 
 $$
-(w(0),w(1)),\ (w(1),w(2)),\dots,\ (w(k-1),w(k)).
+\{w(i),w(i+1)\}
+\quad\text{for each }i<k.
 $$
 
 Repeated vertices are allowed in a walk.

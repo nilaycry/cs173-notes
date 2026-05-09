@@ -29,14 +29,14 @@ $$
 So the broad set of possible degree values is
 
 $$
-D\coloneqq \{0,1,\dots,n-1\}.
+D\coloneqq \{\, d\in\mathbb{N}\mid d\leq n-1\,\}.
 $$
 
 This set has $n$ elements, the same number as $V(G)$. Pigeonhole cannot be applied directly to a function $V(G)\to D$.
 
 The useful observation is that the actual degree values cannot include both extremes.
 
-> **Lemma.** If $G$ has an isolated vertex, then $G$ has no universal vertex.
+> **Lemma.** If $G$ has a vertex of degree $0$, then $G$ has no vertex of degree $n-1$.
 
 This means that a degree value of $0$ and a degree value of $n-1$ cannot both occur.
 
@@ -67,7 +67,7 @@ By definition of $B$, this function is onto $B$. To prove that two vertices have
 Since every degree is between $0$ and $n-1$, we have
 
 $$
-B\subseteq \{0,1,\dots,n-1\}.
+B\subseteq \{\, d\in\mathbb{N}\mid d\leq n-1\,\}.
 $$
 
 The values $0$ and $n-1$ cannot both belong to $B$. Therefore $B$ is a proper subset of a set with $n$ elements, so
@@ -101,7 +101,7 @@ This proves the theorem.
 Using
 
 $$
-f:V(G)\to \{0,1,\dots,n-1\}
+f:V(G)\to \{\, d\in\mathbb{N}\mid d\leq n-1\,\}
 $$
 
 does not immediately prove the theorem, because the domain and codomain both have size $n$.
@@ -110,4 +110,4 @@ The proof needs the smaller set of actual degree values $B$. The impossible-pair
 
 ## Core Summary
 
-The degree function sends vertices to numbers. The broad range $0,\dots,n-1$ is too large for pigeonhole, but the graph cannot realize both degree $0$ and degree $n-1$. Therefore the actual degree values fit into at most $n-1$ slots, so two vertices must share a degree.
+The degree function sends vertices to numbers. The broad set of values $d\in\mathbb{N}$ with $d\leq n-1$ is too large for pigeonhole, but the graph cannot realize both degree $0$ and degree $n-1$. Therefore the actual degree values fit into at most $n-1$ slots, so two vertices must share a degree.

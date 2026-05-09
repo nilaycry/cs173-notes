@@ -17,15 +17,15 @@ Existence comes from connectedness. Uniqueness comes from acyclicity: two differ
 Let
 
 $$
-w : \{0,1,\dots,k\} \to V(T)
+w : k+1 \to V(T)
 $$
 
 be a walk.
 
-If $0 \leq a \leq b \leq k$, define the subwalk
+If $a,b\in k+1$ with $a\leq b$, define the subwalk
 
 $$
-w[a,b] : \{0,1,\dots,b-a\} \to V(T)
+w[a,b] : (b-a)+1 \to V(T)
 $$
 
 by
@@ -37,13 +37,13 @@ $$
 If
 
 $$
-\alpha : \{0,1,\dots,m\} \to V(T)
+\alpha : m+1 \to V(T)
 $$
 
 is a walk, define its reverse walk
 
 $$
-\alpha^{\mathrm{rev}} : \{0,1,\dots,m\} \to V(T)
+\alpha^{\mathrm{rev}} : m+1 \to V(T)
 $$
 
 by
@@ -55,15 +55,15 @@ $$
 If
 
 $$
-\alpha : \{0,1,\dots,m\} \to V(T)
+\alpha : m+1 \to V(T)
 \quad\text{and}\quad
-\beta : \{0,1,\dots,n\} \to V(T)
+\beta : n+1 \to V(T)
 $$
 
 satisfy $\alpha(m)=\beta(0)$, define the concatenation
 
 $$
-\alpha * \beta : \{0,1,\dots,m+n\} \to V(T)
+\alpha * \beta : (m+n)+1 \to V(T)
 $$
 
 by
@@ -103,7 +103,7 @@ This is a path of length $0$ from $u$ to $u$.
 Now let
 
 $$
-q : \{0,1,\dots,n\} \to V(T)
+q : n+1 \to V(T)
 $$
 
 be any path from $u$ to $u$. Then
@@ -129,13 +129,13 @@ Assume, for contradiction, that there are two distinct paths from $u$ to $v$.
 Let
 
 $$
-p : \{0,1,\dots,m\} \to V(T)
+p : m+1 \to V(T)
 $$
 
 and
 
 $$
-q : \{0,1,\dots,n\} \to V(T)
+q : n+1 \to V(T)
 $$
 
 be paths such that
