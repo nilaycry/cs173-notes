@@ -1,0 +1,139 @@
+---
+title: "Infinite Cardinality"
+description: "Finite versus infinite sets, Hilbert-hotel behavior, and the basic countably infinite examples."
+order: 9
+noteType: "main"
+status: "draft"
+---
+
+Finite cardinality agrees with ordinary counting. Infinite cardinality does not. Infinite sets can have the same cardinality as proper subsets.
+
+## Finite and Infinite Sets
+
+> **Definition.** A set $F$ is finite if there exists $n\in\mathbb{N}$ such that
+>
+> $$
+> |F|=|n|.
+> $$
+
+> **Definition.** A set $X$ is infinite if it is not finite.
+
+Equivalently, $X$ is infinite if
+
+$$
+(\forall n\in\mathbb{N})(|X|\neq |n|).
+$$
+
+## Natural Numbers Are Infinite
+
+> **Theorem.** The set $\mathbb{N}$ is infinite.
+
+One proof is by contradiction. If $\mathbb{N}$ were finite, there would be a bijection
+
+$$
+f:n\to\mathbb{N}
+$$
+
+for some $n\in\mathbb{N}$. Since $f$ lists only finitely many natural numbers, one can form a natural number larger than every value in the list, contradicting surjectivity.
+
+## Hilbert-Hotel Behavior
+
+The set $\mathbb{N}$ has the same cardinality as the positive natural numbers:
+
+> **Theorem.**
+>
+> $$
+> |\mathbb{N}|=|\mathbb{N}^+|.
+> $$
+
+**Proof.** Define
+
+$$
+s:\mathbb{N}\to\mathbb{N}^+
+$$
+
+by
+
+$$
+s(n)\coloneqq n+1.
+$$
+
+This function is bijective. Therefore $|\mathbb{N}|=|\mathbb{N}^+|$.
+
+This is impossible for finite sets: a finite set cannot have the same cardinality as a proper subset.
+
+## Integers Are Countably Infinite
+
+> **Theorem.**
+>
+> $$
+> |\mathbb{Z}|=|\mathbb{N}|.
+> $$
+
+One way to prove this is to construct injections both ways and apply Cantor-Schroder-Bernstein.
+
+The inclusion
+
+$$
+\mathbb{N}\to\mathbb{Z}
+$$
+
+is injective. In the other direction, define
+
+$$
+g:\mathbb{Z}\to\mathbb{N}
+$$
+
+by
+
+$$
+g(z)\coloneqq
+\begin{cases}
+2z, & z\geq 0,\\
+2|z|-1, & z<0.
+\end{cases}
+$$
+
+This function is injective. Therefore $|\mathbb{Z}|=|\mathbb{N}|$.
+
+## Pairs of Naturals Are Countable
+
+> **Theorem.**
+>
+> $$
+> |\mathbb{N}\times\mathbb{N}|=|\mathbb{N}|.
+> $$
+
+The lecture proof uses injections both ways. The diagonal map
+
+$$
+n\mapsto (n,n)
+$$
+
+injects $\mathbb{N}$ into $\mathbb{N}\times\mathbb{N}$.
+
+An injection in the other direction is
+
+$$
+(a,b)\mapsto 2^a3^b.
+$$
+
+Unique prime factorization makes this map injective. Cantor-Schroder-Bernstein then gives the equality of cardinalities.
+
+## Rational Numbers Are Countable
+
+> **Theorem.** The set $\mathbb{Q}$ is countable.
+
+Each rational number can be represented by a pair of integers:
+
+$$
+\frac{p}{q}
+\quad\text{with}\quad
+p\in\mathbb{Z},\ q\in\mathbb{Z}\setminus\{0\}.
+$$
+
+The set of integer pairs is countable, and a set that can be organized by countable data is countable. Duplicate representations such as $1/2=2/4$ do not hurt countability, because countability only requires an injection into $\mathbb{N}$ or a controlled enumeration.
+
+## Core Summary
+
+Infinite cardinality is measured by functions, not by finite intuition. The sets $\mathbb{N}$, $\mathbb{N}^+$, $\mathbb{Z}$, $\mathbb{N}\times\mathbb{N}$, and $\mathbb{Q}$ all have the same countably infinite size.

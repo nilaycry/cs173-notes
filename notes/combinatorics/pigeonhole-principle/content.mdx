@@ -1,0 +1,98 @@
+---
+title: "The Pigeonhole Principle"
+description: "The function form of pigeonhole, the quantitative finite version, and the proof habit of choosing the right codomain."
+order: 4
+noteType: "main"
+status: "draft"
+---
+
+The pigeonhole principle is a statement about functions. It turns a size comparison into a forced collision or a missing output.
+
+## Function Form
+
+> **Theorem.** Let $A$ and $B$ be sets.
+>
+> If $|A|>|B|$, then every function $f:A\to B$ is not injective.
+>
+> If $|A|<|B|$, then every function $f:A\to B$ is not surjective.
+
+The first part is the version used most often: if too many inputs are assigned to too few outputs, two inputs share an output.
+
+## What Non-Injectivity Gives
+
+> **Definition.** A function $f:A\to B$ is not injective if
+>
+> $$
+> (\exists a_1,a_2\in A)(a_1\neq a_2\wedge f(a_1)=f(a_2)).
+> $$
+
+This is why pigeonhole proves statements of the form "there exist two distinct objects with the same value."
+
+## Quantitative Version
+
+> **Theorem.** Let $A$ and $B$ be finite sets with $|A|=n$, $|B|=k$, and $n,k\in\mathbb{N}^+$. For every function $f:A\to B$, there exists $b\in B$ such that
+>
+> $$
+> |\{\,a\in A\mid f(a)=b\,\}|\geq \left\lceil\frac{n}{k}\right\rceil.
+> $$
+
+The set
+
+$$
+\{\,a\in A\mid f(a)=b\,\}
+$$
+
+is the fiber over $b$. The quantitative theorem says that at least one fiber must be large.
+
+## How to Write a Pigeonhole Proof
+
+A complete pigeonhole proof should identify:
+
+1. the domain $A$, the objects being assigned;
+2. the codomain $B$, the possible labels or buckets;
+3. the function $f:A\to B$;
+4. the size comparison $|A|>|B|$;
+5. the conclusion from non-injectivity;
+6. the translation back to the original problem.
+
+The codomain is often the hard part. It must contain every possible output of the function, but it should be small enough for pigeonhole to apply.
+
+## Example: Same Residue
+
+> **Proposition.** There exist $a,b\in\mathbb{N}$ such that $256<a<b$ and
+>
+> $$
+> 7a\equiv 7b\pmod{512}.
+> $$
+
+**Proof.** Let
+
+$$
+A\coloneqq \{\,x\in\mathbb{N}\mid 257\leq x\leq 769\,\}.
+$$
+
+Then $|A|=513$.
+
+Define
+
+$$
+f:A\to \{\,r\in\mathbb{N}\mid r<512\,\}
+$$
+
+by letting $f(x)$ be the remainder of $7x$ after division by $512$.
+
+The codomain has $512$ elements, while $A$ has $513$ elements. By the pigeonhole principle, $f$ is not injective. Therefore there exist distinct $a,b\in A$ such that
+
+$$
+f(a)=f(b).
+$$
+
+Reorder the two numbers if necessary so that $a<b$. Since both lie in $A$, we have $256<a<b$. Since their remainders after division by $512$ are equal,
+
+$$
+7a\equiv 7b\pmod{512}.
+$$
+
+## Core Summary
+
+Pigeonhole is not a slogan about boxes. It is a theorem about functions. The proof begins by defining the function whose equal outputs mean the desired collision. The codomain must be chosen carefully enough that it is smaller than the domain.

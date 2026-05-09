@@ -10,6 +10,7 @@ const ACCENT = "#2f6b6f";
 
 export default function HomePage() {
   const logicNotes = getAllNotes("logic");
+  const combinatoricsNotes = getAllNotes("combinatorics");
   const graphNotes = getAllNotes("graph-theory");
 
   return (
@@ -89,6 +90,23 @@ export default function HomePage() {
                 lecture review
               </Link>
               <Link
+                href="/combinatorics"
+                className="nav-pill"
+                style={{
+                  color: FAINT,
+                  textDecoration: "none",
+                  fontSize: 12,
+                  fontWeight: 500,
+                  letterSpacing: "0.06em",
+                  border: "1px solid rgba(0,0,0,0.06)",
+                  borderRadius: 20,
+                  padding: "5px 14px",
+                  transition: "all 0.2s",
+                }}
+              >
+                combinatorics
+              </Link>
+              <Link
                 href="/logic"
                 className="nav-pill"
                 style={{
@@ -139,7 +157,7 @@ export default function HomePage() {
               color: FG,
               margin: "0 0 32px 0",
               maxWidth: 700,
-              letterSpacing: "-0.01em",
+              letterSpacing: 0,
             }}
           >
             a course resource for learning, reviewing, and writing CS 173 correctly
@@ -499,6 +517,51 @@ export default function HomePage() {
                 }}
               >
                 review
+              </span>
+            </div>
+          </Link>
+
+          <Link href="/combinatorics" style={{ textDecoration: "none", color: "inherit" }}>
+            <div
+              className="cs-note-row"
+              style={{
+                display: "flex",
+                alignItems: "baseline",
+                justifyContent: "space-between",
+                padding: "16px 0",
+                borderBottom: `1px solid ${BORDER}`,
+                cursor: "pointer",
+              }}
+            >
+              <div>
+                <span
+                  style={{
+                    fontSize: 15,
+                    fontWeight: 400,
+                    color: FG,
+                    display: "block",
+                    marginBottom: 4,
+                }}
+              >
+                  combinatorics
+                </span>
+                <span style={{ fontSize: 13, color: FAINT, lineHeight: 1.5 }}>
+                  cardinality, finite counting, pigeonhole, binomial
+                  coefficients, strings, countability, and Cantor
+                  diagonalization
+                </span>
+              </div>
+              <span
+                style={{
+                  fontSize: 11,
+                  color: FAINT,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.08em",
+                  flexShrink: 0,
+                  marginLeft: 24,
+                }}
+              >
+                {combinatoricsNotes.length} pages
               </span>
             </div>
           </Link>

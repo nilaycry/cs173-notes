@@ -1,0 +1,145 @@
+---
+title: "Cardinality Through Functions"
+description: "How CS 173 compares the sizes of sets using injections, surjections, bijections, and finite cardinality."
+order: 1
+noteType: "main"
+status: "draft"
+---
+
+Counting in this section is not first presented as arithmetic. It is presented as the existence of functions with specific properties.
+
+## Functions and Size
+
+> **Definition.** Let $f:X\to Y$ be a function. The function $f$ is injective if
+>
+> $$
+> (\forall a,b\in X)(f(a)=f(b)\Rightarrow a=b).
+> $$
+
+An injection proves that the domain can fit into the codomain without collisions.
+
+> **Definition.** Let $f:X\to Y$ be a function. The function $f$ is surjective if
+>
+> $$
+> (\forall y\in Y)(\exists x\in X)(f(x)=y).
+> $$
+
+A surjection proves that the domain can cover the codomain.
+
+> **Definition.** A function is bijective if it is both injective and surjective.
+
+## Cardinal Comparisons
+
+> **Definition.** For sets $A$ and $B$,
+>
+> $$
+> |A|\leq |B|
+> $$
+>
+> means that there exists an injection $f:A\to B$.
+
+> **Definition.** For sets $A$ and $B$,
+>
+> $$
+> |A|\geq |B|
+> $$
+>
+> means that there exists a surjection $g:A\to B$.
+
+> **Definition.** For sets $A$ and $B$,
+>
+> $$
+> |A|=|B|
+> $$
+>
+> means that there exists a bijection $h:A\to B$.
+
+The direction matters. An injection $A\to B$ says $A$ is no larger than $B$. A surjection $A\to B$ says $A$ is no smaller than $B$.
+
+## Finite Sets
+
+> **Definition.** A set $F$ is finite if there exists some $n\in\mathbb{N}$ such that
+>
+> $$
+> |F|=|n|.
+> $$
+
+Here $n$ is treated as the finite initial segment of natural numbers with $n$ elements. The course often writes functions such as $f:n\to F$ when formally counting a finite set.
+
+If $F$ is finite, the natural number $n$ with $|F|=|n|$ is the cardinality of $F$.
+
+## Subsets Are No Larger
+
+> **Proposition.** If $X\subseteq Y$, then $|X|\leq |Y|$.
+
+**Proof.** Define
+
+$$
+i:X\to Y
+$$
+
+by
+
+$$
+i(x)\coloneqq x.
+$$
+
+This is well-defined because $X\subseteq Y$.
+
+To show $i$ is injective, let $a,b\in X$ and suppose $i(a)=i(b)$. By definition of $i$, this means $a=b$.
+
+Therefore $i$ is injective, so $|X|\leq |Y|$.
+
+## Composition Preserves Comparisons
+
+> **Proposition.** If $|A|\leq |B|$ and $|B|\leq |C|$, then $|A|\leq |C|$.
+
+**Proof.** By definition, there exist injections
+
+$$
+f:A\to B
+\quad\text{and}\quad
+g:B\to C.
+$$
+
+The composition
+
+$$
+g\circ f:A\to C
+$$
+
+is injective. Indeed, if
+
+$$
+(g\circ f)(a_1)=(g\circ f)(a_2),
+$$
+
+then
+
+$$
+g(f(a_1))=g(f(a_2)).
+$$
+
+Since $g$ is injective,
+
+$$
+f(a_1)=f(a_2).
+$$
+
+Since $f$ is injective,
+
+$$
+a_1=a_2.
+$$
+
+Thus $g\circ f$ is injective, so $|A|\leq |C|$.
+
+## Cantor-Schroder-Bernstein
+
+> **Theorem.** If there exist injections $f:X\to Y$ and $g:Y\to X$, then $|X|=|Y|$.
+
+This theorem is used as a size-comparison tool. Instead of constructing a bijection directly, it can be enough to construct injections in both directions.
+
+## Core Summary
+
+Cardinality comparisons are function statements. To prove $|A|\leq |B|$, construct an injection from $A$ to $B$. To prove $|A|\geq |B|$, construct a surjection from $A$ to $B$. To prove equality, construct a bijection or use injections both ways.

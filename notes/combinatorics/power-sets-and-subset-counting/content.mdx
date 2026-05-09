@@ -1,0 +1,133 @@
+---
+title: "Power Sets and Subset Counting"
+description: "Why a finite set with n elements has 2^n subsets, and how the proof splits subsets by whether they contain a chosen element."
+order: 3
+noteType: "main"
+status: "draft"
+---
+
+The power set is the first place where counting becomes structural. To count all subsets of a finite set, separate the subsets that contain a chosen element from the subsets that do not.
+
+## Power Sets
+
+> **Definition.** The power set of $X$ is
+>
+> $$
+> \mathcal{P}(X)\coloneqq \{\,Y\mid Y\subseteq X\,\}.
+> $$
+
+Elements of $\mathcal{P}(X)$ are subsets of $X$.
+
+## Main Theorem
+
+> **Theorem.** If $X$ is finite and $|X|=n$, then
+>
+> $$
+> |\mathcal{P}(X)|=2^n.
+> $$
+
+## Proof by Induction
+
+> **Induction Claim.** For every $n\in\mathbb{N}$ and every set $X$, if $|X|=n$, then $|\mathcal{P}(X)|=2^n$.
+
+### Base Case
+
+Let $X$ be a set with $|X|=0$. Then $X=\varnothing$.
+
+The only subset of $\varnothing$ is $\varnothing$ itself, so
+
+$$
+\mathcal{P}(X)=\{\varnothing\}.
+$$
+
+Therefore
+
+$$
+|\mathcal{P}(X)|=1=2^0.
+$$
+
+### Inductive Step
+
+Fix $k\in\mathbb{N}$ and assume that every set with cardinality $k$ has exactly $2^k$ subsets.
+
+Let $X$ be a set with $|X|=k+1$. Choose an element
+
+$$
+x\in X.
+$$
+
+Define
+
+$$
+Y\coloneqq X\setminus\{x\}.
+$$
+
+Then $|Y|=k$, so by the inductive hypothesis,
+
+$$
+|\mathcal{P}(Y)|=2^k.
+$$
+
+Every subset of $X$ is in exactly one of two classes:
+
+$$
+\mathcal{A}\coloneqq \{\,S\subseteq X\mid x\notin S\,\}
+$$
+
+and
+
+$$
+\mathcal{B}\coloneqq \{\,S\subseteq X\mid x\in S\,\}.
+$$
+
+The class $\mathcal{A}$ is exactly $\mathcal{P}(Y)$, so
+
+$$
+|\mathcal{A}|=2^k.
+$$
+
+The class $\mathcal{B}$ is in bijection with $\mathcal{P}(Y)$ by the function
+
+$$
+\phi:\mathcal{P}(Y)\to \mathcal{B}
+$$
+
+defined by
+
+$$
+\phi(S)\coloneqq S\cup\{x\}.
+$$
+
+The inverse sends $T\in\mathcal{B}$ to $T\setminus\{x\}$. Hence
+
+$$
+|\mathcal{B}|=2^k.
+$$
+
+Since $\mathcal{A}$ and $\mathcal{B}$ are disjoint and cover $\mathcal{P}(X)$,
+
+$$
+|\mathcal{P}(X)|=|\mathcal{A}|+|\mathcal{B}|=2^k+2^k=2^{k+1}.
+$$
+
+This completes the induction.
+
+## Characteristic Functions
+
+There is also a useful bijective view. A subset $S\subseteq X$ can be represented by its characteristic function
+
+$$
+\chi_S:X\to\{0,1\}
+$$
+
+where
+
+$$
+\chi_S(x)=1 \quad\Longleftrightarrow\quad x\in S.
+$$
+
+So counting subsets is the same as counting binary choices for each element of $X$.
+
+## Core Summary
+
+Each element of a finite set has two possibilities in a subset: included or not included. The induction proof makes this precise by choosing one element $x$ and splitting all subsets into those that contain $x$ and those that do not.

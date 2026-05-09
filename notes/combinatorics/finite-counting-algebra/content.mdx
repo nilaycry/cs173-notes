@@ -1,0 +1,105 @@
+---
+title: "Finite Counting Algebra"
+description: "The sum, product, difference, and inclusion-exclusion rules for finite sets."
+order: 2
+noteType: "main"
+status: "draft"
+---
+
+Finite counting rules are cardinality statements about sets. A proof should identify the set being counted and explain why the pieces do not overlap, or how much overlap must be corrected.
+
+## Disjoint Union Rule
+
+> **Theorem.** If $A$ and $B$ are finite sets with $A\cap B=\varnothing$, then
+>
+> $$
+> |A\cup B|=|A|+|B|.
+> $$
+
+This is the formal version of the sum rule. It applies only when the cases are disjoint.
+
+If $A$ and $B$ are not disjoint, then adding $|A|+|B|$ counts every element of $A\cap B$ twice.
+
+## Inclusion-Exclusion for Two Sets
+
+> **Theorem.** If $A$ and $B$ are finite sets, then
+>
+> $$
+> |A\cup B|=|A|+|B|-|A\cap B|.
+> $$
+
+**Proof Sketch.** The sets
+
+$$
+A\setminus B,\qquad B\setminus A,\qquad A\cap B
+$$
+
+are pairwise disjoint, and their union is $A\cup B$. Therefore
+
+$$
+|A\cup B|
+=
+|A\setminus B|+|B\setminus A|+|A\cap B|.
+$$
+
+Also,
+
+$$
+|A|=|A\setminus B|+|A\cap B|
+$$
+
+and
+
+$$
+|B|=|B\setminus A|+|A\cap B|.
+$$
+
+Substituting shows that $|A|+|B|$ counts $A\cap B$ twice, so one copy must be subtracted.
+
+## Difference Rule
+
+> **Corollary.** If $A$ and $B$ are finite sets with $B\subseteq A$, then
+>
+> $$
+> |A\setminus B|=|A|-|B|.
+> $$
+
+This follows because $A$ is the disjoint union
+
+$$
+A=(A\setminus B)\cup B.
+$$
+
+## Product Rule
+
+> **Theorem.** If $A$ and $B$ are finite sets, then
+>
+> $$
+> |A\times B|=|A|\cdot |B|.
+> $$
+
+The product rule counts ordered choices. An element of $A\times B$ is an ordered pair $(a,b)$ with $a\in A$ and $b\in B$.
+
+If a task asks for "choose one object from $A$ and one object from $B$," and both choices are independent, the object being counted is usually a Cartesian product.
+
+## Case Splits
+
+A counting proof should state why its cases are complete and why they do not overlap.
+
+For a disjoint case split, write something like:
+
+$$
+X=X_1\cup X_2\cup X_3
+$$
+
+where the $X_i$ are pairwise disjoint. Then
+
+$$
+|X|=|X_1|+|X_2|+|X_3|.
+$$
+
+If the pieces are not disjoint, use inclusion-exclusion or refine the cases.
+
+## Core Summary
+
+The sum rule counts disjoint alternatives. Inclusion-exclusion corrects overlap. The product rule counts ordered independent choices. A complete finite counting proof identifies the set being counted and justifies the decomposition before doing arithmetic.

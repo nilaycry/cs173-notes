@@ -1,0 +1,111 @@
+---
+title: "Problem Guide for PS07 and PS08"
+description: "The main proof tasks from the cardinality, pigeonhole, binomial coefficient, and countability problem sets."
+order: 12
+noteType: "problem-guide"
+status: "draft"
+---
+
+PS07 and PS08 test whether counting arguments can be written as precise function and set arguments. The main danger is using the right intuition without defining the object that makes the intuition true.
+
+## PS07: Cardinality Proofs
+
+PS07 focuses on proving cardinality statements from definitions.
+
+Common tasks:
+
+- prove $X\subseteq Y\Rightarrow |X|\leq |Y|$ by using the inclusion map;
+- prove transitivity of $\leq$, $\geq$, and $=$ by composing functions;
+- prove disjoint union counting by constructing a bijection;
+- prove $|\mathcal{P}(X)|=2^n$ by induction on $|X|$.
+
+The expected proof style is definition-driven. If the conclusion is a cardinal comparison, the proof should produce the right kind of function.
+
+## PS08: Counting and Modeling
+
+PS08 moves from function definitions into combinatorial modeling.
+
+Common tasks:
+
+- use pigeonhole with a carefully chosen function;
+- use modular remainders as pigeonhole outputs;
+- prove subset-counting identities such as $\binom{n}{k}=\binom{n}{n-k}$;
+- encode infinite binary strings with finite data when possible;
+- distinguish countable families from uncountable families.
+
+## Model: Binomial Symmetry
+
+> **Theorem.** For $n,k\in\mathbb{N}$ with $k\leq n$,
+>
+> $$
+> \binom{n}{k}=\binom{n}{n-k}.
+> $$
+
+A complete proof should not say only that "choosing what to include is the same as choosing what to exclude." It should define the bijection:
+
+$$
+S\mapsto X\setminus S.
+$$
+
+Then it should state that this maps $k$-element subsets of $X$ to $(n-k)$-element subsets of $X$, and that applying the same operation again recovers $S$.
+
+## Model: Large Subset Forces a Triple
+
+PS08 includes the set
+
+$$
+\mathcal{S}\coloneqq \{3,4,7,8,9,10,12,15,18,19,27,28\}
+$$
+
+and asks why every subset of $\mathcal{S}$ with size at least $9$ contains three distinct elements summing to $40$.
+
+The useful structure is the following partition of $\mathcal{S}$:
+
+$$
+\{3,10,27\},\quad
+\{4,8,28\},\quad
+\{7,15,18\},\quad
+\{9,12,19\}.
+$$
+
+Each block has sum $40$. If a subset avoids taking all three elements from every block, it can contain at most two elements from each block. That gives at most
+
+$$
+4\cdot 2=8
+$$
+
+elements total. Therefore any subset of size at least $9$ must contain all three elements from one of these blocks, and those three elements sum to $40$.
+
+## Model: One Finite Block of Ones
+
+For the infinite binary string problem, the object is not counted by ordinary finite arithmetic.
+
+A valid model is:
+
+$$
+(a,\ell)\in \mathbb{N}\times\mathbb{N}^+
+$$
+
+where $a$ is the starting position and $\ell$ is the length of the block.
+
+The proof should define the string determined by $(a,\ell)$:
+
+$$
+s_{a,\ell}(i)=1
+\quad\Longleftrightarrow\quad
+a\leq i<a+\ell.
+$$
+
+Then it should use the countability of $\mathbb{N}\times\mathbb{N}$ to conclude that there are countably many such strings.
+
+## Common Errors
+
+- Applying pigeonhole without defining the function.
+- Choosing a codomain too large for pigeonhole to force anything.
+- Treating $\binom{n}{k}$ as an ordered-list count.
+- Saying two sets have the same size without constructing a bijection or invoking a theorem that supplies one.
+- Counting infinite strings with finite arithmetic when the problem is really asking for countability.
+
+## Core Summary
+
+PS07 asks for cardinality proofs by functions. PS08 asks for combinatorial models: functions for pigeonhole, bijections for binomial identities, and natural-number encodings for countability. The solution should make the model explicit before using the counting theorem.

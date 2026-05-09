@@ -1,0 +1,131 @@
+---
+title: "Binomial Coefficients"
+description: "The definition of n choose k as a subset count, together with symmetry and Pascal's recurrence."
+order: 6
+noteType: "main"
+status: "draft"
+---
+
+Binomial coefficients count subsets, not ordered lists. The notation $\binom{n}{k}$ records the number of ways to choose a $k$-element subset from an $n$-element set.
+
+## Definition
+
+> **Definition.** Let $n,k\in\mathbb{N}$. If $X$ is any finite set with $|X|=n$, then
+>
+> $$
+> \binom{n}{k}
+> \coloneqq
+> |\{\,S\subseteq X\mid |S|=k\,\}|.
+> $$
+
+The identity of the elements of $X$ does not matter. Only $|X|=n$ matters.
+
+If $k>n$, then
+
+$$
+\binom{n}{k}=0
+$$
+
+because no subset of an $n$-element set can have more than $n$ elements.
+
+## Boundary Values
+
+> **Proposition.** For every $n\in\mathbb{N}$,
+>
+> $$
+> \binom{n}{0}=1
+> \quad\text{and}\quad
+> \binom{n}{n}=1.
+> $$
+
+There is exactly one $0$-element subset: the empty set. There is exactly one $n$-element subset of an $n$-element set: the whole set.
+
+## Symmetry
+
+> **Theorem.** If $n,k\in\mathbb{N}$ and $k\leq n$, then
+>
+> $$
+> \binom{n}{k}=\binom{n}{n-k}.
+> $$
+
+**Proof.** Let $X$ be a set with $|X|=n$.
+
+Define
+
+$$
+\phi:\{\,S\subseteq X\mid |S|=k\,\}\to \{\,T\subseteq X\mid |T|=n-k\,\}
+$$
+
+by
+
+$$
+\phi(S)\coloneqq X\setminus S.
+$$
+
+If $|S|=k$, then $|X\setminus S|=n-k$, so $\phi$ has the stated codomain.
+
+The inverse function is the same complement operation:
+
+$$
+T\mapsto X\setminus T.
+$$
+
+Therefore $\phi$ is a bijection. Hence the two sets have the same cardinality, so
+
+$$
+\binom{n}{k}=\binom{n}{n-k}.
+$$
+
+## Pascal's Recurrence
+
+> **Theorem.** Let $n,k\in\mathbb{N}$. Then
+>
+> $$
+> \binom{n+1}{k+1}
+> =
+> \binom{n}{k+1}
+> +
+> \binom{n}{k}.
+> $$
+
+**Proof.** Let $X$ be a set with $|X|=n+1$, and choose $x\in X$.
+
+Let
+
+$$
+Y\coloneqq X\setminus\{x\}.
+$$
+
+Then $|Y|=n$.
+
+Every $(k+1)$-element subset of $X$ either contains $x$ or does not contain $x$.
+
+Subsets that do not contain $x$ are exactly the $(k+1)$-element subsets of $Y$, and there are
+
+$$
+\binom{n}{k+1}
+$$
+
+of them.
+
+Subsets that do contain $x$ are obtained by choosing $k$ additional elements from $Y$ and then adding $x$. There are
+
+$$
+\binom{n}{k}
+$$
+
+of them.
+
+The two classes are disjoint and cover all $(k+1)$-element subsets of $X$. Therefore
+
+$$
+\binom{n+1}{k+1}
+=
+\binom{n}{k+1}
++
+\binom{n}{k}.
+$$
+
+## Core Summary
+
+The coefficient $\binom{n}{k}$ counts $k$-element subsets. Symmetry comes from taking complements. Pascal's recurrence comes from splitting subsets according to whether they contain one chosen element.

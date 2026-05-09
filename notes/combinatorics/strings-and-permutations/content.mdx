@@ -1,0 +1,106 @@
+---
+title: "Strings and Permutations"
+description: "Finite strings as functions, ordered choices, k-permutations, and ordinary permutations."
+order: 8
+noteType: "main"
+status: "draft"
+---
+
+Strings count ordered choices. This is the main distinction from combinations: a subset forgets order, while a string remembers position.
+
+## Finite Strings
+
+> **Definition.** Let $A$ be a set and let $n\in\mathbb{N}$. A finite string over $A$ of length $n$ is a function
+>
+> $$
+> f:n\to A.
+> $$
+
+The set $A$ is the alphabet. The value $f(i)$ is the character in position $i$.
+
+If $|A|=m$, then the number of strings of length $n$ over $A$ is
+
+$$
+m^n.
+$$
+
+This is the product rule applied $n$ times.
+
+## Strings With No Repeated Characters
+
+Suppose $A$ is finite with $|A|=m$, and suppose $k\leq m$.
+
+A string
+
+$$
+f:k\to A
+$$
+
+has no repeated characters exactly when $f$ is injective.
+
+The number of injective strings of length $k$ over $A$ is
+
+$$
+m(m-1)(m-2)\cdots(m-k+1).
+$$
+
+Equivalently,
+
+$$
+\frac{m!}{(m-k)!}.
+$$
+
+The first position has $m$ choices, the second has $m-1$ choices, and so on until $k$ positions have been filled.
+
+## k-Permutations
+
+> **Definition.** Let $A$ be a finite set. A $k$-permutation of $A$ is an injective string
+>
+> $$
+> f:k\to A.
+> $$
+
+So a $k$-permutation is an ordered selection of $k$ distinct elements from $A$.
+
+This differs from a $k$-combination:
+
+- a $k$-combination is a $k$-element subset;
+- a $k$-permutation is an ordered list of $k$ distinct elements.
+
+## Permutations
+
+> **Definition.** A permutation of a set $X$ is a bijection
+>
+> $$
+> f:X\to X.
+> $$
+
+If $|X|=n$, then the number of permutations of $X$ is
+
+$$
+n!.
+$$
+
+This is the special case of $k$-permutations where $k=n$.
+
+## Connecting Permutations and Combinations
+
+If $|A|=n$ and $k\leq n$, then
+
+$$
+\binom{n}{k}=\frac{n!}{k!(n-k)!}.
+$$
+
+Reason: first choose a $k$-element subset, then order it. Each $k$-element subset has $k!$ orderings, so
+
+$$
+\text{number of injective length-}k\text{ strings}
+=
+\binom{n}{k}k!.
+$$
+
+Since the left side is $n!/(n-k)!$, dividing by $k!$ gives the formula.
+
+## Core Summary
+
+Strings are functions from a finite domain into an alphabet. They count ordered choices. Combinations count subsets, where order is forgotten. Permutations are bijections from a set to itself, and $k$-permutations are injective strings of length $k$.

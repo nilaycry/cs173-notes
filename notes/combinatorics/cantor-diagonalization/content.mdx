@@ -1,0 +1,117 @@
+---
+title: "Cantor Diagonalization"
+description: "Why not every infinite set is countable, using power sets and infinite binary strings."
+order: 11
+noteType: "main"
+status: "draft"
+---
+
+Countably infinite sets can still be listed by natural numbers. Cantor's theorem proves that some sets are too large for any such listing.
+
+## Power Sets and Binary Strings
+
+> **Definition.** The power set of $X$ is
+>
+> $$
+> \mathcal{P}(X)\coloneqq \{\,Y\mid Y\subseteq X\,\}.
+> $$
+
+Subsets of $\mathbb{N}$ correspond to infinite binary strings. Given $S\subseteq\mathbb{N}$, define
+
+$$
+\chi_S:\mathbb{N}\to\{0,1\}
+$$
+
+by
+
+$$
+\chi_S(n)=1
+\quad\Longleftrightarrow\quad
+n\in S.
+$$
+
+So proving that $\mathcal{P}(\mathbb{N})$ is uncountable is equivalent to proving that the set of infinite binary strings is uncountable.
+
+## Cantor's Theorem
+
+> **Theorem.** For every set $X$,
+>
+> $$
+> |X|<|\mathcal{P}(X)|.
+> $$
+
+The strict inequality means that no function from $X$ onto $\mathcal{P}(X)$ can exist.
+
+## Diagonal Proof
+
+**Proof.** Let
+
+$$
+f:X\to\mathcal{P}(X)
+$$
+
+be any function. We will prove that $f$ is not surjective.
+
+Define
+
+$$
+D\coloneqq \{\,x\in X\mid x\notin f(x)\,\}.
+$$
+
+Since $D\subseteq X$, we have $D\in\mathcal{P}(X)$.
+
+Suppose, for contradiction, that $f$ is surjective. Then there exists $d\in X$ such that
+
+$$
+f(d)=D.
+$$
+
+Now ask whether $d\in D$.
+
+By definition of $D$,
+
+$$
+d\in D
+\quad\Longleftrightarrow\quad
+d\notin f(d).
+$$
+
+Since $f(d)=D$, this becomes
+
+$$
+d\in D
+\quad\Longleftrightarrow\quad
+d\notin D,
+$$
+
+which is impossible.
+
+Therefore no function $X\to\mathcal{P}(X)$ is surjective. Hence
+
+$$
+|X|<|\mathcal{P}(X)|.
+$$
+
+## Binary-String Diagonalization
+
+If someone claims to list all infinite binary strings as
+
+$$
+\phi:\mathbb{N}\to\{\,s\mid s:\mathbb{N}\to\{0,1\}\,\},
+$$
+
+construct a new binary string $\delta:\mathbb{N}\to\{0,1\}$ by
+
+$$
+\delta(n)\coloneqq
+\begin{cases}
+0, & \phi(n)(n)=1,\\
+1, & \phi(n)(n)=0.
+\end{cases}
+$$
+
+The string $\delta$ differs from $\phi(n)$ at position $n$ for every $n\in\mathbb{N}$. Therefore $\delta$ is not in the list, contradicting that the list was complete.
+
+## Core Summary
+
+Diagonalization defeats a proposed listing by constructing an object that disagrees with the listed object at its own index. Cantor's theorem applies this idea to power sets, and the binary-string version proves that there are uncountably many infinite binary strings.

@@ -1,0 +1,94 @@
+---
+title: "Countable Sets and Strings"
+description: "Countability, finite and infinite strings, and the proof pattern for countable coding problems."
+order: 10
+noteType: "main"
+status: "draft"
+---
+
+Countability asks whether a set can be encoded by natural numbers. Many problems in this part of the course are not about computing a number; they are about building a precise encoding.
+
+## Countable Sets
+
+> **Definition.** A set $X$ is countable if
+>
+> $$
+> |X|\leq |\mathbb{N}|.
+> $$
+
+Equivalently, $X$ is countable if there exists an injection
+
+$$
+f:X\to\mathbb{N}.
+$$
+
+Finite sets are countable. Some infinite sets are also countable.
+
+## Countably Infinite
+
+> **Definition.** A set is countably infinite if it is both countable and infinite.
+
+The standard examples are
+
+$$
+\mathbb{N},\quad \mathbb{Z},\quad \mathbb{N}\times\mathbb{N},\quad \mathbb{Q}.
+$$
+
+## Finite Strings
+
+> **Definition.** Let $A$ be an alphabet. A finite string over $A$ of length $n\in\mathbb{N}$ is a function
+>
+> $$
+> s:n\to A.
+> $$
+
+If $A$ is finite, then for each fixed $n$, there are finitely many strings of length $n$ over $A$.
+
+The set of all finite strings over a finite alphabet is countable: group strings by length, and then list each finite group.
+
+## Infinite Strings
+
+> **Definition.** An infinite string over $A$ is a function
+>
+> $$
+> s:\mathbb{N}\to A.
+> $$
+
+An infinite binary string is a function
+
+$$
+s:\mathbb{N}\to\{0,1\}.
+$$
+
+## One Contiguous Block of Ones
+
+PS08 asks for the size of the set of infinite binary strings that contain one contiguous finite substring consisting only of $1$s and have zeros everywhere else.
+
+A string of this form is determined by two natural numbers:
+
+- the starting position $a\in\mathbb{N}$;
+- the positive length $\ell\in\mathbb{N}^+$ of the block of $1$s.
+
+Given $(a,\ell)$, define $s_{a,\ell}:\mathbb{N}\to\{0,1\}$ by
+
+$$
+s_{a,\ell}(i)\coloneqq
+\begin{cases}
+1, & a\leq i<a+\ell,\\
+0, & \text{otherwise}.
+\end{cases}
+$$
+
+Thus the set of such strings injects into
+
+$$
+\mathbb{N}\times\mathbb{N}^+.
+$$
+
+Since $\mathbb{N}\times\mathbb{N}^+$ is countable, the set of such strings is countable.
+
+It is also infinite: for each $a\in\mathbb{N}$, the string with a single $1$ at position $a$ is different. Therefore the set is countably infinite.
+
+## Core Summary
+
+Countability problems are coding problems. To prove a set is countable, encode each object using natural-number data. A finite block in an infinite binary string is countable because it is determined by a start position and a finite length.
