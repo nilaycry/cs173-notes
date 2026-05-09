@@ -1,14 +1,24 @@
 ---
 title: "Odd-Degree Vertices"
-description: "A formal parity consequence of the degree-sum theorem."
-order: 8
+description: "The parity consequence of the degree-sum theorem: every graph has an even number of odd-degree vertices."
+order: 4
 noteType: "main"
 status: "draft"
 ---
 
+The degree-sum theorem immediately gives a parity fact about degree values. The result is often used to rule out proposed degree patterns.
+
 ## Statement
 
-Every graph has an even number of odd-degree vertices.
+> **Theorem.** Every graph has an even number of odd-degree vertices.
+
+Equivalently, if
+
+$$
+O\coloneqq \{\,v\in V(G)\mid \deg_G(v)\text{ is odd}\,\},
+$$
+
+then $|O|$ is even.
 
 ## Proof
 
@@ -21,53 +31,51 @@ $$
 and
 
 $$
-E \coloneqq \{v \in V(G) \mid \deg_G(v) \text{ is even}\}.
+R \coloneqq \{v \in V(G) \mid \deg_G(v) \text{ is even}\}.
 $$
 
-Then
-
-$$
-V(G) = O \cup E
-$$
-
-and the union is disjoint. Therefore,
+Then $V(G)=O\cup R$, and this union is disjoint. Therefore
 
 $$
 \sum_{v \in V(G)} \deg_G(v)
 =
 \sum_{v \in O} \deg_G(v)
 +
-\sum_{v \in E} \deg_G(v).
+\sum_{v \in R} \deg_G(v).
 $$
 
 By the degree-sum theorem,
 
 $$
-\sum_{v \in V(G)} \deg_G(v) = 2|E(G)|,
+\sum_{v \in V(G)} \deg_G(v)=2|E(G)|,
 $$
 
-so the left-hand side is even.
+so the total degree sum is even.
 
 Also,
 
 $$
-\sum_{v \in E} \deg_G(v)
+\sum_{v \in R} \deg_G(v)
 $$
 
-is even, because it is a sum of even integers.
-
-Therefore,
+is even, because it is a sum of even integers. Therefore
 
 $$
 \sum_{v \in O} \deg_G(v)
 $$
 
-must also be even.
+must be even.
 
-But each term in that sum is odd. A sum of odd integers is even only when there are an even number of terms. Hence $|O|$ is even.
+Each term in this last sum is odd. A sum of odd integers is even exactly when the number of summands is even. Hence $|O|$ is even.
 
-Therefore the graph has an even number of odd-degree vertices.
+Therefore every graph has an even number of odd-degree vertices.
 
-## Use
+## How the Theorem Is Used
 
-This theorem is often used to rule out the existence of a graph with a proposed degree pattern.
+This theorem can disprove a proposed graph.
+
+For example, no graph can have exactly three odd-degree vertices. The exact degree values do not matter. The parity count alone is enough.
+
+## Core Summary
+
+The degree-sum theorem says that the total degree sum is even. Even-degree vertices contribute an even amount to that sum, so the odd-degree vertices must also contribute an even amount. That can happen only when the number of odd-degree vertices is even.

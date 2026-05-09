@@ -75,3 +75,26 @@ For graph-theory notes in particular:
 4. if induction is used, write the quantified induction statement explicitly
 5. if the proof builds a cycle or path, define enough notation to write that construction formally
 6. add only minimal visuals, and only when they remove a real ambiguity
+
+## Post-packet section synthesis
+
+After the lecture packets for a course section are finished, do a second pass that turns the packet sequence into an official unit resource under `notes/`.
+
+This pass should not merely copy packet prose. It should synthesize the section into a coherent course-facing sequence.
+
+Use this workflow:
+
+1. List all lecture packets that belong to the section.
+2. Read the packet study guides, flashcards, and practice problems for coverage and emphasis.
+3. Cross-check exact definitions and theorem statements against `sources/`, especially current problem sets, current course notes, and past lecture notes.
+4. Compare the lecture-derived material against the existing `notes/<unit>/` pages.
+5. Identify missing definitions, theorem statements, proof patterns, examples, and common confusions.
+6. Restructure the unit order so prerequisite definitions come before proof-heavy notes.
+7. Promote lecture-only material into durable notes when it belongs in the official section.
+8. Rewrite notes in formal course style, using blocks such as `> **Definition.**`, `> **Theorem.**`, `> **Lemma.**`, and `> **Proposition.**`.
+9. Add or revise problem-guide pages when problem sets reveal a proof pattern students must practice.
+10. Update unit landing-page copy and note-type labels if the public sequence changed.
+11. Run `npm run build`.
+12. Commit and push the completed synthesis once the build passes.
+
+The goal is a section resource that can stand on its own after the packet work is done: lecture coverage, source definitions, problem-set expectations, and proof-writing guidance should all agree.

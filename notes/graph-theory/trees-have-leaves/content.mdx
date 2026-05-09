@@ -1,18 +1,20 @@
 ---
 title: "Trees Have Leaves"
 description: "A formal proof that every tree with at least two vertices contains a leaf."
-order: 6
+order: 8
 noteType: "main"
 status: "draft"
 ---
 
 ## Statement
 
-For every tree $T$,
+> **Theorem.** For every tree $T$,
+>
+> $$
+> |V(T)| \geq 2 \Rightarrow (\exists v \in V(T))(\deg_T(v)=1).
+> $$
 
-$$
-|V(T)| \geq 2 \Rightarrow (\exists v \in V(T))(\deg_T(v)=1).
-$$
+The proof uses a longest path. An endpoint of a longest path cannot have an extra neighbor: a new neighbor would either extend the path or create a cycle.
 
 ## Proof
 
@@ -211,3 +213,7 @@ $$
 Hence $p(0)$ is a leaf of $T$.
 
 Therefore every tree with at least two vertices contains a leaf.
+
+## Core Summary
+
+Choose a path of maximum length in the tree. An endpoint already has one neighbor along the path. If it had another neighbor outside the path, the path would not be longest. If it had another neighbor on the path, the graph would contain a cycle. Therefore the endpoint has degree $1$.

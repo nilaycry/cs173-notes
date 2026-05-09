@@ -1,18 +1,18 @@
 ---
 title: "The Degree-Sum Theorem"
 description: "A full induction proof that the sum of all vertex degrees is twice the size of the edge set."
-order: 2
+order: 3
 noteType: "main"
 status: "draft"
 ---
 
 ## Statement
 
-For every graph $G$,
-
-$$
-\sum_{v \in V(G)} \deg_G(v) = 2|E(G)|.
-$$
+> **Theorem.** For every graph $G$,
+>
+> $$
+> \sum_{v \in V(G)} \deg_G(v) = 2|E(G)|.
+> $$
 
 This is the first major counting theorem in the graph theory section. It connects the local data of degrees to the global data of the edge set.
 
@@ -31,7 +31,13 @@ Here, induction on $|V(G)|$ works best, because deleting one vertex gives a smal
 
 ## Proof by Induction on $|V(G)|$
 
-We will prove
+> **Induction Claim.** For every $n\in\mathbb{N}$ and every graph $G$, if $|V(G)|=n$, then
+>
+> $$
+> 2|E(G)| = \sum_{v \in V(G)} \deg_G(v).
+> $$
+
+Equivalently, we prove
 
 $$
 (\forall n \in \mathbb{N})(\forall G)\Bigl((G \text{ is a graph} \wedge |V(G)| = n)\Rightarrow 2|E(G)| = \sum_{v \in V(G)} \deg_G(v)\Bigr).
@@ -62,11 +68,11 @@ So the statement holds when $|V(G)| = 0$.
 
 ### Inductive Hypothesis
 
-Fix $k \in \mathbb{N}$ and assume that for every graph $H$ with $|V(H)| = k$,
-
-$$
-\sum_{v \in V(H)} \deg_H(v) = 2|E(H)|.
-$$
+> **Inductive Hypothesis.** Fix $k \in \mathbb{N}$ and assume that for every graph $H$ with $|V(H)| = k$,
+>
+> $$
+> \sum_{v \in V(H)} \deg_H(v) = 2|E(H)|.
+> $$
 
 ### Inductive Step
 
@@ -336,3 +342,7 @@ $$
 $$
 
 This completes the inductive step, and therefore the proof.
+
+## Core Summary
+
+The degree-sum theorem counts the same incidence relation in two ways. Counting by vertices gives $\sum_{v\in V(G)}\deg_G(v)$. Counting by edges gives $2|E(G)|$, because every edge has exactly two endpoints. The induction proof makes that counting argument formal by deleting a vertex, applying the inductive hypothesis to the smaller graph, and then accounting for the deleted incident edges.

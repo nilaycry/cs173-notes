@@ -1,0 +1,113 @@
+---
+title: "Equal Degrees by Pigeonhole"
+description: "A graph-theory version of the handshake-count theorem: every finite simple graph with at least two vertices has two vertices of the same degree."
+order: 2
+noteType: "main"
+status: "draft"
+---
+
+The first graph theorem in the course is a pigeonhole theorem in graph language. It says that the degree function cannot assign a different degree to every vertex.
+
+## Statement
+
+> **Theorem.** Let $G$ be a graph with $|V(G)|=n$ and $n\geq 2$. Then there exist distinct vertices $u,v\in V(G)$ such that
+>
+> $$
+> \deg_G(u)=\deg_G(v).
+> $$
+
+This is the graph-theory translation of the handshake theorem: in any group of at least two people, two people have shaken the same number of hands.
+
+## Degree Values
+
+For every vertex $v\in V(G)$,
+
+$$
+0\leq \deg_G(v)\leq n-1.
+$$
+
+So the broad set of possible degree values is
+
+$$
+D\coloneqq \{0,1,\dots,n-1\}.
+$$
+
+This set has $n$ elements, the same number as $V(G)$. Pigeonhole cannot be applied directly to a function $V(G)\to D$.
+
+The useful observation is that the actual degree values cannot include both extremes.
+
+> **Lemma.** If $G$ has an isolated vertex, then $G$ has no universal vertex.
+
+This means that a degree value of $0$ and a degree value of $n-1$ cannot both occur.
+
+## Proof
+
+Let
+
+$$
+B\coloneqq \{\, \deg_G(v) \mid v\in V(G) \,\}
+$$
+
+be the set of actual degree values appearing in $G$.
+
+Define
+
+$$
+f:V(G)\to B
+$$
+
+by
+
+$$
+f(v)\coloneqq \deg_G(v).
+$$
+
+By definition of $B$, this function is onto $B$. To prove that two vertices have the same degree, it is enough to prove that $f$ is not injective.
+
+Since every degree is between $0$ and $n-1$, we have
+
+$$
+B\subseteq \{0,1,\dots,n-1\}.
+$$
+
+The values $0$ and $n-1$ cannot both belong to $B$. Therefore $B$ is a proper subset of a set with $n$ elements, so
+
+$$
+|B|\leq n-1.
+$$
+
+But
+
+$$
+|V(G)|=n>|B|.
+$$
+
+By the pigeonhole principle, $f$ is not injective. Hence there exist distinct vertices $u,v\in V(G)$ such that
+
+$$
+f(u)=f(v).
+$$
+
+By the definition of $f$,
+
+$$
+\deg_G(u)=\deg_G(v).
+$$
+
+This proves the theorem.
+
+## Why the Codomain Matters
+
+Using
+
+$$
+f:V(G)\to \{0,1,\dots,n-1\}
+$$
+
+does not immediately prove the theorem, because the domain and codomain both have size $n$.
+
+The proof needs the smaller set of actual degree values $B$. The impossible-pair observation proves that this actual codomain has at most $n-1$ elements.
+
+## Core Summary
+
+The degree function sends vertices to numbers. The broad range $0,\dots,n-1$ is too large for pigeonhole, but the graph cannot realize both degree $0$ and degree $n-1$. Therefore the actual degree values fit into at most $n-1$ slots, so two vertices must share a degree.

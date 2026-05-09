@@ -1,18 +1,18 @@
 ---
 title: "Trees Satisfy |V| = |E| + 1"
 description: "A formal induction proof that every nonempty tree has exactly one more vertex than edge."
-order: 7
+order: 9
 noteType: "main"
 status: "draft"
 ---
 
 ## Statement
 
-For every tree $T$,
-
-$$
-V(T) \neq \varnothing \Rightarrow |V(T)| = |E(T)| + 1.
-$$
+> **Theorem.** For every tree $T$,
+>
+> $$
+> V(T) \neq \varnothing \Rightarrow |V(T)| = |E(T)| + 1.
+> $$
 
 ## Proof Strategy
 
@@ -22,7 +22,13 @@ The key structural move is to remove a leaf. That decreases the vertex set by on
 
 ## Proof
 
-We prove
+> **Induction Claim.** For every $n\in\mathbb{N}$ and every tree $T$, if $|V(T)|=n+1$, then
+>
+> $$
+> |V(T)|=|E(T)|+1.
+> $$
+
+Equivalently, we prove
 
 $$
 (\forall n \in \mathbb{N})(\forall T)\bigl((T \text{ is a tree} \wedge |V(T)| = n+1) \Rightarrow |V(T)| = |E(T)| + 1\bigr)
@@ -54,11 +60,11 @@ So the statement holds when $n=0$.
 
 ### Inductive Hypothesis
 
-Fix $k \in \mathbb{N}$ and assume that for every tree $H$,
-
-$$
-|V(H)| = k+1 \Rightarrow |V(H)| = |E(H)| + 1.
-$$
+> **Inductive Hypothesis.** Fix $k \in \mathbb{N}$ and assume that for every tree $H$,
+>
+> $$
+> |V(H)| = k+1 \Rightarrow |V(H)| = |E(H)| + 1.
+> $$
 
 ### Inductive Step
 
@@ -213,3 +219,7 @@ Hence every nonempty tree $T$ satisfies
 $$
 |V(T)| = |E(T)| + 1.
 $$
+
+## Core Summary
+
+The proof removes a leaf. Removing a leaf from a tree removes exactly one vertex and exactly one edge, and the remaining graph is still a tree. The inductive hypothesis applies to the smaller tree, and the equal one-step change in vertices and edges preserves the equation $|V(T)|=|E(T)|+1$.

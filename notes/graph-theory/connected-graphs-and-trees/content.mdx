@@ -1,66 +1,93 @@
 ---
-title: "Connected Graphs and Trees"
-description: "Definitions for connected graphs, disconnected graphs, components, trees, and leaves."
-order: 4
+title: "Connectivity, Components, Forests, and Trees"
+description: "Definitions for connected graphs, disconnected graphs, components, acyclic graphs, forests, trees, leaves, and internal vertices."
+order: 6
 noteType: "main"
 status: "draft"
 ---
 
+Connectivity turns paths into a global property of a graph. Trees are the graphs where connectivity exists without any cyclic redundancy.
+
 ## Connected Graphs
 
-A graph $G$ is connected if
+> **Definition.** A graph $G$ is connected if every pair of vertices in $G$ is joined by a path. Formally,
+>
+> $$
+> (\forall x,y\in V(G))(\exists k\in\mathbb{N})(\exists p:k+1\to V(G))
+> \bigl(p\text{ is a path}\wedge p(0)=x\wedge p(k)=y\bigr).
+> $$
 
-$$
-(\forall v,w \in V(G))(v \neq w \Rightarrow \text{there exists a path in } G \text{ from } v \text{ to } w).
-$$
+If $x=y$, the path can have length $0$. If $x\neq y$, connectedness says there is a genuine route through edges from $x$ to $y$.
 
-So connectedness is a statement about every pair of distinct vertices.
+Because every walk between two vertices can be shortened to a path, it is equivalent to define connectedness using walks. The path version is cleaner because it removes irrelevant repetitions.
 
 ## Disconnected Graphs
 
-A graph $G$ is disconnected if it is not connected. Equivalently,
+> **Definition.** A graph $G$ is disconnected if it is not connected.
+
+Equivalently,
 
 $$
-(\exists v,w \in V(G))(v \neq w \wedge \text{there is no path in } G \text{ from } v \text{ to } w).
+(\exists x,y\in V(G))(\text{there is no path in }G\text{ from }x\text{ to }y).
 $$
+
+When proving that a graph is disconnected, it is enough to produce two vertices that cannot be joined by a path.
 
 ## Components
 
-A component of $G$ is a maximal connected subgraph of $G$.
+> **Definition.** A connected component of $G$ is a maximal connected subgraph of $G$.
 
-When a graph is disconnected, its components are the connected pieces it breaks into.
+Maximal means that the component cannot be enlarged by adding another vertex of $G$ and still remain connected.
+
+If two vertices lie in different components, there is no path between them in $G$. If an edge joined vertices in two different components, those components would actually be part of the same connected component.
+
+## Acyclic Graphs and Forests
+
+> **Definition.** A graph is acyclic if it contains no cycles.
+
+> **Definition.** A forest is an acyclic graph.
+
+A forest may be disconnected. Each connected component of a forest is a tree.
 
 ## Trees
 
-A tree is a graph that is both:
+> **Definition.** A tree is a connected acyclic graph.
 
-- connected
-- acyclic
-
-Here acyclic means that the graph contains no cycle.
-
-So $G$ is a tree if and only if
+Thus
 
 $$
-G \text{ is connected } \wedge G \text{ has no cycles}.
+T\text{ is a tree}
+\quad\Longleftrightarrow\quad
+T\text{ is connected and }T\text{ has no cycles}.
 $$
 
-## Leaves
+Both conditions matter.
 
-A leaf of a graph is a vertex of degree $1$.
+- A connected graph with a cycle is not a tree.
+- An acyclic graph that is disconnected is a forest, not a tree.
 
-Formally, $v$ is a leaf if
+## Leaves and Internal Vertices
 
-$$
-v \in V(G) \quad\text{and}\quad \deg_G(v)=1.
-$$
+> **Definition.** Let $T$ be a tree. A vertex $v\in V(T)$ is a leaf if
+>
+> $$
+> \deg_T(v)=1.
+> $$
+
+> **Definition.** A vertex of a tree that is not a leaf is called an internal vertex.
+
+In a one-vertex tree, the only vertex has degree $0$, so it is not a leaf under this definition.
 
 ## Standard Tree Facts
 
-The following statements appear repeatedly:
+The following theorems drive most first graph-theory proofs:
 
-- every tree with at least two vertices has a leaf
-- if $G$ is a tree and $|V(G)| = n$, then $|E(G)| = n-1$
-- removing a leaf from a tree produces a smaller tree
+- Every tree has a unique path between any two vertices.
+- Every tree with at least two vertices has a leaf.
+- Every nonempty tree satisfies $|V(T)|=|E(T)|+1$.
+- Removing a leaf from a tree produces a smaller tree.
+- Every connected graph contains a spanning tree.
 
-These are the facts most often used in induction proofs about trees.
+## Core Summary
+
+Connected graphs have paths between all pairs of vertices. Forests have no cycles but may be disconnected. Trees are exactly the connected forests. Most tree proofs use both halves of the definition: connectedness supplies paths, and acyclicity rules out alternate routes.

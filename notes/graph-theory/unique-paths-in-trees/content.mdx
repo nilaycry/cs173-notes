@@ -1,14 +1,16 @@
 ---
 title: "Unique Paths in Trees"
 description: "A formal proof that every tree has a unique path between any two vertices."
-order: 5
+order: 7
 noteType: "main"
 status: "draft"
 ---
 
 ## Statement
 
-For every tree $T$ and every pair of vertices $u,v \in V(T)$, there exists a unique path in $T$ from $u$ to $v$.
+> **Theorem.** For every tree $T$ and every pair of vertices $u,v \in V(T)$, there exists a unique path in $T$ from $u$ to $v$.
+
+Existence comes from connectedness. Uniqueness comes from acyclicity: two different paths between the same endpoints would create a cycle.
 
 ## Notation
 
@@ -276,3 +278,7 @@ Hence there cannot be two distinct paths from $u$ to $v$.
 Therefore there exists a unique path from $u$ to $v$.
 
 Since both cases have been proved, the theorem follows.
+
+## Core Summary
+
+A tree is connected, so a path exists between any two vertices. A tree is acyclic, so two different paths between the same vertices cannot exist. The proof of uniqueness constructs a cycle from the first place two paths split and the next place they meet.

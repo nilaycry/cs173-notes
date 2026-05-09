@@ -1,0 +1,85 @@
+---
+title: "Cut Edges and Minimal Connectedness"
+description: "How deleting edges interacts with connectivity, cycles, and trees."
+order: 10
+noteType: "main"
+status: "draft"
+---
+
+The spanning-tree proof depends on knowing which edges can be deleted without destroying connectedness. Edges on cycles are redundant for connectivity. Edges in trees are not.
+
+## Edge Deletion
+
+> **Definition.** Let $G$ be a graph and let $e\in E(G)$. The graph $G-e$ is defined by
+>
+> $$
+> V(G-e)\coloneqq V(G)
+> $$
+>
+> and
+>
+> $$
+> E(G-e)\coloneqq E(G)\setminus\{e\}.
+> $$
+
+Deleting an edge keeps all vertices and removes only one edge.
+
+## Cut Edges
+
+> **Definition.** Let $G$ be a connected graph. An edge $e\in E(G)$ is a cut edge if $G-e$ is disconnected.
+
+A cut edge is also often called a bridge. It is an edge that carries all connectivity between two parts of the graph.
+
+## Cycle Edges Are Not Cut Edges
+
+> **Theorem.** Let $G$ be a connected graph. If an edge $e\in E(G)$ lies on a cycle in $G$, then $G-e$ is connected.
+
+**Proof.** Write
+
+$$
+e=\{a,b\}.
+$$
+
+Since $e$ lies on a cycle, the rest of that cycle gives a path from $a$ to $b$ that does not use $e$.
+
+Let $x,y\in V(G)$. Since $G$ is connected, there is a path from $x$ to $y$ in $G$.
+
+If that path does not use $e$, then it is already a path in $G-e$.
+
+If that path uses $e$, replace the step across $e$ by the path around the rest of the cycle from $a$ to $b$ or from $b$ to $a$. The result is a walk from $x$ to $y$ in $G-e$.
+
+Every walk can be shortened to a path. Therefore there is a path from $x$ to $y$ in $G-e$.
+
+Since $x$ and $y$ were arbitrary, $G-e$ is connected.
+
+## Trees Are Minimally Connected
+
+> **Theorem.** If $T$ is a tree and $e\in E(T)$, then $T-e$ is disconnected.
+
+**Proof.** Suppose, for contradiction, that $T-e$ is connected.
+
+Let
+
+$$
+e=\{a,b\}.
+$$
+
+Since $T-e$ is connected, there is a path in $T-e$ from $a$ to $b$.
+
+Adding the deleted edge $e$ to that path creates a cycle in $T$. This contradicts that $T$ is acyclic.
+
+Therefore $T-e$ is disconnected.
+
+## Equivalent View
+
+A tree has just enough edges to be connected:
+
+- It is connected.
+- Removing any edge disconnects it.
+- Adding an edge between two existing vertices creates a cycle.
+
+This is why trees are often described as minimally connected graphs.
+
+## Core Summary
+
+An edge on a cycle is safe to delete because the rest of the cycle still connects its endpoints. An edge in a tree is not safe to delete because there is no alternate path between its endpoints. This distinction is the engine behind the spanning-tree theorem.

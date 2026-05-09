@@ -13,6 +13,12 @@ const FAINT = "#a8a29e";
 const BORDER = "#e8e5df";
 const ACCENT = "#2f6b6f";
 
+const NOTE_TYPE_LABELS: Record<NoteMeta["noteType"], string> = {
+  main: "concept note",
+  "writing-companion": "proof-writing note",
+  "problem-guide": "problem guide",
+};
+
 export async function generateStaticParams() {
   const slugs = getAllNoteSlugs("graph-theory");
   return slugs.map((slug) => ({ slug }));
@@ -57,6 +63,7 @@ export default async function NotePage({
   const currentIndex = allNotes.findIndex((n) => n.slug === params.slug);
   const prevNote = currentIndex > 0 ? allNotes[currentIndex - 1] : null;
   const nextNote = currentIndex < allNotes.length - 1 ? allNotes[currentIndex + 1] : null;
+  const noteTypeLabel = NOTE_TYPE_LABELS[note.noteType];
 
   return (
     <div
@@ -82,7 +89,7 @@ export default async function NotePage({
           {"<-"} notes
         </Link>
         <span className="co-note-button" style={{ cursor: "default" }}>
-          concept note
+          {noteTypeLabel}
         </span>
       </nav>
 
@@ -104,7 +111,7 @@ export default async function NotePage({
               letterSpacing: "0.14em",
             }}
           >
-            CS 173 · Graph Theory
+            CS 173 | Graph Theory
           </span>
         </div>
         <h1
@@ -114,7 +121,7 @@ export default async function NotePage({
             lineHeight: 1.2,
             color: FG,
             marginBottom: 14,
-            letterSpacing: "-0.01em",
+            letterSpacing: 0,
           }}
         >
           {note.title}

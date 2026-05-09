@@ -1,8 +1,8 @@
 ---
 title: "How to Approach Graph Problems"
 description: "A practical guide to the main proof patterns used in the first graph theory section."
-order: 10
-noteType: "writing-companion"
+order: 13
+noteType: "problem-guide"
 status: "draft"
 ---
 
@@ -57,7 +57,7 @@ If the proof feels stuck, the next useful move is often: write the definition ag
 
 ## Step 3: Match the Statement to a Standard Play
 
-The first graph theory problems in this course are not random. They tend to use the same few moves.
+The first graph theory problems tend to use the same few moves.
 
 ### Play 1: Connectedness Suggests Contrapositive and Components
 
@@ -79,6 +79,54 @@ Why this works:
 - that immediately gives an upper bound on degree
 
 So if the hypothesis gives a lower bound on every degree, those two facts are likely meant to collide.
+
+## Model Problem: Minimum Degree Forces Connectedness
+
+> **Theorem.** Let $G$ be a graph with $|V(G)|=n$. If
+>
+> $$
+> (\forall v\in V(G))\left(\deg_G(v)\geq \frac{n-1}{2}\right),
+> $$
+>
+> then $G$ is connected.
+
+**Proof.** We prove the contrapositive. Suppose $G$ is disconnected.
+
+Then $G$ has at least two connected components. Let $C$ be a component of smallest order, and write
+
+$$
+m\coloneqq |V(C)|.
+$$
+
+Since there is at least one other component,
+
+$$
+m\leq \frac{n}{2}.
+$$
+
+Choose $v\in V(C)$. No edge can join $v$ to a vertex outside $C$, because then that outside vertex would lie in the same connected component as $v$.
+
+Therefore every neighbor of $v$ lies in $V(C)\setminus\{v\}$, so
+
+$$
+\deg_G(v)\leq m-1.
+$$
+
+Since $m\leq n/2$,
+
+$$
+\deg_G(v)\leq m-1\leq \frac{n}{2}-1=\frac{n-2}{2}<\frac{n-1}{2}.
+$$
+
+Thus there exists a vertex $v\in V(G)$ such that
+
+$$
+\deg_G(v)<\frac{n-1}{2}.
+$$
+
+This proves the contrapositive. Hence if every vertex has degree at least $(n-1)/2$, then $G$ is connected.
+
+The proof works because disconnectedness gives a component boundary. Vertices inside a smallest component cannot have too many neighbors.
 
 ### Play 2: Two Different Paths in a Tree Usually Produce a Cycle
 

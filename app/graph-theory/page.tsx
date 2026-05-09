@@ -71,7 +71,7 @@ export default function GraphTheoryPage() {
                 alignItems: "center",
               }}
             >
-              <span style={{ marginRight: 4 }}>←</span> back
+              <span style={{ marginRight: 4 }}>{"<-"}</span> back
             </Link>
             <span
               className="nav-pill"
@@ -121,7 +121,7 @@ export default function GraphTheoryPage() {
               color: FG,
               margin: "0 0 32px 0",
               maxWidth: 700,
-              letterSpacing: "-0.01em",
+              letterSpacing: 0,
             }}
           >
             definitions first, then the counting and induction moves
@@ -137,10 +137,10 @@ export default function GraphTheoryPage() {
                 margin: "0 0 18px 0",
               }}
             >
-              This section is built around the formal graph definitions in Problem
-              Set 9 and the proof style the course seems to prefer. The focus is on
-              learning the language cleanly before trying to solve graph theory
-              problems from the set.
+              This section is built around the graph definitions, lecture proof
+              patterns, and Problem Set 9 expectations. The focus is on formal
+              object tracking: vertices, edges, degrees, walks, paths, components,
+              trees, and the graph transformations used in proofs.
             </p>
             <p
               style={{
@@ -151,11 +151,10 @@ export default function GraphTheoryPage() {
                 margin: 0,
               }}
             >
-              The order matters. Graph data comes first, then the degree-sum
-              theorem, then movement through a graph, then trees, then the first
-              two structural tree proofs, then the parity consequence, then
-              induction on graphs, and finally a guide to the main proof patterns
-              in the section.
+              The order matters. Degree language comes first, followed by the
+              pigeonhole degree theorem, degree-sum and parity, movement through a
+              graph, connectivity and trees, structural tree theorems, cut edges,
+              spanning trees, graph induction, and a final problem guide.
             </p>
           </div>
         </section>

@@ -1,104 +1,143 @@
 ---
-title: "Graphs, Degrees, and Neighborhoods"
-description: "Definitions for graphs, vertices, edges, neighborhoods, incidence sets, degree, order, and size."
+title: "Graphs, Degrees, and Degree Values"
+description: "The formal graph definitions used in this unit, including vertices, edges, neighborhoods, incidence sets, degree, order, size, isolated vertices, and universal vertices."
 order: 1
 noteType: "main"
 status: "draft"
 ---
 
-Graph theory studies **connectivity structure**.
+Graph theory begins by replacing extra context with a finite set of objects and a set of pairwise connections. The definitions are set-theoretic because later proofs count vertices, edges, neighbors, and incident edges.
 
-A graph can model cities connected by roads, computers connected by links, or people connected by friendship. Once the only thing that matters is which objects are connected to which others, that situation can be modeled by a graph.
+## Simple Graphs
 
-## The Definition of a Graph
+> **Definition.** A graph $G$ consists of a finite vertex set $V(G)$ and an edge set $E(G)$ such that
+>
+> $$
+> E(G) \subseteq \{\, e \subseteq V(G) \mid |e| = 2 \,\}.
+> $$
 
-A graph $G$ consists of:
+Each edge is a two-element subset of $V(G)$. If $v,w \in V(G)$ with $v \neq w$, then $\{v,w\}$ is the edge connecting $v$ and $w$.
 
-- a **finite** set of vertices $V(G)$
-- a set of edges $E(G)$
+This definition gives the kind of graph used in this unit: finite, simple, and undirected.
 
-where each edge is a two-element subset of $V(G)$. Formally,
-
-$$
-E(G) \subseteq \{\, e \subseteq V(G) \mid |e| = 2 \,\}.
-$$
-
-So an edge is a set of the form $\{v,w\}$, where $v$ and $w$ are distinct vertices in $V(G)$.
-
-From this definition, three facts follow immediately:
-
-- there are no self-edges, since an edge must contain two distinct vertices
-- there are no multiple edges, since $E(G)$ is a set of subsets, so the same edge cannot appear twice
-- there is no direction, since $\{v,w\} = \{w,v\}$
-
-This is the definition of a **simple graph**, which is the kind of graph considered in this unit.
+- No self-edge is possible, because an edge must contain two distinct vertices.
+- No multiple edges are possible, because $E(G)$ is a set.
+- No direction is present, because $\{v,w\}=\{w,v\}$.
 
 ![Examples of graph features excluded from simple graphs](/graph-types-not-in-this-unit.svg)
 
-## Vertices and Edges
+## Vertices, Edges, Order, and Size
 
-The vertices are the objects being connected.
+> **Definition.** The elements of $V(G)$ are the vertices of $G$. The elements of $E(G)$ are the edges of $G$.
 
-The edges record which pairs of vertices are adjacent.
+> **Definition.** The order of $G$ is $|V(G)|$. The size of $G$ is $|E(G)|$.
 
-If $\{v,w\} \in E(G)$, then $v$ and $w$ are joined by an edge.
-
-Two basic cardinalities appear constantly:
-
-- the **order** of $G$ is $|V(G)|$
-- the **size** of $G$ is $|E(G)|$
+Order counts vertices. Size counts edges. These two cardinalities are different pieces of data, and many graph proofs are about how one constrains the other.
 
 ## Neighborhoods
 
-For a vertex $v \in V(G)$, the neighborhood of $v$ is
+> **Definition.** Let $G$ be a graph and let $v\in V(G)$. The neighborhood of $v$ in $G$ is
+>
+> $$
+> N_G(v) \coloneqq \{\, w \in V(G) \mid \{v,w\} \in E(G) \,\}.
+> $$
 
-$$
-N_G(v) \coloneqq \{\, w \in V(G) \mid \{v,w\} \in E(G) \,\}.
-$$
+The neighborhood is a set of vertices. If $w\in N_G(v)$, then $w$ is adjacent to $v$.
 
-This is the set of all vertices adjacent to $v$.
-
-So if a proof says $w \in N_G(v)$, it is saying exactly that $\{v,w\} \in E(G)$.
+In a simple graph, $v\notin N_G(v)$ for every $v\in V(G)$, because $\{v,v\}$ is not a two-element set.
 
 ## Incidence Sets
 
-For a vertex $v \in V(G)$, the incidence set of $v$ is
+> **Definition.** Let $G$ be a graph and let $v\in V(G)$. The incidence set of $v$ in $G$ is
+>
+> $$
+> I_G(v) \coloneqq \{\, e \in E(G) \mid v \in e \,\}.
+> $$
 
-$$
-I_G(v) \coloneqq \{\, e \in E(G) \mid v \in e \,\}.
-$$
+The incidence set is a set of edges. This is not the same kind of object as the neighborhood:
 
-This is the set of all edges incident on $v$.
+- $N_G(v)$ contains vertices.
+- $I_G(v)$ contains edges.
 
-The neighborhood and the incidence set are related, but they are not the same object:
-
-- $N_G(v)$ is a set of vertices
-- $I_G(v)$ is a set of edges
-
-In a simple graph, they have the same cardinality. Each neighbor $w \in N_G(v)$ corresponds to exactly one incident edge $\{v,w\} \in I_G(v)$, and each incident edge $\{v,w\} \in I_G(v)$ corresponds to exactly one neighbor $w \in N_G(v)$.
+In a simple graph, these two sets have the same cardinality. Each neighbor $w\in N_G(v)$ corresponds to the unique incident edge $\{v,w\}\in I_G(v)$, and each incident edge $\{v,w\}\in I_G(v)$ corresponds to the unique neighbor $w$.
 
 ## Degree
 
-The degree function is
+> **Definition.** The degree function of $G$ is
+>
+> $$
+> \deg_G:V(G)\to \mathbb{N}
+> $$
+>
+> defined by
+>
+> $$
+> \deg_G(v) \coloneqq |I_G(v)|.
+> $$
+
+Degree counts incident edges. In a simple graph, it also counts neighbors:
 
 $$
-\deg_G : V(G) \to \mathbb{N}.
+\deg_G(v)=|I_G(v)|=|N_G(v)|.
 $$
 
-For each vertex $v \in V(G)$,
+This equality uses simplicity. It depends on the fact that there is at most one edge between two vertices.
+
+## Isolated and Universal Vertices
+
+> **Definition.** A vertex $v\in V(G)$ is isolated if $\deg_G(v)=0$.
+
+An isolated vertex has no incident edges and no neighbors.
+
+> **Definition.** If $|V(G)|=n$, a vertex $v\in V(G)$ is universal if $\deg_G(v)=n-1$.
+
+A universal vertex is adjacent to every other vertex in the graph. The value $n-1$ is the largest possible degree because a vertex cannot be adjacent to itself.
+
+## Degree Bounds
+
+> **Proposition.** If $G$ is a graph with $|V(G)|=n$ and $v\in V(G)$, then
+>
+> $$
+> 0\leq \deg_G(v)\leq n-1.
+> $$
+
+**Proof.** Since $\deg_G(v)=|N_G(v)|$, degree is nonnegative.
+
+Also,
 
 $$
-\deg_G(v) \coloneqq |I_G(v)|.
+N_G(v)\subseteq V(G)\setminus\{v\}.
 $$
 
-Since $|N_G(v)| = |I_G(v)|$ in a simple graph, it also follows that
+Therefore
 
 $$
-\deg_G(v) = |N_G(v)|.
+\deg_G(v)=|N_G(v)|\leq |V(G)\setminus\{v\}|=n-1.
 $$
+
+This proves the bound.
+
+## The Impossible Pair
+
+> **Proposition.** Let $G$ be a graph with $|V(G)|=n\geq 2$. If $G$ has an isolated vertex, then $G$ has no universal vertex.
+
+**Proof.** Let $x\in V(G)$ be isolated. Then $N_G(x)=\varnothing$.
+
+Suppose, for contradiction, that $y\in V(G)$ is universal. Since $n\geq 2$, either $y=x$ or $y\neq x$.
+
+If $y=x$, then $y$ is both isolated and universal, so $\deg_G(y)=0$ and $\deg_G(y)=n-1$. Since $n\geq 2$, this is impossible.
+
+If $y\neq x$, then universality of $y$ gives $\{x,y\}\in E(G)$. That means $x$ has an incident edge, contradicting that $x$ is isolated.
+
+Therefore a graph cannot have both a degree-$0$ vertex and a degree-$(n-1)$ vertex.
 
 ## Common Mistakes
 
-- treating an edge like an ordered pair instead of a two-element set
-- confusing the neighborhood $N_G(v)$ with the incidence set $I_G(v)$
-- forgetting that degree is defined by cardinality
+- Treating an edge as an ordered pair instead of a two-element set.
+- Confusing $N_G(v)$, a set of vertices, with $I_G(v)$, a set of edges.
+- Forgetting that $\deg_G(v)$ is defined as a cardinality.
+- Assuming degree values can always use all of $0,1,\dots,n-1$ at once.
+
+## Core Summary
+
+A graph in this unit is a finite simple undirected graph. Edges are two-element subsets of the vertex set. Neighborhoods contain adjacent vertices, incidence sets contain incident edges, and degree is the size of the incidence set. In a graph with $n$ vertices, every degree lies between $0$ and $n-1$, but the extreme values $0$ and $n-1$ cannot both occur when $n\geq 2$.

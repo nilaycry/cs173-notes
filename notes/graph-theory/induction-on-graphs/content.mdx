@@ -1,74 +1,81 @@
 ---
 title: "Induction on Graphs"
 description: "How graph proofs use induction on a numerical parameter such as the order or size of a graph."
-order: 9
+order: 12
 noteType: "main"
 status: "draft"
 ---
 
-## Choosing an Induction Parameter
+Graph induction is ordinary induction applied to a number attached to a graph. The hard part is not the induction template. The hard part is constructing the smaller graph so that the hypotheses still apply.
 
-When the object under study is a graph, induction is usually done on a numerical quantity attached to the graph.
+## Choosing An Induction Parameter
 
-The most common choices are:
+The most common parameters are:
 
 - $|V(G)|$, the order of the graph
 - $|E(G)|$, the size of the graph
 
-The choice depends on the theorem.
+The theorem determines the parameter.
+
+- The degree-sum theorem works well by induction on $|V(G)|$, because deleting a vertex gives a smaller graph and changes degrees in a controlled way.
+- The spanning-tree theorem works well by induction on $|E(G)|$, because deleting an edge keeps the vertex set fixed.
+- The tree equation $|V(T)|=|E(T)|+1$ works well by induction on $|V(T)|$, because deleting a leaf removes exactly one vertex and one edge.
 
 ## Standard Form
 
-If the parameter is $|V(G)|$, the statement is usually written in the form
+> **Induction Form.** If the parameter is $|V(G)|$, write the theorem as
+>
+> $$
+> (\forall n\in\mathbb{N})(\forall G)
+> \bigl((G\text{ is in the class under discussion}\wedge |V(G)|=n)\Rightarrow P(G)\bigr).
+> $$
+
+If the parameter is $|E(G)|$, write
 
 $$
-(\forall n \in \mathbb{N})(\forall G)\bigl((G \text{ is in the class under discussion} \wedge |V(G)| = n)\Rightarrow P(G)\bigr).
+(\forall n\in\mathbb{N})(\forall G)
+\bigl((G\text{ is in the class under discussion}\wedge |E(G)|=n)\Rightarrow P(G)\bigr).
 $$
 
-If the parameter is $|E(G)|$, the same idea becomes
-
-$$
-(\forall n \in \mathbb{N})(\forall G)\bigl((G \text{ is in the class under discussion} \wedge |E(G)| = n)\Rightarrow P(G)\bigr).
-$$
+The statement must quantify over all graphs with the given parameter value. Proving the result only for graphs built by a particular construction is not enough.
 
 ## Standard Pattern
 
-1. choose the parameter
-2. write the theorem in quantified form
-3. prove the smallest relevant case
-4. assume the statement holds for parameter value $k$
-5. let $G$ have parameter value $k+1$
-6. construct a smaller graph $H$
-7. prove that $H$ still satisfies the hypotheses
-8. apply the inductive hypothesis to $H$
-9. recover the desired conclusion for $G$
+1. Choose the parameter.
+2. Write the theorem in quantified form.
+3. Prove the smallest relevant case.
+4. Assume the statement for parameter value $k$.
+5. Let $G$ be an arbitrary graph with parameter value $k+1$.
+6. Construct a smaller graph $H$.
+7. Prove that $H$ still satisfies the hypotheses.
+8. Apply the inductive hypothesis to $H$.
+9. Transfer the conclusion from $H$ back to $G$.
 
-## The Important Step
+## What Must Be Checked
 
-The key difficulty is usually not the induction itself. The key difficulty is choosing the smaller graph correctly.
+When a proof modifies a graph, the writeup must say what survives.
 
-Removing an arbitrary vertex or edge can destroy the hypotheses of the theorem.
+- If a vertex is deleted, check which edges were deleted and how degrees changed.
+- If an edge is deleted, check whether connectedness was preserved.
+- If a leaf is deleted from a tree, check that the remaining graph is still connected and acyclic.
+- If a cycle edge is deleted, check that the rest of the cycle gives an alternate route.
 
-## Example: Trees
+Many graph-induction errors happen because the smaller graph is smaller but no longer belongs to the class named in the inductive hypothesis.
 
-For tree proofs, induction is often done on $|V(G)|$.
+## Common Smaller Graphs
 
-A typical example is:
+> **Pattern.** For degree-counting theorems, delete a vertex and all incident edges.
 
-if $G$ is a tree and $|V(G)| = n$, then $|E(G)| = n-1$.
+This is the move in the degree-sum theorem.
 
-In that proof, the right smaller graph is obtained by removing a leaf.
+> **Pattern.** For tree-counting theorems, delete a leaf and its unique incident edge.
 
-That works because:
+This is the move in the proof that nonempty trees satisfy $|V(T)|=|E(T)|+1$.
 
-- the graph becomes smaller
-- the result is still a tree
-- exactly one edge is removed
+> **Pattern.** For spanning-tree theorems, delete an edge from a cycle.
 
-## Practical Rule
+This keeps the graph connected and keeps the vertex set unchanged.
 
-Before starting an induction proof on graphs, identify:
+## Core Summary
 
-- what quantity you are inducting on
-- what smaller graph you will build
-- why that smaller graph stays in the same class
+Induction on graphs is induction on order or size. A complete proof must define the smaller graph, prove it still satisfies the inductive hypothesis, and then translate the conclusion back to the original graph. The graph operation is the mathematical content of the induction step.
