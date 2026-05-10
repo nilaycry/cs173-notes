@@ -6,7 +6,7 @@ noteType: "main"
 status: "draft"
 ---
 
-Finite counting rules are cardinality statements about sets. A proof should identify the set being counted and explain why the pieces do not overlap, or how much overlap must be corrected.
+Finite counting rules are cardinality statements about sets. The arithmetic is the last line, not the proof. First identify the set being counted, then explain why the pieces do not overlap or exactly how much overlap must be corrected.
 
 ## Disjoint Union Rule
 
@@ -16,7 +16,7 @@ Finite counting rules are cardinality statements about sets. A proof should iden
 > |A\cup B|=|A|+|B|.
 > $$
 
-This is the formal version of the sum rule. It applies only when the cases are disjoint.
+This is the formal version of the sum rule. It applies when the alternatives are genuinely disjoint.
 
 If $A$ and $B$ are not disjoint, then adding $|A|+|B|$ counts every element of $A\cap B$ twice.
 
@@ -54,7 +54,7 @@ $$
 |B|=|B\setminus A|+|A\cap B|.
 $$
 
-Substituting shows that $|A|+|B|$ counts $A\cap B$ twice, so one copy must be subtracted.
+Substituting shows that $|A|+|B|$ counts $A\cap B$ twice. Inclusion-exclusion removes the extra copy.
 
 ## Difference Rule
 
@@ -78,7 +78,7 @@ $$
 > |A\times B|=|A|\cdot |B|.
 > $$
 
-The product rule counts ordered choices. An element of $A\times B$ is an ordered pair $(a,b)$ with $a\in A$ and $b\in B$.
+The product rule counts ordered independent choices. An element of $A\times B$ is an ordered pair $(a,b)$ with $a\in A$ and $b\in B$.
 
 If a task asks for "choose one object from $A$ and one object from $B$," and both choices are independent, the object being counted is usually a Cartesian product.
 
@@ -102,4 +102,4 @@ If the pieces are not disjoint, use inclusion-exclusion or refine the cases.
 
 ## Core Summary
 
-The sum rule counts disjoint alternatives. Inclusion-exclusion corrects overlap. The product rule counts ordered independent choices. A complete finite counting proof identifies the set being counted and justifies the decomposition before doing arithmetic.
+The sum rule counts disjoint alternatives. Inclusion-exclusion corrects overlap. The product rule counts ordered independent choices. A complete finite counting proof names the set being counted and justifies the decomposition before doing arithmetic.

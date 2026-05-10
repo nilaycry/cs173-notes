@@ -6,17 +6,17 @@ noteType: "main"
 status: "draft"
 ---
 
-The power set is the first place where counting becomes structural. To count all subsets of a finite set, separate the subsets that contain a chosen element from the subsets that do not.
+The power set is one of the first places where counting becomes structural. Instead of naming every subset, we ask how a subset is built. For a chosen element, there are only two possibilities: the subset contains it or it does not.
 
 ## Power Sets
 
-> **Definition.** The power set of $X$ is
->
-> $$
-> \mathcal{P}(X)\coloneqq \{\,Y\mid Y\subseteq X\,\}.
-> $$
+The **power set** of $X$ is the set of all subsets of $X$:
 
-Elements of $\mathcal{P}(X)$ are subsets of $X$.
+$$
+\mathcal{P}(X)\coloneqq \{\,Y\mid Y\subseteq X\,\}.
+$$
+
+Thus the elements of $\mathcal{P}(X)$ are themselves sets.
 
 ## Main Theorem
 
@@ -126,8 +126,8 @@ $$
 \chi_S(x)=1 \quad\Longleftrightarrow\quad x\in S.
 $$
 
-So counting subsets is the same as counting binary choices for each element of $X$.
+So counting subsets is the same as counting binary choices for each element of $X$: in or out.
 
 ## Core Summary
 
-Each element of a finite set has two possibilities in a subset: included or not included. The induction proof makes this precise by choosing one element $x$ and splitting all subsets into those that contain $x$ and those that do not.
+Each element of a finite set has two possibilities in a subset: included or not included. The induction proof makes this precise one element at a time by splitting all subsets into those that contain $x$ and those that do not.

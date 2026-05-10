@@ -6,15 +6,15 @@ noteType: "main"
 status: "draft"
 ---
 
-Countably infinite sets can still be listed by natural numbers. Cantor's theorem proves that some sets are too large for any such listing.
+Countably infinite sets can be listed by natural numbers. Cantor's theorem shows that some infinite sets refuse every possible list. The proof is short, but it is one of the sharpest moves in the course: build the missing object by disagreeing with the proposed list at exactly the right places.
 
 ## Power Sets and Binary Strings
 
-> **Definition.** The power set of $X$ is
->
-> $$
-> \mathcal{P}(X)\coloneqq \{\,Y\mid Y\subseteq X\,\}.
-> $$
+Recall that the power set of $X$ is
+
+$$
+\mathcal{P}(X)\coloneqq \{\,Y\mid Y\subseteq X\,\}.
+$$
 
 Subsets of $\mathbb{N}$ correspond to infinite binary strings. Given $S\subseteq\mathbb{N}$, define
 
@@ -40,7 +40,7 @@ So proving that $\mathcal{P}(\mathbb{N})$ is uncountable is equivalent to provin
 > |X|<|\mathcal{P}(X)|.
 > $$
 
-The strict inequality means that no function from $X$ onto $\mathcal{P}(X)$ can exist.
+The strict inequality says two things at once: subsets of $X$ are at least as numerous as elements of $X$, and no function from $X$ onto $\mathcal{P}(X)$ can exist.
 
 ## Diagonal Proof
 
@@ -66,7 +66,7 @@ $$
 f(d)=D.
 $$
 
-Now ask whether $d\in D$.
+Now ask the one question the definition was designed to make impossible: is $d\in D$?
 
 By definition of $D$,
 

@@ -6,13 +6,13 @@ noteType: "main"
 status: "draft"
 ---
 
-Many pigeonhole proofs fail because the first codomain is too large. The handshake-count theorem shows the repair: use the actual set of possible outputs, then prove that this set is smaller than the domain.
+Many pigeonhole proofs stall because the first codomain is too large. The handshake-count theorem shows the repair: look at the actual values the function can take, then prove that this smaller set of values has fewer elements than the domain.
 
 ## The Handshake-Count Theorem
 
 > **Theorem.** Let $n\in\mathbb{N}$ with $n\geq 2$. In any group of $n$ people, there exist two distinct people who have shaken the same number of other people's hands.
 
-This theorem is not proved by saying only that there are $n$ people and $n$ possible counts. The possible counts first appear to be too many.
+This theorem is not proved by saying only that there are $n$ people and $n$ possible counts. At first glance the possible counts are $0$ through $n-1$, which gives exactly $n$ values and no forced collision.
 
 ## The Model
 
@@ -38,7 +38,7 @@ $$
 D\coloneqq \{\,r\in\mathbb{N}\mid r\leq n-1\,\}.
 $$
 
-But $|D|=n$, so the function $d:A\to D$ does not force a collision.
+But $|D|=n$, so the function $d:A\to D$ does not yet force a collision.
 
 ## The Missing Extreme
 
@@ -88,7 +88,7 @@ People can be treated as vertices, and handshakes can be treated as edges. The t
 > \deg_G(u)=\deg_G(v).
 > $$
 
-The proof is the same: degree values lie between $0$ and $n-1$, but the values $0$ and $n-1$ cannot both occur.
+The proof is the same: degree values lie between $0$ and $n-1$, but the values $0$ and $n-1$ cannot both occur in a simple graph.
 
 ## Core Summary
 

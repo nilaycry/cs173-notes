@@ -6,19 +6,19 @@ noteType: "main"
 status: "draft"
 ---
 
-Binomial coefficients count subsets, not ordered lists. The notation $\binom{n}{k}$ records the number of ways to choose a $k$-element subset from an $n$-element set.
+Binomial coefficients count subsets, not ordered lists. The notation $\binom{n}{k}$ compactly says: choose $k$ elements from an $n$-element set and forget the order.
 
-## Definition
+## Meaning of Binomial Coefficients
 
-> **Definition.** Let $n,k\in\mathbb{N}$. If $X$ is any finite set with $|X|=n$, then
->
-> $$
-> \binom{n}{k}
-> \coloneqq
-> |\{\,S\subseteq X\mid |S|=k\,\}|.
-> $$
+Let $n,k\in\mathbb{N}$. If $X$ is any finite set with $|X|=n$, then
 
-The identity of the elements of $X$ does not matter. Only $|X|=n$ matters.
+$$
+\binom{n}{k}
+\coloneqq
+|\{\,S\subseteq X\mid |S|=k\,\}|.
+$$
+
+The identity of the elements of $X$ does not matter. Only the size of $X$ matters.
 
 If $k>n$, then
 
@@ -38,7 +38,7 @@ because no subset of an $n$-element set can have more than $n$ elements.
 > \binom{n}{n}=1.
 > $$
 
-There is exactly one $0$-element subset: the empty set. There is exactly one $n$-element subset of an $n$-element set: the whole set.
+There is exactly one $0$-element subset: the empty set. There is exactly one $n$-element subset of an $n$-element set: the whole set. The extremes are quiet, but they keep many later identities from having annoying special cases.
 
 ## Symmetry
 
@@ -128,4 +128,4 @@ $$
 
 ## Core Summary
 
-The coefficient $\binom{n}{k}$ counts $k$-element subsets. Symmetry comes from taking complements. Pascal's recurrence comes from splitting subsets according to whether they contain one chosen element.
+The coefficient $\binom{n}{k}$ counts $k$-element subsets. Symmetry comes from taking complements. Pascal's recurrence comes from choosing one element and splitting subsets according to whether they contain it.

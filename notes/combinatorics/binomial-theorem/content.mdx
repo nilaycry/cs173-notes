@@ -6,7 +6,7 @@ noteType: "main"
 status: "draft"
 ---
 
-The binomial theorem is a counting statement about how terms are created when a product is fully distributed.
+The binomial theorem is a counting statement disguised as algebra. The coefficients appear because every term in the expansion remembers which factors supplied an $x$.
 
 ## Statement
 
@@ -24,7 +24,7 @@ $$
 (x+y)^n
 $$
 
-as a product of $n$ copies of $(x+y)$.
+as a product of $n$ copies of $(x+y)$. Expanding the product means making one choice from each copy.
 
 To create one term in the expanded product, choose either $x$ or $y$ from each factor. If exactly $k$ of the factors contribute $x$, then the remaining $n-k$ factors contribute $y$, so the term is
 
@@ -73,8 +73,8 @@ $$
 \sum_{k=0}^{n}\binom{n}{k}.
 $$
 
-This says that the total number of subsets of an $n$-element set is the sum of the numbers of subsets of each possible size.
+This says that the total number of subsets of an $n$-element set is the sum of the numbers of subsets of each possible size. The power set is being sorted into layers by subset size.
 
 ## Core Summary
 
-In the expansion of $(x+y)^n$, each term is determined by the set of factors from which $x$ was chosen. If that set has size $k$, the term is $x^k y^{n-k}$, and there are $\binom{n}{k}$ such choices.
+In the expansion of $(x+y)^n$, each term is determined by the set of factors from which $x$ was chosen. If that set has size $k$, the term is $x^k y^{n-k}$, and there are $\binom{n}{k}$ such choices. The algebraic coefficient is a subset count.

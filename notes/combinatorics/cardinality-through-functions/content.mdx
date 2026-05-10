@@ -6,65 +6,56 @@ noteType: "main"
 status: "draft"
 ---
 
-Counting in this section is not first presented as arithmetic. It is presented as the existence of functions with specific properties.
+Counting in this section begins with a deceptively modest idea: to compare two sets, try to move the elements of one set into the other without losing track of them. The right function tells the whole story.
 
 ## Functions and Size
 
-> **Definition.** Let $f:X\to Y$ be a function. The function $f$ is injective if
->
-> $$
-> (\forall a,b\in X)(f(a)=f(b)\Rightarrow a=b).
-> $$
+Let $f:X\to Y$. The function is **injective** when distinct inputs never collide:
 
-An injection proves that the domain can fit into the codomain without collisions.
+$$
+(\forall a,b\in X)(f(a)=f(b)\Rightarrow a=b).
+$$
 
-> **Definition.** Let $f:X\to Y$ be a function. The function $f$ is surjective if
->
-> $$
-> (\forall y\in Y)(\exists x\in X)(f(x)=y).
-> $$
+An injection says that $X$ can be placed inside $Y$ without identifying two elements. The function is **surjective** when every output is hit:
 
-A surjection proves that the domain can cover the codomain.
+$$
+(\forall y\in Y)(\exists x\in X)(f(x)=y).
+$$
 
-> **Definition.** A function is bijective if it is both injective and surjective.
+A surjection says that $X$ covers all of $Y$. A **bijection** does both jobs at once: no collisions and no missed outputs.
 
 ## Cardinal Comparisons
 
-> **Definition.** For sets $A$ and $B$,
->
-> $$
-> |A|\leq |B|
-> $$
->
-> means that there exists an injection $f:A\to B$.
+Cardinality notation is shorthand for the existence of particular functions:
 
-> **Definition.** For sets $A$ and $B$,
->
-> $$
-> |A|\geq |B|
-> $$
->
-> means that there exists a surjection $g:A\to B$.
+$$
+|A|\leq |B|
+\quad\text{means there is an injection } A\to B,
+$$
 
-> **Definition.** For sets $A$ and $B$,
->
-> $$
-> |A|=|B|
-> $$
->
-> means that there exists a bijection $h:A\to B$.
+$$
+|A|\geq |B|
+\quad\text{means there is a surjection } A\to B,
+$$
 
-The direction matters. An injection $A\to B$ says $A$ is no larger than $B$. A surjection $A\to B$ says $A$ is no smaller than $B$.
+and
+
+$$
+|A|=|B|
+\quad\text{means there is a bijection } A\to B.
+$$
+
+The direction is part of the content. An injection $A\to B$ says that $A$ is no larger than $B$; a surjection $A\to B$ says that $A$ is no smaller than $B$.
 
 ## Finite Sets
 
-> **Definition.** A set $F$ is finite if there exists some $n\in\mathbb{N}$ such that
->
-> $$
-> |F|=|n|.
-> $$
+A set $F$ is **finite** if there is some $n\in\mathbb{N}$ such that
 
-Here $n$ is treated as the finite initial segment of natural numbers with $n$ elements. The course often writes functions such as $f:n\to F$ when formally counting a finite set.
+$$
+|F|=|n|.
+$$
+
+Here $n$ is treated as the finite initial segment of natural numbers with $n$ elements. This is why the course often writes functions such as $f:n\to F$ when formally counting a finite set.
 
 If $F$ is finite, the natural number $n$ with $|F|=|n|$ is the cardinality of $F$.
 
@@ -138,8 +129,8 @@ Thus $g\circ f$ is injective, so $|A|\leq |C|$.
 
 > **Theorem.** If there exist injections $f:X\to Y$ and $g:Y\to X$, then $|X|=|Y|$.
 
-This theorem is used as a size-comparison tool. Instead of constructing a bijection directly, it can be enough to construct injections in both directions.
+This theorem is a size-comparison tool. Instead of producing one perfect matching in a single stroke, we can sometimes squeeze $X$ into $Y$ and $Y$ back into $X$, then let the theorem supply the bijection.
 
 ## Core Summary
 
-Cardinality comparisons are function statements. To prove $|A|\leq |B|$, construct an injection from $A$ to $B$. To prove $|A|\geq |B|$, construct a surjection from $A$ to $B$. To prove equality, construct a bijection or use injections both ways.
+The moral is that cardinality comparisons are function statements. To prove $|A|\leq |B|$, build an injection $A\to B$. To prove $|A|\geq |B|$, build a surjection $A\to B$. To prove equality, either build a bijection directly or use injections in both directions with Cantor-Schroder-Bernstein.

@@ -6,7 +6,7 @@ noteType: "main"
 status: "draft"
 ---
 
-The pigeonhole principle is a statement about functions. It turns a size comparison into a forced collision or a missing output.
+The pigeonhole principle is a statement about functions. It turns a size comparison into a forced collision or a missing output. The hard part is usually not the theorem; it is choosing the function whose collision means the thing you want.
 
 ## Function Form
 
@@ -20,13 +20,13 @@ The first part is the version used most often: if too many inputs are assigned t
 
 ## What Non-Injectivity Gives
 
-> **Definition.** A function $f:A\to B$ is not injective if
->
-> $$
-> (\exists a_1,a_2\in A)(a_1\neq a_2\wedge f(a_1)=f(a_2)).
-> $$
+Saying that $f:A\to B$ is not injective means
 
-This is why pigeonhole proves statements of the form "there exist two distinct objects with the same value."
+$$
+(\exists a_1,a_2\in A)(a_1\neq a_2\wedge f(a_1)=f(a_2)).
+$$
+
+This is why pigeonhole proves statements of the form "there exist two distinct objects with the same value." The equal value is not decoration; it is exactly the shared output of the function.
 
 ## Quantitative Version
 
@@ -55,7 +55,7 @@ A complete pigeonhole proof should identify:
 5. the conclusion from non-injectivity;
 6. the translation back to the original problem.
 
-The codomain is often the hard part. It must contain every possible output of the function, but it should be small enough for pigeonhole to apply.
+The codomain is often the delicate part. It must contain every possible output of the function, but it should be small enough for pigeonhole to apply.
 
 ## Example: Same Residue
 
@@ -95,4 +95,4 @@ $$
 
 ## Core Summary
 
-Pigeonhole is not a slogan about boxes. It is a theorem about functions. The proof begins by defining the function whose equal outputs mean the desired collision. The codomain must be chosen carefully enough that it is smaller than the domain.
+Pigeonhole is not just a slogan about boxes. It is a theorem about functions. The proof begins by defining the function whose equal outputs mean the desired collision. Then the codomain has to be small enough that a collision is forced.

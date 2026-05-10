@@ -6,17 +6,17 @@ noteType: "main"
 status: "draft"
 ---
 
-Strings count ordered choices. This is the main distinction from combinations: a subset forgets order, while a string remembers position.
+Strings are the counting language for ordered choices. A subset forgets where its elements came from; a string remembers position.
 
 ## Finite Strings
 
-> **Definition.** Let $A$ be a set and let $n\in\mathbb{N}$. A finite string over $A$ of length $n$ is a function
->
-> $$
-> f:n\to A.
-> $$
+Let $A$ be a set and let $n\in\mathbb{N}$. A finite string over $A$ of length $n$ is a function
 
-The set $A$ is the alphabet. The value $f(i)$ is the character in position $i$.
+$$
+f:n\to A.
+$$
+
+The set $A$ is the alphabet, and $f(i)$ is the character in position $i$.
 
 If $|A|=m$, then the number of strings of length $n$ over $A$ is
 
@@ -24,7 +24,7 @@ $$
 m^n.
 $$
 
-This is the product rule applied $n$ times.
+This is the product rule applied $n$ times: each position gets one independent choice from the alphabet.
 
 ## Strings With No Repeated Characters
 
@@ -54,13 +54,13 @@ The first position has $m$ choices, the second has $m-1$ choices, and so on unti
 
 ## k-Permutations
 
-> **Definition.** Let $A$ be a finite set. A $k$-permutation of $A$ is an injective string
->
-> $$
-> f:k\to A.
-> $$
+A **$k$-permutation** of a finite set $A$ is an injective string
 
-So a $k$-permutation is an ordered selection of $k$ distinct elements from $A$.
+$$
+f:k\to A.
+$$
+
+In plain language, it is an ordered selection of $k$ distinct elements from $A$.
 
 This differs from a $k$-combination:
 
@@ -69,11 +69,11 @@ This differs from a $k$-combination:
 
 ## Permutations
 
-> **Definition.** A permutation of a set $X$ is a bijection
->
-> $$
-> f:X\to X.
-> $$
+A **permutation** of a set $X$ is a bijection
+
+$$
+f:X\to X.
+$$
 
 If $|X|=n$, then the number of permutations of $X$ is
 
@@ -81,7 +81,7 @@ $$
 n!.
 $$
 
-This is the special case of $k$-permutations where $k=n$.
+This is the special case of $k$-permutations where the string uses every element exactly once.
 
 ## Connecting Permutations and Combinations
 
@@ -91,7 +91,7 @@ $$
 \binom{n}{k}=\frac{n!}{k!(n-k)!}.
 $$
 
-Reason: first choose a $k$-element subset, then order it. Each $k$-element subset has $k!$ orderings, so
+Here is the bridge between the two worlds. First choose a $k$-element subset, then order it. Each $k$-element subset has $k!$ orderings, so
 
 $$
 \text{number of injective length-}k\text{ strings}
@@ -103,4 +103,4 @@ Since the left side is $n!/(n-k)!$, dividing by $k!$ gives the formula.
 
 ## Core Summary
 
-Strings are functions from a finite domain into an alphabet. They count ordered choices. Combinations count subsets, where order is forgotten. Permutations are bijections from a set to itself, and $k$-permutations are injective strings of length $k$.
+Strings are functions from a finite domain into an alphabet, so they count ordered choices. Combinations count subsets, where order is forgotten. A $k$-permutation is an injective string of length $k$, and an ordinary permutation is the case where every element of the set is used exactly once.

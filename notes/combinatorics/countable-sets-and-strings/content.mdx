@@ -6,15 +6,15 @@ noteType: "main"
 status: "draft"
 ---
 
-Countability asks whether a set can be encoded by natural numbers. Many problems in this part of the course are not about computing a number; they are about building a precise encoding.
+Countability asks whether a set can be organized by natural numbers. At this point the word "count" changes its flavor: we are not trying to produce a finite answer, but to design a precise encoding.
 
 ## Countable Sets
 
-> **Definition.** A set $X$ is countable if
->
-> $$
-> |X|\leq |\mathbb{N}|.
-> $$
+A set $X$ is **countable** if
+
+$$
+|X|\leq |\mathbb{N}|.
+$$
 
 Equivalently, $X$ is countable if there exists an injection
 
@@ -26,7 +26,7 @@ Finite sets are countable. Some infinite sets are also countable.
 
 ## Countably Infinite
 
-> **Definition.** A set is countably infinite if it is both countable and infinite.
+A set is **countably infinite** when it is both countable and infinite.
 
 The standard examples are
 
@@ -36,23 +36,23 @@ $$
 
 ## Finite Strings
 
-> **Definition.** Let $A$ be an alphabet. A finite string over $A$ of length $n\in\mathbb{N}$ is a function
->
-> $$
-> s:n\to A.
-> $$
+For an alphabet $A$, a finite string over $A$ of length $n\in\mathbb{N}$ is a function
+
+$$
+s:n\to A.
+$$
 
 If $A$ is finite, then for each fixed $n$, there are finitely many strings of length $n$ over $A$.
 
-The set of all finite strings over a finite alphabet is countable: group strings by length, and then list each finite group.
+The set of all finite strings over a finite alphabet is countable: group the strings by length, and list each finite group before moving to the next length.
 
 ## Infinite Strings
 
-> **Definition.** An infinite string over $A$ is a function
->
-> $$
-> s:\mathbb{N}\to A.
-> $$
+An infinite string over $A$ is a function
+
+$$
+s:\mathbb{N}\to A.
+$$
 
 An infinite binary string is a function
 
@@ -62,7 +62,7 @@ $$
 
 ## One Contiguous Block of Ones
 
-PS08 asks for the size of the set of infinite binary strings that contain one contiguous finite substring consisting only of $1$s and have zeros everywhere else.
+PS08 asks for the size of the set of infinite binary strings that contain one contiguous finite substring consisting only of $1$s and have zeros everywhere else. The trick is not to stare at the whole infinite string. Find the finite data that determines it.
 
 A string of this form is determined by two natural numbers:
 
@@ -91,4 +91,4 @@ It is also infinite: for each $a\in\mathbb{N}$, the string with a single $1$ at 
 
 ## Core Summary
 
-Countability problems are coding problems. To prove a set is countable, encode each object using natural-number data. A finite block in an infinite binary string is countable because it is determined by a start position and a finite length.
+Countability problems are coding problems. To prove a set is countable, encode each object using natural-number data. A single finite block inside an infinite binary string is manageable because the whole string is determined by two numbers: where the block begins and how long it lasts.
