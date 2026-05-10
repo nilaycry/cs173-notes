@@ -12,6 +12,7 @@ const MUTED = "#78716c";
 const FAINT = "#a8a29e";
 const BORDER = "#e8e5df";
 const ACCENT = "#2f6b6f";
+const NOTE_WIDTH = 800;
 
 const NOTE_TYPE_LABELS: Record<NoteMeta["noteType"], string> = {
   main: "concept note",
@@ -81,7 +82,7 @@ export default async function NotePage({
           justifyContent: "space-between",
           alignItems: "center",
           padding: "20px 48px",
-          maxWidth: 720,
+          maxWidth: NOTE_WIDTH,
           margin: "0 auto",
         }}
       >
@@ -96,7 +97,7 @@ export default async function NotePage({
       <header
         className="co-note-header"
         style={{
-          maxWidth: 720,
+          maxWidth: NOTE_WIDTH,
           margin: "0 auto",
           padding: "48px 48px 40px",
         }}
@@ -135,7 +136,7 @@ export default async function NotePage({
       <main
         className="co-note-main"
         style={{
-          maxWidth: 720,
+          maxWidth: NOTE_WIDTH,
           margin: "0 auto",
           padding: "0 48px 48px",
         }}
@@ -148,7 +149,7 @@ export default async function NotePage({
       <footer
         className="co-note-footer"
         style={{
-          maxWidth: 720,
+          maxWidth: NOTE_WIDTH,
           margin: "0 auto",
           padding: "32px 48px 80px",
           borderTop: `1px solid ${BORDER}`,
