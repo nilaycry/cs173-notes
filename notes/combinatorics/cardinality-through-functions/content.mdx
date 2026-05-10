@@ -6,7 +6,7 @@ noteType: "main"
 status: "draft"
 ---
 
-Counting in this section begins with a deceptively modest idea: to compare two sets, try to move the elements of one set into the other without losing track of them. The right function tells the whole story.
+Counting in this section begins with a deceptively modest idea: to compare two sets, look for a function that witnesses the comparison. The function is the formal evidence, but the cardinality statement still has its ordinary size meaning.
 
 ## Functions and Size
 
@@ -16,36 +16,48 @@ $$
 (\forall a,b\in X)(f(a)=f(b)\Rightarrow a=b).
 $$
 
+Equivalently, $f$ is injective when unequal inputs have unequal outputs:
+
+$$
+(\forall a,b\in X)(a\neq b\Rightarrow f(a)\neq f(b)).
+$$
+
+The two forms are contrapositives of each other. In practice, the first version is often easier when proving a function is injective: assume $f(a)=f(b)$ and work toward $a=b$. The second version is often closer to the intuition: different inputs do not land on the same output.
+
 An injection says that $X$ can be placed inside $Y$ without identifying two elements. The function is **surjective** when every output is hit:
 
 $$
 (\forall y\in Y)(\exists x\in X)(f(x)=y).
 $$
 
-A surjection says that $X$ covers all of $Y$. A **bijection** does both jobs at once: no collisions and no missed outputs.
+A surjection says that $X$ covers all of $Y$. A **bijection** is both injective and surjective, often written informally as "inj. and surj.": no collisions and no missed outputs.
 
 ## Cardinal Comparisons
 
-Cardinality notation is shorthand for the existence of particular functions:
+Cardinality statements are statements about relative size. The function definition tells us how the course makes those size statements precise.
 
 $$
 |A|\leq |B|
-\quad\text{means there is an injection } A\to B,
+\quad\text{means } A\text{ has no more elements than }B.
 $$
+
+Formally, we prove this by giving an injection $A\to B$.
 
 $$
 |A|\geq |B|
-\quad\text{means there is a surjection } A\to B,
+\quad\text{means } A\text{ has at least as many elements as }B.
 $$
 
-and
+Formally, we prove this by giving a surjection $A\to B$.
 
 $$
 |A|=|B|
-\quad\text{means there is a bijection } A\to B.
+\quad\text{means } A\text{ and }B\text{ have the same size.}
 $$
 
-The direction is part of the content. An injection $A\to B$ says that $A$ is no larger than $B$; a surjection $A\to B$ says that $A$ is no smaller than $B$.
+Formally, we prove this by giving a bijection $A\to B$.
+
+The direction is part of the content. An injection $A\to B$ is evidence that $A$ is no larger than $B$; a surjection $A\to B$ is evidence that $A$ is no smaller than $B$. The function is the witness, while the cardinality symbol records the size comparison.
 
 ## Finite Sets
 
@@ -133,4 +145,4 @@ This theorem is a size-comparison tool. Instead of producing one perfect matchin
 
 ## Core Summary
 
-The moral is that cardinality comparisons are function statements. To prove $|A|\leq |B|$, build an injection $A\to B$. To prove $|A|\geq |B|$, build a surjection $A\to B$. To prove equality, either build a bijection directly or use injections in both directions with Cantor-Schroder-Bernstein.
+The moral is that cardinality comparisons are proved by functions, but they are still size comparisons. To prove $|A|\leq |B|$, build an injection $A\to B$. To prove $|A|\geq |B|$, build a surjection $A\to B$. To prove equality, either build a bijection directly by checking it is inj. and surj., or use injections in both directions with Cantor-Schroder-Bernstein.
