@@ -1,0 +1,222 @@
+---
+title: "Practice Final 2026 Review"
+description: "A cross-unit guide to the 2026 practice final: what each problem is testing, how to approach it, and what facts to have ready."
+order: 1
+noteType: "problem-guide"
+status: "draft"
+---
+
+This practice final is not asking for one new trick. It is asking whether the course's main habits have stuck: parse the statement, name the objects, choose the right definition, and then write the proof in the style that topic expects.
+
+The exam is scary mostly because it mixes units. That is normal for CS 173. A graph problem may use induction. A countability problem may be about strings. A true/false question may be testing whether a theorem says exactly what you think it says.
+
+## The Shape of the Final
+
+The practice final has six parts.
+
+1. True/false concept checks.
+2. Short-answer constructions.
+3. A formal zeroth-order logic proof.
+4. An induction proof about integer linear combinations.
+5. A proof that there are infinitely many finite binary strings.
+6. An induction proof that every connected graph contains a spanning tree.
+
+The big idea is that each part tests a different kind of mathematical reflex. Do not use the same writing style everywhere.
+
+## Part 1: True/False Checks
+
+True/false questions are precision traps. Do not answer from vibe. Translate the statement into the relevant theorem, then look for a counterexample if anything feels too strong.
+
+The main facts being tested are:
+
+- odd squares are congruent to $1$ modulo $4$;
+- countable does not mean finite;
+- the handshaking theorem controls odd-degree vertices, not even-degree vertices;
+- if $x=5a$ and $y=5b$ for nonzero integers $a,b$, then $\gcd(x,y)=5\gcd(a,b)$, so the gcd is at least $5$;
+- power-set inclusion tracks subset inclusion;
+- taking $B=\varnothing$ is allowed when a problem only says $B\subseteq A$;
+- propositions are finite strings over a finite logical alphabet, so there are countably many of them;
+- $n$ vertices and $n-1$ edges do not guarantee connectedness;
+- modular equations can be simplified by reducing coefficients;
+- a finite tree satisfies $|V(T)|=|E(T)|+1$.
+
+<details>
+<summary>Self-check key for Part 1</summary>
+
+The expected truth pattern is:
+
+$$
+F,\ F,\ F,\ F,\ T,\ T,\ T,\ F,\ T,\ F.
+$$
+
+For item 5, read the intended statement as
+
+$$
+x\subseteq y \Longleftrightarrow \mathcal{P}(x)\subseteq \mathcal{P}(y).
+$$
+
+If the problem literally uses an unbound capital $X$ instead of the quantified variable $x$, then the formula has a notation problem. In normal course notation, the power-set fact itself is true.
+</details>
+
+## Part 2: Short-Answer Constructions
+
+Short-answer construction problems reward explicit examples. You do not need a paragraph when a clean object and one line of justification will do.
+
+For finite strings over the alphabet $\{0,1,2\}$, group strings by length. If
+
+$$
+T\coloneqq \{\,t\mid (\exists n\in\mathbb{N})(t:n\to\{0,1,2\})\,\},
+$$
+
+then one useful bijection $\varphi:T\to\mathbb{N}$ is
+
+$$
+\varphi(t)
+\coloneqq
+\frac{3^n-1}{2}+\sum_{i<n}t(i)3^i,
+$$
+
+where $n$ is the length of $t$. The offset
+
+$$
+\frac{3^n-1}{2}=\sum_{j<n}3^j
+$$
+
+puts all strings of length $n$ after all shorter strings, and the base-$3$ sum orders the strings of that fixed length.
+
+For the other short-answer prompts, keep these examples in mind:
+
+- an $\in$-transitive set that is not a natural number: $\mathbb{N}$;
+- an uncountable set that is not equal to any power set: $\mathcal{P}(\mathbb{N})\setminus\{\varnothing\}$;
+- the fewest edges in a connected graph on $n\in\mathbb{N}^+$ vertices: $n-1$;
+- a connected graph where at least three edges must be removed to disconnect it: $K_4$.
+
+## Part 3: Formal Logic Proof
+
+The statement is
+
+$$
+\vdash (\neg q\wedge (p\to q))\to \neg p.
+$$
+
+Read it as a formal version of modus tollens. The proof outline is:
+
+1. Assume $\neg q\wedge(p\to q)$.
+2. Use conjunction elimination to get $\neg q$ and $p\to q$.
+3. Assume $p$.
+4. Use modus ponens on $p$ and $p\to q$ to get $q$.
+5. Combine $q$ with $\neg q$ to get a contradiction.
+6. Discharge the assumption $p$ to prove $\neg p$.
+7. Discharge the first assumption to prove the implication.
+
+The page is not asking for an informal English proof. It explicitly asks you to cite the logic axioms, rules of inference, and theorems. The answer should look like a derivation, not a paragraph.
+
+<details>
+<summary>Compact derivation skeleton</summary>
+
+Use the course's names if they differ, but the structure should be:
+
+1. $\neg q\wedge(p\to q)$, assumption.
+2. $\neg q$, from 1 by conjunction elimination.
+3. $p\to q$, from 1 by conjunction elimination.
+4. $p$, assumption.
+5. $q$, from 3 and 4 by modus ponens.
+6. contradiction, from 2 and 5.
+7. $\neg p$, from 4 through 6 by negation introduction.
+8. $(\neg q\wedge(p\to q))\to\neg p$, from 1 through 7 by implication introduction.
+</details>
+
+## Part 4: Induction With Integer Combinations
+
+The statement is
+
+$$
+(\forall n\in\mathbb{N})(n\geq 4\Rightarrow(\exists x,y\in\mathbb{Z})(2x+5y=n)).
+$$
+
+Because $x$ and $y$ are allowed to be integers, not natural numbers, the induction step can add $1$ by using
+
+$$
+1=5-2\cdot 2.
+$$
+
+A clean proof uses base case $n=4$:
+
+$$
+4=2\cdot 2+5\cdot 0.
+$$
+
+For the step, assume
+
+$$
+n=2x+5y.
+$$
+
+Then
+
+$$
+n+1
+=2x+5y+1
+=2(x-2)+5(y+1).
+$$
+
+Since $x-2$ and $y+1$ are integers, the induction step preserves the required form.
+
+## Part 5: Infinitely Many Finite Binary Strings
+
+The set of finite binary strings is
+
+$$
+\{\,s\mid(\exists n\in\mathbb{N})(s:n\to\{0,1\})\,\}.
+$$
+
+To prove this set is infinite, it is enough to inject $\mathbb{N}$ into it. Send each $n$ to the all-zero string of length $n$:
+
+$$
+z_n:n\to\{0,1\},
+\qquad
+z_n(i)\coloneqq 0.
+$$
+
+Different lengths give different functions, since the domains are different. So the map $n\mapsto z_n$ is injective, and therefore there are infinitely many finite binary strings.
+
+This is a good example of the course's cardinality habit: do not try to "count forever" by arithmetic. Build a function.
+
+## Part 6: Connected Graphs Contain Spanning Trees
+
+The statement is a graph-induction theorem:
+
+> **Theorem.** Every finite connected graph contains a spanning tree.
+
+The proof should use the cycle-removal idea.
+
+If the connected graph $G$ has no cycle, then $G$ is already a tree, so it is its own spanning tree.
+
+If $G$ has a cycle, choose an edge $e$ on that cycle. Removing $e$ does not disconnect the graph, because the rest of the cycle still gives a route between the endpoints of $e$. Thus $G-e$ is connected, has the same vertex set, and has fewer edges. By induction, $G-e$ contains a spanning tree. Since $G-e$ is a subgraph of $G$, that same spanning tree is also a spanning tree of $G$.
+
+The important sentence is not "remove a cycle edge." The important sentence is "removing an edge from a cycle preserves connectedness." That is the theorem doing the work.
+
+## What To Review Before Trying It Cold
+
+Review these pages in this order:
+
+1. Logic proof rules and proof-writing expectations.
+2. Cardinality through functions.
+3. Countable sets and strings.
+4. Pigeonhole and finite counting algebra.
+5. Graph degrees and the degree-sum theorem.
+6. Connected graphs and trees.
+7. Spanning trees.
+8. Induction on graphs.
+
+When you retake the practice final, use this timing:
+
+- Part 1: 15 minutes.
+- Part 2: 20 minutes.
+- Part 3: 15 minutes.
+- Part 4: 15 minutes.
+- Part 5: 10 minutes.
+- Part 6: 20 minutes.
+- Review pass: 15 minutes.
+
+The review pass matters. Most lost points on this kind of exam come from a missing quantifier, a function that was described but not defined, or an induction step that changes the object without proving the hypothesis still applies.

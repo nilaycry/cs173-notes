@@ -12,6 +12,7 @@ export default function HomePage() {
   const logicNotes = getAllNotes("logic");
   const combinatoricsNotes = getAllNotes("combinatorics");
   const graphNotes = getAllNotes("graph-theory");
+  const finalReviewNotes = getAllNotes("final-review");
 
   return (
     <>
@@ -88,6 +89,23 @@ export default function HomePage() {
                 }}
               >
                 lecture review
+              </Link>
+              <Link
+                href="/final-review"
+                className="nav-pill"
+                style={{
+                  color: FAINT,
+                  textDecoration: "none",
+                  fontSize: 12,
+                  fontWeight: 500,
+                  letterSpacing: "0.06em",
+                  border: "1px solid rgba(0,0,0,0.06)",
+                  borderRadius: 20,
+                  padding: "5px 14px",
+                  transition: "all 0.2s",
+                }}
+              >
+                final review
               </Link>
               <Link
                 href="/combinatorics"
@@ -606,6 +624,50 @@ export default function HomePage() {
                 }}
               >
                 drill
+              </span>
+            </div>
+          </Link>
+
+          <Link href="/final-review" style={{ textDecoration: "none", color: "inherit" }}>
+            <div
+              className="cs-note-row"
+              style={{
+                display: "flex",
+                alignItems: "baseline",
+                justifyContent: "space-between",
+                padding: "16px 0",
+                borderBottom: `1px solid ${BORDER}`,
+                cursor: "pointer",
+              }}
+            >
+              <div>
+                <span
+                  style={{
+                    fontSize: 15,
+                    fontWeight: 400,
+                    color: FG,
+                    display: "block",
+                    marginBottom: 4,
+                }}
+              >
+                  final review
+                </span>
+                <span style={{ fontSize: 13, color: FAINT, lineHeight: 1.5 }}>
+                  practice-final strategy, cross-unit topic maps, construction
+                  patterns, and hidden self-checks
+                </span>
+              </div>
+              <span
+                style={{
+                  fontSize: 11,
+                  color: FAINT,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.08em",
+                  flexShrink: 0,
+                  marginLeft: 24,
+                }}
+              >
+                {finalReviewNotes.length} guide
               </span>
             </div>
           </Link>

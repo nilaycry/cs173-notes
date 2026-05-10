@@ -158,6 +158,29 @@ a {
   --note-accent: #2f6b6f;
 }
 
+.note-accent-final {
+  --note-accent: #8a4f3d;
+}
+
+.notes-prose details {
+  border-left: 3px solid var(--note-accent, #6c8f92);
+  margin: 1.9rem 0;
+  padding: 0.35rem 0 0.35rem 1.25rem;
+  color: #44403c;
+}
+
+.notes-prose summary {
+  cursor: pointer;
+  color: #1c1917;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.notes-prose details p,
+.notes-prose details li {
+  color: #44403c;
+}
+
 .co-note-button {
   display: inline-flex;
   align-items: center;
