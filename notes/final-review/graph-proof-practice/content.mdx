@@ -1,0 +1,273 @@
+---
+title: "Graph Proof Practice"
+description: "Fresh graph theory proof questions for final review, assuming the standard graph theorems from notes and problem sets are available."
+order: 3
+noteType: "problem-guide"
+status: "draft"
+---
+
+These problems are meant for the final-review stage. You may assume the graph theorems already proved in notes, lectures, and problem sets, including the degree-sum theorem, parity of odd-degree vertices, unique paths in trees, tree edge count, leaves in trees, cut-edge facts, and the spanning-tree theorem.
+
+That does not mean every proof should be one sentence. The work is choosing the right theorem, checking its hypotheses, and translating it back to the graph in front of you.
+
+## How To Use These
+
+Try each proof before opening the hint. If you get stuck, ask which earlier theorem sounds closest to the conclusion:
+
+- degree statement: use degree-sum, parity, or pigeonhole;
+- tree statement: use connected plus acyclic, unique paths, leaves, or $|V(T)|=|E(T)|+1$;
+- edge-removal statement: ask whether the edge lies on a cycle;
+- connectedness statement: try components, spanning trees, or contrapositive.
+
+## Problem 1: Same Degree Vertices
+
+Prove that every graph with at least two vertices contains two distinct vertices with the same degree.
+
+<details>
+<summary>Proof plan</summary>
+
+Let $|V(G)|=n$ with $n\geq 2$. Every degree lies in
+
+$$
+\{\,d\in\mathbb{N}\mid d\leq n-1\,\}.
+$$
+
+But degree $0$ and degree $n-1$ cannot both occur. If a vertex has degree $n-1$, it is adjacent to every other vertex, so no vertex has degree $0$.
+
+Thus there are at most $n-1$ actual degree values for $n$ vertices. Apply pigeonhole to the degree function
+
+$$
+\deg_G:V(G)\to\mathbb{N}.
+$$
+
+Two distinct vertices must have the same degree.
+</details>
+
+## Problem 2: Large Minimum Degree Forces Connectedness
+
+Let $G$ be a graph with $|V(G)|=n$. Prove that if
+
+$$
+(\forall v\in V(G))\left(\deg_G(v)\geq \frac{n-1}{2}\right),
+$$
+
+then $G$ is connected.
+
+<details>
+<summary>Proof plan</summary>
+
+Use the contrapositive. Suppose $G$ is disconnected. Choose a connected component $C$ of smallest order, and let $m=|V(C)|$.
+
+Since there is at least one other component,
+
+$$
+m\leq \frac n2.
+$$
+
+Choose $v\in V(C)$. Since no edge leaves a connected component,
+
+$$
+\deg_G(v)\leq m-1\leq \frac n2-1<\frac{n-1}{2}.
+$$
+
+So if $G$ is disconnected, some vertex has degree less than $(n-1)/2$. That proves the contrapositive.
+</details>
+
+## Problem 3: Cut Edges Are Not on Cycles
+
+Let $G$ be connected and let $e\in E(G)$. Prove that if $e$ is a cut edge, then $e$ lies on no cycle in $G$.
+
+<details>
+<summary>Proof plan</summary>
+
+Use the contrapositive. If $e$ lies on a cycle, then the theorem on cycle-edge deletion says $G-e$ is connected. Therefore $e$ is not a cut edge.
+
+So if $e$ is a cut edge, $e$ cannot lie on a cycle.
+</details>
+
+## Problem 4: Non-Cut Edges Lie on Cycles
+
+Let $G$ be connected and let $e\in E(G)$. Prove that if $G-e$ is connected, then $e$ lies on a cycle in $G$.
+
+<details>
+<summary>Proof plan</summary>
+
+Let $e=\{u,v\}$. Since $G-e$ is connected, there is a path in $G-e$ from $u$ to $v$.
+
+That path does not use $e$. Adding the edge $e$ to the path closes a cycle in $G$. Hence $e$ lies on a cycle.
+</details>
+
+## Problem 5: Connected Graph With $n-1$ Edges
+
+Let $G$ be a connected graph with $|V(G)|=n$ and $|E(G)|=n-1$. Prove that $G$ is a tree.
+
+<details>
+<summary>Proof plan</summary>
+
+Since $G$ is connected, it has a spanning tree $T$. Then
+
+$$
+V(T)=V(G),
+$$
+
+so $|V(T)|=n$. Since $T$ is a tree,
+
+$$
+|E(T)|=|V(T)|-1=n-1.
+$$
+
+But $T$ is a subgraph of $G$ and $G$ also has $n-1$ edges. Therefore $T$ must contain all edges of $G$, so $T=G$. Hence $G$ is a tree.
+</details>
+
+## Problem 6: Exactly One Cycle
+
+Suppose $G$ is connected and contains exactly one cycle. Prove that
+
+$$
+|E(G)|=|V(G)|.
+$$
+
+<details>
+<summary>Proof plan</summary>
+
+Choose an edge $e$ on the unique cycle. Since $e$ lies on a cycle, $G-e$ is connected.
+
+Also, $G-e$ has no cycles: if it had a cycle, that cycle would also be a cycle in $G$, different from the original one or surviving after deleting $e$, contradicting uniqueness.
+
+Thus $G-e$ is a tree. Therefore
+
+$$
+|E(G-e)|=|V(G-e)|-1.
+$$
+
+Since deleting $e$ does not change the vertex set,
+
+$$
+|E(G)|-1=|V(G)|-1.
+$$
+
+Hence $|E(G)|=|V(G)|$.
+</details>
+
+## Problem 7: Adding One Edge to a Tree
+
+Let $T$ be a tree, and let $u,v\in V(T)$ be distinct non-adjacent vertices. Let $G$ be the graph obtained from $T$ by adding the edge $\{u,v\}$. Prove that $G$ contains exactly one cycle.
+
+<details>
+<summary>Proof plan</summary>
+
+Since $T$ is a tree, there is a unique path in $T$ from $u$ to $v$. Adding the edge $\{u,v\}$ closes this path into a cycle in $G$.
+
+Now prove uniqueness. Any cycle in $G$ must use the new edge $\{u,v\}$, because $T$ itself is acyclic. Removing that new edge from such a cycle leaves a path in $T$ from $u$ to $v$.
+
+But the path from $u$ to $v$ in $T$ is unique. Therefore every cycle in $G$ is the same cycle.
+</details>
+
+## Problem 8: Minimum Degree At Least Two
+
+Prove that every nonempty finite graph in which every vertex has degree at least $2$ contains a cycle.
+
+<details>
+<summary>Proof plan</summary>
+
+Assume for contradiction that $G$ is acyclic. Then every connected component of $G$ is a tree.
+
+Choose any component. Since every vertex of $G$ has degree at least $2$, this component cannot be a single isolated vertex. So it is a tree with at least two vertices.
+
+Every tree with at least two vertices has a leaf, meaning a vertex of degree $1$ inside the component. Since no edges leave a connected component, this vertex also has degree $1$ in $G$, contradicting the assumption that every vertex has degree at least $2$.
+
+Thus $G$ must contain a cycle.
+</details>
+
+## Problem 9: Edges in a Tree Are Cut Edges
+
+Let $T$ be a tree. Prove that every edge of $T$ is a cut edge.
+
+<details>
+<summary>Proof plan</summary>
+
+Let $e=\{u,v\}\in E(T)$. Since $T$ is a tree, there is a unique path from $u$ to $v$. That path must be the edge $e$ itself.
+
+If $T-e$ were connected, there would be a path from $u$ to $v$ in $T-e$. That would be a second path from $u$ to $v$ in $T$, contradicting uniqueness of paths in trees.
+
+Therefore $T-e$ is disconnected, so $e$ is a cut edge.
+</details>
+
+## Problem 10: Complete Graph Edge Count
+
+Let $K_n$ be the complete graph on $n$ vertices. Prove that
+
+$$
+|E(K_n)|=\frac{n(n-1)}{2}.
+$$
+
+<details>
+<summary>Proof plan</summary>
+
+In $K_n$, every vertex is adjacent to the other $n-1$ vertices, so every vertex has degree $n-1$.
+
+By the degree-sum theorem,
+
+$$
+\sum_{v\in V(K_n)}\deg_{K_n}(v)=2|E(K_n)|.
+$$
+
+The left side is
+
+$$
+n(n-1).
+$$
+
+Therefore
+
+$$
+2|E(K_n)|=n(n-1),
+$$
+
+so
+
+$$
+|E(K_n)|=\frac{n(n-1)}{2}.
+$$
+</details>
+
+## Problem 11: A Connected Bipartition Edge Bound
+
+Let $G$ be a connected graph whose vertex set is partitioned into two nonempty sets $A$ and $B$, and suppose every edge has one endpoint in $A$ and one endpoint in $B$. Prove that if $|A|=1$, then $G$ has a vertex adjacent to every vertex in $B$.
+
+<details>
+<summary>Proof plan</summary>
+
+Let $A=\{a\}$. Since $G$ is connected, no vertex in $B$ is isolated.
+
+Fix $b\in B$. Since $b$ has some neighbor and every edge has one endpoint in $A$ and one endpoint in $B$, every neighbor of $b$ must lie in $A$. But $A$ has only one element, namely $a$.
+
+Thus $b$ is adjacent to $a$. Since $b\in B$ was arbitrary, $a$ is adjacent to every vertex in $B$.
+</details>
+
+## Problem 12: Trees Have a Low-Degree Vertex
+
+Prove that every finite tree has a vertex of degree at most $1$.
+
+<details>
+<summary>Proof plan</summary>
+
+If the tree has one vertex, that vertex has degree $0$.
+
+If the tree has at least two vertices, use the theorem that every tree with at least two vertices has a leaf. A leaf has degree $1$.
+
+In either case, the tree has a vertex of degree at most $1$.
+</details>
+
+## What These Are Training
+
+These are the proof moves that keep repeating:
+
+- use pigeonhole on the degree function;
+- prove connectedness by contradiction or contrapositive;
+- delete an edge only after checking whether it lies on a cycle;
+- use spanning trees to convert connected graph statements into tree statements;
+- use unique paths when adding or removing edges in trees;
+- use degree-sum when a question asks for a count of edges or parity.
+
+For a timed final, the point is not to invent graph theory from scratch. The point is to recognize which proved theorem is supposed to unlock the problem, then write the two or three sentences that make the theorem apply.
