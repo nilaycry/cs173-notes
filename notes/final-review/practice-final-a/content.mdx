@@ -1,0 +1,260 @@
+---
+title: "Practice Final A"
+description: "A fresh CS 173 practice final built from the patterns in the practice midterms and final worksheet, with true/false and proof questions."
+order: 2
+noteType: "problem-guide"
+status: "draft"
+---
+
+This practice final is modeled on the local practice midterms and the practice final worksheet. The questions are new, but the habits are the same: parse quantifiers carefully, expand definitions, build functions for cardinality claims, and use the correct proof mode for the topic.
+
+Use it in two passes. First, try the questions cold. Then open the self-checks and compare proof structure, not just final answers.
+
+## Part 1: True or False
+
+Mark each statement true or false. Do not prove your answers on a timed attempt, but make sure you can explain the reason afterward.
+
+1. Every sentence with a truth value is a proposition.
+2. The sentence "This sentence is false" has a truth value.
+3. For every set $X$, $\varnothing\subseteq X$.
+4. For all sets $A$ and $B$, if $\mathcal{P}(A)\subseteq\mathcal{P}(B)$, then $A\subseteq B$.
+5. For all sets $A$ and $B$, if $A\subseteq B$, then $|A|\leq |B|$.
+6. If $X$ and $Y$ are finite, $|X|=|Y|$, and $f:X\to Y$ is injective, then $f$ is surjective.
+7. The set of all finite binary strings is uncountable.
+8. The set of all infinite binary strings is countable.
+9. If $X$ is finite and $|X|=n$, then $|\mathcal{P}(X)|=2^n$.
+10. If a graph has $n$ vertices and $n-1$ edges, then it is connected.
+11. Every finite graph has an even number of odd-degree vertices.
+12. Every finite tree with at least two vertices has at least two leaves.
+13. If $e$ is an edge on a cycle in a connected graph $G$, then $G-e$ is connected.
+14. Every finite connected graph contains a spanning tree.
+15. If $p$ is prime and $p\mid ab$, then $p\mid a$ and $p\mid b$.
+16. For every $n\in\mathbb{N}$, $5\mid 9^n-4^n$.
+17. For every $n\in\mathbb{N}$, $n$ and $n+1$ are coprime.
+18. If $A$ is countably infinite, then $\mathcal{P}(A)$ is countable.
+
+<details>
+<summary>Answer key for Part 1</summary>
+
+1. True. A proposition is a sentence with a truth value.
+2. False. This is the standard self-reference trap.
+3. True. The empty set has no element that could violate subset inclusion.
+4. True. Since $A\in\mathcal{P}(A)$, the assumption gives $A\in\mathcal{P}(B)$, so $A\subseteq B$.
+5. True. The inclusion map $A\to B$ is injective.
+6. True. For finite sets of the same size, an injection cannot miss an output.
+7. False. Finite binary strings can be listed by length.
+8. False. Infinite binary strings are uncountable by diagonalization.
+9. True. Each element is either included or not included.
+10. False. A disconnected graph can have $n-1$ edges.
+11. True. The degree sum is even, so the number of odd summands is even.
+12. True, with the hypothesis "at least two vertices."
+13. True. The rest of the cycle still connects the endpoints of $e$.
+14. True. Repeatedly delete cycle edges, or prove by induction on edges.
+15. False. Euclid's lemma says $p\mid a$ or $p\mid b$.
+16. True. Since $9\equiv 4\pmod 5$, their $n$th powers are congruent modulo $5$.
+17. True. Any common divisor of consecutive integers divides their difference, which is $1$.
+18. False. Cantor's theorem gives $|A|<|\mathcal{P}(A)|$.
+</details>
+
+## Part 2: Proof Questions
+
+Write complete proofs. These are not meant to be solved by quoting a sentence from memory. Each one is testing whether you can put the right definitions on the page.
+
+### Problem 1: Formal Logic
+
+For propositions $p,q,r$, prove
+
+$$
+p\vee q,\quad p\to r,\quad q\to r\vdash r.
+$$
+
+Your proof should explicitly cite the zeroth-order logic rules or theorems used.
+
+<details>
+<summary>Proof skeleton</summary>
+
+Use disjunction elimination.
+
+1. Assume $p\vee q$.
+2. Assume $p\to r$.
+3. Assume $q\to r$.
+4. From $p$ and $p\to r$, derive $r$ by modus ponens.
+5. From $q$ and $q\to r$, derive $r$ by modus ponens.
+6. Since $p\vee q$, and both cases imply $r$, conclude $r$ by disjunction elimination.
+
+The important citation is the disjunction-elimination rule:
+
+$$
+p\vee q,\quad p\to r,\quad q\to r\vdash r.
+$$
+</details>
+
+### Problem 2: Power Sets and Subsets
+
+Prove that for all sets $A$ and $B$,
+
+$$
+A\subseteq B\Longleftrightarrow \mathcal{P}(A)\subseteq\mathcal{P}(B).
+$$
+
+<details>
+<summary>Proof skeleton</summary>
+
+Prove both directions.
+
+Forward direction: assume $A\subseteq B$. Let $S\in\mathcal{P}(A)$. Then $S\subseteq A$. Since $A\subseteq B$, transitivity of $\subseteq$ gives $S\subseteq B$. Hence $S\in\mathcal{P}(B)$.
+
+Backward direction: assume $\mathcal{P}(A)\subseteq\mathcal{P}(B)$. Since $A\subseteq A$, we have $A\in\mathcal{P}(A)$. Therefore $A\in\mathcal{P}(B)$. By definition of power set, $A\subseteq B$.
+</details>
+
+### Problem 3: Induction and Divisibility
+
+Use induction to prove
+
+$$
+(\forall n\in\mathbb{N})(5\mid 9^n-4^n).
+$$
+
+<details>
+<summary>Proof skeleton</summary>
+
+Base case: for $n=0$,
+
+$$
+9^0-4^0=1-1=0,
+$$
+
+so $5\mid 0$.
+
+Inductive step: assume $5\mid 9^k-4^k$. Then there exists $a\in\mathbb{Z}$ such that
+
+$$
+9^k-4^k=5a.
+$$
+
+Now compute
+
+$$
+9^{k+1}-4^{k+1}
+=9\cdot 9^k-4\cdot 4^k
+=9(9^k-4^k)+5\cdot 4^k.
+$$
+
+By the inductive hypothesis, $9(9^k-4^k)=45a$, and $45a+5\cdot 4^k$ is divisible by $5$.
+</details>
+
+### Problem 4: Infinitely Many Finite Binary Strings
+
+Let
+
+$$
+B\coloneqq \{\,s\mid(\exists n\in\mathbb{N})(s:n\to\{0,1\})\,\}.
+$$
+
+Prove that $B$ is infinite.
+
+<details>
+<summary>Proof skeleton</summary>
+
+Construct an injection $\mathbb{N}\to B$.
+
+For each $n\in\mathbb{N}$, define
+
+$$
+z_n:n\to\{0,1\}
+$$
+
+by
+
+$$
+z_n(i)\coloneqq 0.
+$$
+
+Define $F:\mathbb{N}\to B$ by $F(n)\coloneqq z_n$.
+
+If $F(m)=F(n)$, then $z_m=z_n$. Equal functions have equal domains, so $m=n$. Therefore $F$ is injective. Since $\mathbb{N}$ injects into $B$, the set $B$ is infinite.
+</details>
+
+### Problem 5: Finite Trinary Strings Are Countable
+
+Let
+
+$$
+T\coloneqq \{\,t\mid(\exists n\in\mathbb{N})(t:n\to\{0,1,2\})\,\}.
+$$
+
+Prove that $T$ is countable.
+
+<details>
+<summary>Proof skeleton</summary>
+
+For each $n\in\mathbb{N}$, let
+
+$$
+T_n\coloneqq \{\,t:n\to\{0,1,2\}\,\}.
+$$
+
+Then $T_n$ is finite and $|T_n|=3^n$. Also,
+
+$$
+T=\bigcup_{n\in\mathbb{N}}T_n.
+$$
+
+So $T$ is a countable union of finite sets. Equivalently, list all strings of length $0$, then all strings of length $1$, then length $2$, and continue. This gives an enumeration of $T$, so $T$ is countable.
+
+If an explicit injection is desired, send a string $t:n\to\{0,1,2\}$ to
+
+$$
+\frac{3^n-1}{2}+\sum_{i<n}t(i)3^i.
+$$
+
+This records the length block and the base-$3$ value within that block.
+</details>
+
+### Problem 6: Odd-Degree Vertices
+
+Prove that every finite graph has an even number of odd-degree vertices.
+
+<details>
+<summary>Proof skeleton</summary>
+
+Use the degree-sum theorem:
+
+$$
+\sum_{v\in V(G)}\deg_G(v)=2|E(G)|.
+$$
+
+The right side is even. Split the sum into degrees of even-degree vertices and degrees of odd-degree vertices. The sum of the even degrees is even. Therefore the sum of the odd degrees is also even.
+
+A sum of odd integers is even exactly when there are an even number of odd summands. Hence the number of odd-degree vertices is even.
+</details>
+
+### Problem 7: Spanning Trees
+
+Use induction on the number of edges to prove that every finite connected graph contains a spanning tree.
+
+<details>
+<summary>Proof skeleton</summary>
+
+Induct on $m=|E(G)|$.
+
+Base case: if $G$ is connected with $0$ edges, then $G$ has one vertex and is already a tree.
+
+Inductive step: let $G$ be connected with $m+1$ edges.
+
+If $G$ has no cycle, then $G$ is connected and acyclic, so it is a tree and is its own spanning tree.
+
+If $G$ has a cycle, choose an edge $e$ on that cycle. Let $H=G-e$. Removing an edge on a cycle preserves connectedness, so $H$ is connected. Also $H$ has the same vertex set as $G$ and has $m$ edges. By the inductive hypothesis, $H$ contains a spanning tree $T$. Since $H$ is a subgraph of $G$ and $V(H)=V(G)$, the same $T$ is a spanning tree of $G$.
+</details>
+
+## How To Grade Yourself
+
+A proof earns full credit only if it names the object doing the work.
+
+- Logic proof: cite the inference rule.
+- Set proof: expand membership in $\mathcal{P}(A)$.
+- Divisibility proof: show the expression is $5$ times an integer.
+- String proof: define the function or enumeration.
+- Graph proof: explain why the smaller graph is still connected.
+
+If you can do Problems 4 and 5 without looking, your string/countability weakness is turning into a strength. Those are the exact moves this final likes to test.
