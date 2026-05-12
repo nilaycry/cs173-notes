@@ -24,23 +24,39 @@ Try each proof before opening the hint. If you get stuck, ask which earlier theo
 Prove that every graph with at least two vertices contains two distinct vertices with the same degree.
 
 <details>
-<summary>Proof plan</summary>
+<summary>Full proof</summary>
 
-Let $|V(G)|=n$ with $n\geq 2$. Every degree lies in
+Let $G$ be a graph with at least two vertices. Write $|V(G)|=n$, so $n\geq 2$.
+
+For each $v\in V(G)$, the degree of $v$ is at most $n-1$, since $v$ can be adjacent only to vertices in $V(G)\setminus\{v\}$. Therefore every degree lies in
 
 $$
 \{\,d\in\mathbb{N}\mid d\leq n-1\,\}.
 $$
 
-But degree $0$ and degree $n-1$ cannot both occur. If a vertex has degree $n-1$, it is adjacent to every other vertex, so no vertex has degree $0$.
+The two extreme values $0$ and $n-1$ cannot both occur. Indeed, if some vertex has degree $n-1$, then it is adjacent to every other vertex, so no vertex has degree $0$.
 
-Thus there are at most $n-1$ actual degree values for $n$ vertices. Apply pigeonhole to the degree function
+Let
 
 $$
-\deg_G:V(G)\to\mathbb{N}.
+B\coloneqq \{\,\deg_G(v)\mid v\in V(G)\,\}
 $$
 
-Two distinct vertices must have the same degree.
+be the set of actual degree values. Since every degree is a natural number at most $n-1$, and the two extreme values $0$ and $n-1$ cannot both occur, we have $|B|\leq n-1$.
+
+Now regard the degree function as a function
+
+$$
+\deg_G:V(G)\to B.
+$$
+
+The domain has $n$ elements, while the codomain has at most $n-1$ elements. By the pigeonhole principle, this function is not injective. Hence there exist distinct vertices $u,v\in V(G)$ such that
+
+$$
+\deg_G(u)=\deg_G(v).
+$$
+
+Therefore every graph with at least two vertices contains two distinct vertices with the same degree.
 </details>
 
 ## Problem 2: Large Minimum Degree Forces Connectedness
@@ -54,23 +70,41 @@ $$
 then $G$ is connected.
 
 <details>
-<summary>Proof plan</summary>
+<summary>Full proof</summary>
 
-Use the contrapositive. Suppose $G$ is disconnected. Choose a connected component $C$ of smallest order, and let $m=|V(C)|$.
+We prove the contrapositive. Suppose $G$ is disconnected. Then $G$ has at least two connected components.
 
-Since there is at least one other component,
+Choose a connected component $C$ of smallest order, and let
+
+$$
+m\coloneqq |V(C)|.
+$$
+
+Since there is at least one other component and $C$ has smallest order,
 
 $$
 m\leq \frac n2.
 $$
 
-Choose $v\in V(C)$. Since no edge leaves a connected component,
+Choose $v\in V(C)$. No edge can join $v$ to a vertex outside $C$, because then that outside vertex would belong to the same connected component as $v$. Therefore every neighbor of $v$ lies in $V(C)\setminus\{v\}$, so
 
 $$
-\deg_G(v)\leq m-1\leq \frac n2-1<\frac{n-1}{2}.
+\deg_G(v)\leq m-1.
 $$
 
-So if $G$ is disconnected, some vertex has degree less than $(n-1)/2$. That proves the contrapositive.
+Using $m\leq n/2$, we get
+
+$$
+\deg_G(v)\leq m-1\leq \frac n2-1=\frac{n-2}{2}<\frac{n-1}{2}.
+$$
+
+Thus, if $G$ is disconnected, then there exists $v\in V(G)$ such that
+
+$$
+\deg_G(v)<\frac{n-1}{2}.
+$$
+
+This is the contrapositive of the desired statement. Hence if every vertex has degree at least $(n-1)/2$, then $G$ is connected.
 </details>
 
 ## Problem 3: Cut Edges Are Not on Cycles
@@ -78,11 +112,13 @@ So if $G$ is disconnected, some vertex has degree less than $(n-1)/2$. That prov
 Let $G$ be connected and let $e\in E(G)$. Prove that if $e$ is a cut edge, then $e$ lies on no cycle in $G$.
 
 <details>
-<summary>Proof plan</summary>
+<summary>Full proof</summary>
 
-Use the contrapositive. If $e$ lies on a cycle, then the theorem on cycle-edge deletion says $G-e$ is connected. Therefore $e$ is not a cut edge.
+We prove the contrapositive. Suppose $e$ lies on a cycle in $G$.
 
-So if $e$ is a cut edge, $e$ cannot lie on a cycle.
+Since $G$ is connected and $e$ lies on a cycle, the cycle-edge deletion theorem says that $G-e$ is connected. Therefore $e$ is not a cut edge.
+
+So, if $e$ is a cut edge, then $e$ cannot lie on any cycle in $G$.
 </details>
 
 ## Problem 4: Non-Cut Edges Lie on Cycles
@@ -90,11 +126,19 @@ So if $e$ is a cut edge, $e$ cannot lie on a cycle.
 Let $G$ be connected and let $e\in E(G)$. Prove that if $G-e$ is connected, then $e$ lies on a cycle in $G$.
 
 <details>
-<summary>Proof plan</summary>
+<summary>Full proof</summary>
 
 Let $e=\{u,v\}$. Since $G-e$ is connected, there is a path in $G-e$ from $u$ to $v$.
 
-That path does not use $e$. Adding the edge $e$ to the path closes a cycle in $G$. Hence $e$ lies on a cycle.
+Let that path be
+
+$$
+p:u\leadsto v.
+$$
+
+Because $p$ is a path in $G-e$, it does not use the edge $e$. In the original graph $G$, the edge $e=\{u,v\}$ is present. Thus the path $p$ together with the edge $e$ forms a cycle in $G$.
+
+Therefore $e$ lies on a cycle in $G$.
 </details>
 
 ## Problem 5: Connected Graph With $n-1$ Edges
@@ -102,9 +146,9 @@ That path does not use $e$. Adding the edge $e$ to the path closes a cycle in $G
 Let $G$ be a connected graph with $|V(G)|=n$ and $|E(G)|=n-1$. Prove that $G$ is a tree.
 
 <details>
-<summary>Proof plan</summary>
+<summary>Full proof</summary>
 
-Since $G$ is connected, it has a spanning tree $T$. Then
+Since $G$ is connected, the spanning-tree theorem gives a spanning tree $T$ of $G$. Since $T$ is spanning,
 
 $$
 V(T)=V(G),
@@ -116,7 +160,15 @@ $$
 |E(T)|=|V(T)|-1=n-1.
 $$
 
-But $T$ is a subgraph of $G$ and $G$ also has $n-1$ edges. Therefore $T$ must contain all edges of $G$, so $T=G$. Hence $G$ is a tree.
+Since $T$ is a subgraph of $G$, we have $E(T)\subseteq E(G)$. But
+
+$$
+|E(T)|=n-1=|E(G)|.
+$$
+
+So $E(T)=E(G)$. We also have $V(T)=V(G)$, so $T=G$.
+
+Since $T$ is a tree and $T=G$, the graph $G$ is a tree.
 </details>
 
 ## Problem 6: Exactly One Cycle
@@ -128,11 +180,13 @@ $$
 $$
 
 <details>
-<summary>Proof plan</summary>
+<summary>Full proof</summary>
 
-Choose an edge $e$ on the unique cycle. Since $e$ lies on a cycle, $G-e$ is connected.
+Let $C$ be the unique cycle in $G$, and choose an edge $e\in E(C)$.
 
-Also, $G-e$ has no cycles: if it had a cycle, that cycle would also be a cycle in $G$, different from the original one or surviving after deleting $e$, contradicting uniqueness.
+Since $e$ lies on a cycle and $G$ is connected, the graph $G-e$ is connected.
+
+We claim that $G-e$ is acyclic. If $G-e$ had a cycle $C'$, then $C'$ would also be a cycle in $G$. Since $e$ is not an edge of $G-e$, the cycle $C'$ does not use $e$. But the original cycle $C$ does use $e$, so $C'\neq C$. This would give two distinct cycles in $G$, contradicting the assumption that $G$ contains exactly one cycle.
 
 Thus $G-e$ is a tree. Therefore
 
@@ -154,13 +208,17 @@ Hence $|E(G)|=|V(G)|$.
 Let $T$ be a tree, and let $u,v\in V(T)$ be distinct non-adjacent vertices. Let $G$ be the graph obtained from $T$ by adding the edge $\{u,v\}$. Prove that $G$ contains exactly one cycle.
 
 <details>
-<summary>Proof plan</summary>
+<summary>Full proof</summary>
 
-Since $T$ is a tree, there is a unique path in $T$ from $u$ to $v$. Adding the edge $\{u,v\}$ closes this path into a cycle in $G$.
+Since $T$ is a tree, there is a unique path in $T$ from $u$ to $v$. Call this path $p$.
 
-Now prove uniqueness. Any cycle in $G$ must use the new edge $\{u,v\}$, because $T$ itself is acyclic. Removing that new edge from such a cycle leaves a path in $T$ from $u$ to $v$.
+The graph $G$ is obtained by adding the edge $\{u,v\}$ to $T$. The path $p$ together with the new edge $\{u,v\}$ forms a cycle in $G$. Hence $G$ contains at least one cycle.
 
-But the path from $u$ to $v$ in $T$ is unique. Therefore every cycle in $G$ is the same cycle.
+Now let $C$ be any cycle in $G$. Since $T$ is acyclic, $C$ cannot use only edges from $T$. Therefore $C$ must use the new edge $\{u,v\}$.
+
+If we remove the edge $\{u,v\}$ from $C$, what remains is a path in $T$ from $u$ to $v$. But $T$ has a unique path from $u$ to $v$, namely $p$. Therefore every cycle in $G$ consists of $p$ together with the edge $\{u,v\}$.
+
+Thus $G$ contains exactly one cycle.
 </details>
 
 ## Problem 8: Minimum Degree At Least Two
@@ -168,13 +226,27 @@ But the path from $u$ to $v$ in $T$ is unique. Therefore every cycle in $G$ is t
 Prove that every nonempty finite graph in which every vertex has degree at least $2$ contains a cycle.
 
 <details>
-<summary>Proof plan</summary>
+<summary>Full proof</summary>
 
-Assume for contradiction that $G$ is acyclic. Then every connected component of $G$ is a tree.
+Assume for contradiction that $G$ contains no cycle. Then $G$ is acyclic, so each connected component of $G$ is a tree.
 
-Choose any component. Since every vertex of $G$ has degree at least $2$, this component cannot be a single isolated vertex. So it is a tree with at least two vertices.
+Since $G$ is nonempty, it has at least one connected component. Choose a component $C$.
 
-Every tree with at least two vertices has a leaf, meaning a vertex of degree $1$ inside the component. Since no edges leave a connected component, this vertex also has degree $1$ in $G$, contradicting the assumption that every vertex has degree at least $2$.
+The component $C$ cannot consist of a single isolated vertex, because every vertex of $G$ has degree at least $2$. Hence $C$ is a tree with at least two vertices.
+
+Every tree with at least two vertices has a leaf, so there exists $v\in V(C)$ such that
+
+$$
+\deg_C(v)=1.
+$$
+
+No edge leaves a connected component, so the degree of $v$ in $G$ is the same as its degree in $C$. Thus
+
+$$
+\deg_G(v)=1,
+$$
+
+contradicting the assumption that every vertex of $G$ has degree at least $2$.
 
 Thus $G$ must contain a cycle.
 </details>
@@ -184,11 +256,13 @@ Thus $G$ must contain a cycle.
 Let $T$ be a tree. Prove that every edge of $T$ is a cut edge.
 
 <details>
-<summary>Proof plan</summary>
+<summary>Full proof</summary>
 
 Let $e=\{u,v\}\in E(T)$. Since $T$ is a tree, there is a unique path from $u$ to $v$. That path must be the edge $e$ itself.
 
-If $T-e$ were connected, there would be a path from $u$ to $v$ in $T-e$. That would be a second path from $u$ to $v$ in $T$, contradicting uniqueness of paths in trees.
+Suppose, for contradiction, that $T-e$ is connected. Then there is a path from $u$ to $v$ in $T-e$.
+
+This path does not use the edge $e$. But in $T$, the edge $e$ itself is also a path from $u$ to $v$. Therefore $T$ would contain two distinct paths from $u$ to $v$, contradicting the unique-path theorem for trees.
 
 Therefore $T-e$ is disconnected, so $e$ is a cut edge.
 </details>
@@ -202,7 +276,7 @@ $$
 $$
 
 <details>
-<summary>Proof plan</summary>
+<summary>Full proof</summary>
 
 In $K_n$, every vertex is adjacent to the other $n-1$ vertices, so every vertex has degree $n-1$.
 
@@ -236,7 +310,7 @@ $$
 Let $G$ be a connected graph whose vertex set is partitioned into two nonempty sets $A$ and $B$, and suppose every edge has one endpoint in $A$ and one endpoint in $B$. Prove that if $|A|=1$, then $G$ has a vertex adjacent to every vertex in $B$.
 
 <details>
-<summary>Proof plan</summary>
+<summary>Full proof</summary>
 
 Let $A=\{a\}$. Since $G$ is connected, no vertex in $B$ is isolated.
 
@@ -250,11 +324,13 @@ Thus $b$ is adjacent to $a$. Since $b\in B$ was arbitrary, $a$ is adjacent to ev
 Prove that every finite tree has a vertex of degree at most $1$.
 
 <details>
-<summary>Proof plan</summary>
+<summary>Full proof</summary>
 
-If the tree has one vertex, that vertex has degree $0$.
+Let $T$ be a finite tree.
 
-If the tree has at least two vertices, use the theorem that every tree with at least two vertices has a leaf. A leaf has degree $1$.
+If $T$ has one vertex, then that vertex has degree $0$, so $T$ has a vertex of degree at most $1$.
+
+If $T$ has at least two vertices, then the leaves theorem says that $T$ has a leaf. By definition, a leaf has degree $1$. Therefore $T$ again has a vertex of degree at most $1$.
 
 In either case, the tree has a vertex of degree at most $1$.
 </details>
