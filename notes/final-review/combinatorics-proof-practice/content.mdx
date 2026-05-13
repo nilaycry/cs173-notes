@@ -1,0 +1,657 @@
+---
+title: "Combinatorics Proof Practice"
+description: "Fresh combinatorics and strings proof questions for final review, with full hidden proofs and an emphasis on cardinality, pigeonhole, subset counts, and countability."
+order: 4
+noteType: "problem-guide"
+status: "draft"
+---
+
+This page is for the part of the final where counting stops feeling like arithmetic and starts feeling like proof. The recurring move is simple but easy to dodge: name the set, define the function, and then prove the function has the property you need.
+
+The string problems are especially important. In this course, a finite string over an alphabet $A$ of length $n$ is a function
+
+$$
+s:n\to A.
+$$
+
+So when a problem asks about strings, expect to reason about domains, positions, alphabets, injections, and encodings.
+
+## How To Use These
+
+Try the problem first. Then open the full proof and compare structure.
+
+For combinatorics proofs, ask:
+
+- Is the statement asking for an injection, surjection, or bijection?
+- Is the object a subset, a string, or a function?
+- Is order remembered or forgotten?
+- Can the objects be grouped by length, size, or a chosen element?
+- Is this a pigeonhole proof hiding inside a story?
+
+## Problem 1: Subsets Are No Larger
+
+Prove that for all sets $X$ and $Y$, if $X\subseteq Y$, then $|X|\leq |Y|$.
+
+<details>
+<summary>Full proof</summary>
+
+Let $X$ and $Y$ be sets, and assume $X\subseteq Y$.
+
+Define
+
+$$
+i:X\to Y
+$$
+
+by
+
+$$
+i(x)\coloneqq x.
+$$
+
+This function is well-defined because every element of $X$ is also an element of $Y$.
+
+We show that $i$ is injective. Let $a,b\in X$ and suppose
+
+$$
+i(a)=i(b).
+$$
+
+By definition of $i$, this says $a=b$. Therefore $i$ is injective.
+
+Since there exists an injection $X\to Y$, we have
+
+$$
+|X|\leq |Y|.
+$$
+</details>
+
+## Problem 2: Transitivity of Cardinal Comparison
+
+Prove that if $|A|\leq |B|$ and $|B|\leq |C|$, then $|A|\leq |C|$.
+
+<details>
+<summary>Full proof</summary>
+
+Assume $|A|\leq |B|$ and $|B|\leq |C|$. By definition of $\leq$ for cardinality, there exist injections
+
+$$
+f:A\to B
+\qquad\text{and}\qquad
+g:B\to C.
+$$
+
+Consider the composition
+
+$$
+g\circ f:A\to C.
+$$
+
+We prove that $g\circ f$ is injective. Let $a_1,a_2\in A$, and suppose
+
+$$
+(g\circ f)(a_1)=(g\circ f)(a_2).
+$$
+
+Then
+
+$$
+g(f(a_1))=g(f(a_2)).
+$$
+
+Since $g$ is injective,
+
+$$
+f(a_1)=f(a_2).
+$$
+
+Since $f$ is injective,
+
+$$
+a_1=a_2.
+$$
+
+Thus $g\circ f$ is injective. Therefore there exists an injection $A\to C$, so
+
+$$
+|A|\leq |C|.
+$$
+</details>
+
+## Problem 3: Power Sets of Finite Sets
+
+Prove by induction that if $X$ is finite and $|X|=n$, then
+
+$$
+|\mathcal{P}(X)|=2^n.
+$$
+
+<details>
+<summary>Full proof</summary>
+
+We prove the statement by induction on $n\in\mathbb{N}$.
+
+**Base case.** Let $X$ be a set with $|X|=0$. Then $X=\varnothing$. The only subset of $\varnothing$ is $\varnothing$, so
+
+$$
+\mathcal{P}(X)=\{\varnothing\}.
+$$
+
+Therefore
+
+$$
+|\mathcal{P}(X)|=1=2^0.
+$$
+
+**Inductive step.** Fix $k\in\mathbb{N}$ and assume that every set with $k$ elements has exactly $2^k$ subsets.
+
+Let $X$ be a set with $|X|=k+1$. Choose $x\in X$, and define
+
+$$
+Y\coloneqq X\setminus\{x\}.
+$$
+
+Then $|Y|=k$, so by the inductive hypothesis,
+
+$$
+|\mathcal{P}(Y)|=2^k.
+$$
+
+Every subset of $X$ either contains $x$ or does not contain $x$. Let
+
+$$
+\mathcal{A}\coloneqq \{\,S\subseteq X\mid x\notin S\,\}
+$$
+
+and
+
+$$
+\mathcal{B}\coloneqq \{\,S\subseteq X\mid x\in S\,\}.
+$$
+
+The set $\mathcal{A}$ is exactly $\mathcal{P}(Y)$, so $|\mathcal{A}|=2^k$.
+
+The set $\mathcal{B}$ is in bijection with $\mathcal{P}(Y)$ by
+
+$$
+\phi:\mathcal{P}(Y)\to\mathcal{B},
+\qquad
+\phi(S)\coloneqq S\cup\{x\}.
+$$
+
+The inverse sends $T\in\mathcal{B}$ to $T\setminus\{x\}$. Hence $|\mathcal{B}|=2^k$.
+
+The sets $\mathcal{A}$ and $\mathcal{B}$ are disjoint and together cover $\mathcal{P}(X)$. Therefore
+
+$$
+|\mathcal{P}(X)|=|\mathcal{A}|+|\mathcal{B}|=2^k+2^k=2^{k+1}.
+$$
+
+This completes the induction.
+</details>
+
+## Problem 4: Binomial Symmetry
+
+Prove that if $n,k\in\mathbb{N}$ and $k\leq n$, then
+
+$$
+\binom{n}{k}=\binom{n}{n-k}.
+$$
+
+<details>
+<summary>Full proof</summary>
+
+Let $X$ be a set with $|X|=n$.
+
+Let
+
+$$
+\mathcal{A}\coloneqq \{\,S\subseteq X\mid |S|=k\,\}
+$$
+
+and
+
+$$
+\mathcal{B}\coloneqq \{\,T\subseteq X\mid |T|=n-k\,\}.
+$$
+
+Define
+
+$$
+\phi:\mathcal{A}\to\mathcal{B}
+$$
+
+by
+
+$$
+\phi(S)\coloneqq X\setminus S.
+$$
+
+If $|S|=k$, then $|X\setminus S|=n-k$, so $\phi(S)\in\mathcal{B}$.
+
+Define
+
+$$
+\psi:\mathcal{B}\to\mathcal{A}
+$$
+
+by
+
+$$
+\psi(T)\coloneqq X\setminus T.
+$$
+
+For any $S\in\mathcal{A}$,
+
+$$
+\psi(\phi(S))=X\setminus(X\setminus S)=S.
+$$
+
+Similarly, for any $T\in\mathcal{B}$,
+
+$$
+\phi(\psi(T))=X\setminus(X\setminus T)=T.
+$$
+
+Thus $\phi$ is a bijection. Therefore $|\mathcal{A}|=|\mathcal{B}|$, so
+
+$$
+\binom{n}{k}=\binom{n}{n-k}.
+$$
+</details>
+
+## Problem 5: Pascal's Recurrence
+
+Prove that for all $n,k\in\mathbb{N}$,
+
+$$
+\binom{n+1}{k+1}=\binom{n}{k+1}+\binom{n}{k}.
+$$
+
+<details>
+<summary>Full proof</summary>
+
+Let $X$ be a set with $|X|=n+1$, and choose $x\in X$. Define
+
+$$
+Y\coloneqq X\setminus\{x\}.
+$$
+
+Then $|Y|=n$.
+
+Let
+
+$$
+\mathcal{S}\coloneqq \{\,A\subseteq X\mid |A|=k+1\,\}.
+$$
+
+We split $\mathcal{S}$ into two disjoint classes:
+
+$$
+\mathcal{S}_0\coloneqq \{\,A\in\mathcal{S}\mid x\notin A\,\}
+$$
+
+and
+
+$$
+\mathcal{S}_1\coloneqq \{\,A\in\mathcal{S}\mid x\in A\,\}.
+$$
+
+If $A\in\mathcal{S}_0$, then $A$ is a $(k+1)$-element subset of $Y$. Hence
+
+$$
+|\mathcal{S}_0|=\binom{n}{k+1}.
+$$
+
+If $A\in\mathcal{S}_1$, then $A$ is obtained by choosing $k$ elements from $Y$ and then adding $x$. Thus
+
+$$
+|\mathcal{S}_1|=\binom{n}{k}.
+$$
+
+The sets $\mathcal{S}_0$ and $\mathcal{S}_1$ are disjoint and cover $\mathcal{S}$. Therefore
+
+$$
+\binom{n+1}{k+1}
+=|\mathcal{S}|
+=|\mathcal{S}_0|+|\mathcal{S}_1|
+=\binom{n}{k+1}+\binom{n}{k}.
+$$
+</details>
+
+## Problem 6: A Pigeonhole Subset Problem
+
+Let
+
+$$
+S\coloneqq \{1,2,3,4,5,6,7,8,9,10\}.
+$$
+
+Prove that every subset of $S$ with at least $6$ elements contains two distinct elements whose sum is $11$.
+
+<details>
+<summary>Full proof</summary>
+
+Partition $S$ into the following $5$ two-element blocks:
+
+$$
+\{1,10\},\quad
+\{2,9\},\quad
+\{3,8\},\quad
+\{4,7\},\quad
+\{5,6\}.
+$$
+
+Each block consists of two numbers whose sum is $11$.
+
+Let $A\subseteq S$ and suppose $|A|\geq 6$. If $A$ contained at most one element from each of the $5$ blocks, then $A$ would contain at most $5$ elements total. This contradicts $|A|\geq 6$.
+
+Therefore $A$ must contain both elements from at least one block. Those two elements are distinct and have sum $11$.
+</details>
+
+## Problem 7: Same Remainder
+
+Prove that among any $101$ integers, there exist two distinct integers with the same remainder after division by $100$.
+
+<details>
+<summary>Full proof</summary>
+
+Let $A$ be a set of $101$ integers. Define
+
+$$
+f:A\to \{\,r\in\mathbb{N}\mid r<100\,\}
+$$
+
+by letting $f(a)$ be the remainder of $a$ after division by $100$.
+
+The codomain has $100$ elements, while the domain has $101$ elements. By the pigeonhole principle, $f$ is not injective.
+
+Therefore there exist distinct $a,b\in A$ such that
+
+$$
+f(a)=f(b).
+$$
+
+Thus $a$ and $b$ have the same remainder after division by $100$.
+</details>
+
+## Problem 8: Strings of Fixed Length
+
+Let $A$ be a finite alphabet with $|A|=m$. Prove that the number of strings of length $n$ over $A$ is $m^n$.
+
+<details>
+<summary>Full proof</summary>
+
+A string of length $n$ over $A$ is a function
+
+$$
+s:n\to A.
+$$
+
+For each position $i<n$, there are $m$ choices for $s(i)$.
+
+The choices for different positions are independent. Therefore, by the product rule, the number of functions $n\to A$ is
+
+$$
+\prod_{i<n}m=m^n.
+$$
+
+Hence there are $m^n$ strings of length $n$ over $A$.
+</details>
+
+## Problem 9: Strings With No Repeated Characters
+
+Let $A$ be a finite alphabet with $|A|=m$, and let $k\leq m$. Prove that the number of length-$k$ strings over $A$ with no repeated characters is
+
+$$
+\frac{m!}{(m-k)!}.
+$$
+
+<details>
+<summary>Full proof</summary>
+
+A length-$k$ string over $A$ is a function
+
+$$
+s:k\to A.
+$$
+
+The condition that the string has no repeated characters means exactly that $s$ is injective.
+
+To count injective strings, choose the entries one position at a time. At position $0$, there are $m$ choices. At position $1$, there are $m-1$ choices, because the value at position $0$ cannot be repeated. More generally, at position $i<k$, there are $m-i$ choices.
+
+By the product rule, the number of such strings is
+
+$$
+\prod_{i<k}(m-i).
+$$
+
+This product equals
+
+$$
+\frac{m!}{(m-k)!}.
+$$
+
+Therefore the number of length-$k$ strings over $A$ with no repeated characters is $m!/(m-k)!$.
+</details>
+
+## Problem 10: Infinitely Many Finite Binary Strings
+
+Let
+
+$$
+B\coloneqq \{\,s\mid(\exists n\in\mathbb{N})(s:n\to\{0,1\})\,\}.
+$$
+
+Prove that $B$ is infinite.
+
+<details>
+<summary>Full proof</summary>
+
+We prove that $B$ is infinite by constructing an injection
+
+$$
+F:\mathbb{N}\to B.
+$$
+
+For each $n\in\mathbb{N}$, define the all-zero string of length $n$
+
+$$
+z_n:n\to\{0,1\}
+$$
+
+by
+
+$$
+z_n(i)\coloneqq 0
+$$
+
+for every $i<n$.
+
+Now define
+
+$$
+F(n)\coloneqq z_n.
+$$
+
+We prove that $F$ is injective. Suppose $F(m)=F(n)$. Then $z_m=z_n$. Equal functions have equal domains, so $m=n$. Therefore $F$ is injective.
+
+Since $\mathbb{N}$ injects into $B$, the set $B$ is infinite.
+</details>
+
+## Problem 11: Finite Binary Strings Are Countable
+
+Prove that the set of all finite binary strings is countable.
+
+<details>
+<summary>Full proof</summary>
+
+Let
+
+$$
+B\coloneqq \{\,s\mid(\exists n\in\mathbb{N})(s:n\to\{0,1\})\,\}.
+$$
+
+For each $n\in\mathbb{N}$, let
+
+$$
+B_n\coloneqq \{\,s:n\to\{0,1\}\,\}
+$$
+
+be the set of binary strings of length $n$.
+
+For each fixed $n$, the set $B_n$ is finite, with $|B_n|=2^n$.
+
+Also,
+
+$$
+B=\bigcup_{n\in\mathbb{N}}B_n.
+$$
+
+Thus $B$ is a countable union of finite sets. Therefore $B$ is countable.
+</details>
+
+## Problem 12: Finite Trinary Strings Are Countable
+
+Let
+
+$$
+T\coloneqq \{\,t\mid(\exists n\in\mathbb{N})(t:n\to\{0,1,2\})\,\}.
+$$
+
+Prove that $T$ is countable.
+
+<details>
+<summary>Full proof</summary>
+
+For each $n\in\mathbb{N}$, let
+
+$$
+T_n\coloneqq \{\,t:n\to\{0,1,2\}\,\}.
+$$
+
+For each fixed $n$, the set $T_n$ is finite, with $|T_n|=3^n$.
+
+Every finite trinary string has some natural-number length, so
+
+$$
+T=\bigcup_{n\in\mathbb{N}}T_n.
+$$
+
+Since $T$ is a countable union of finite sets, $T$ is countable.
+
+If the problem asks for a more explicit enumeration, list all strings by length. First list the unique string of length $0$, then all strings of length $1$, then all strings of length $2$, and continue by increasing length. Since each length block is finite, every finite trinary string eventually appears in the list.
+</details>
+
+## Problem 13: One Finite Block of Ones
+
+Let $C$ be the set of infinite binary strings that are $0$ everywhere except for one nonempty contiguous finite block of $1$s. Prove that $C$ is countably infinite.
+
+<details>
+<summary>Full proof</summary>
+
+An element of $C$ is determined by two pieces of natural-number data:
+
+- the starting position $a\in\mathbb{N}$ of the block;
+- the positive length $\ell\in\mathbb{N}^+$ of the block.
+
+For each pair $(a,\ell)\in\mathbb{N}\times\mathbb{N}^+$, define an infinite binary string
+
+$$
+s_{a,\ell}:\mathbb{N}\to\{0,1\}
+$$
+
+by
+
+$$
+s_{a,\ell}(i)\coloneqq
+\begin{cases}
+1, & a\leq i<a+\ell,\\
+0, & \text{otherwise}.
+\end{cases}
+$$
+
+This describes exactly the strings in $C$.
+
+The map
+
+$$
+C\to \mathbb{N}\times\mathbb{N}^+
+$$
+
+that sends a string to its starting position and block length is injective. Since $\mathbb{N}\times\mathbb{N}^+$ is countable, $C$ is countable.
+
+It remains to show that $C$ is infinite. For each $a\in\mathbb{N}$, the string $s_{a,1}$ has a single $1$ at position $a$. These strings are all distinct. Therefore there is an injection $\mathbb{N}\to C$.
+
+So $C$ is both countable and infinite. Hence $C$ is countably infinite.
+</details>
+
+## Problem 14: Infinite Binary Strings Are Uncountable
+
+Prove that the set
+
+$$
+\{\,s\mid s:\mathbb{N}\to\{0,1\}\,\}
+$$
+
+is uncountable.
+
+<details>
+<summary>Full proof</summary>
+
+Let
+
+$$
+I\coloneqq \{\,s\mid s:\mathbb{N}\to\{0,1\}\,\}.
+$$
+
+Suppose, for contradiction, that $I$ is countable. Then there is a list of all infinite binary strings. Equivalently, there is a surjection
+
+$$
+\phi:\mathbb{N}\to I.
+$$
+
+For each $n\in\mathbb{N}$, the value $\phi(n)$ is an infinite binary string, so $\phi(n)(n)$ is either $0$ or $1$.
+
+Define a new infinite binary string
+
+$$
+d:\mathbb{N}\to\{0,1\}
+$$
+
+by
+
+$$
+d(n)\coloneqq
+\begin{cases}
+1, & \phi(n)(n)=0,\\
+0, & \phi(n)(n)=1.
+\end{cases}
+$$
+
+Then for every $n\in\mathbb{N}$,
+
+$$
+d(n)\neq \phi(n)(n).
+$$
+
+Therefore $d\neq \phi(n)$ for every $n\in\mathbb{N}$, since $d$ differs from $\phi(n)$ at position $n$.
+
+But $d$ is itself an infinite binary string, so $d\in I$. This contradicts the assumption that $\phi$ lists every element of $I$.
+
+Hence $I$ is uncountable.
+</details>
+
+## What These Are Training
+
+The course keeps returning to the same proof moves:
+
+- use injections for $\leq$ cardinality statements;
+- use bijections for equal counts and binomial identities;
+- split subsets by whether they contain a chosen element;
+- define the pigeonhole function and its codomain explicitly;
+- treat strings as functions from positions into an alphabet;
+- prove countability by grouping objects into finite length blocks;
+- prove uncountability by diagonalization.
+
+For strings, the safest first sentence is usually: "A string of length $n$ over $A$ is a function $n\to A$." Once that sentence is on the page, the rest of the proof has somewhere to stand.
